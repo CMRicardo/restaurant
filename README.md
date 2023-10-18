@@ -3,7 +3,7 @@
 ## Integrantes
 - Ricardo Corrales | 20202000211
 - Emilsson Soler | 20171003751
-- Brian Ramos | 
+- Brian Ramos | 20172002286
 
 ## Dev
 1. Clonar el ```git clone https://github.com/CMRicardo/restaurant```
