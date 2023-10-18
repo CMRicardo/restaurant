@@ -5,6 +5,8 @@
 - Emilsson Soler | 20171003751
 - Brian Ramos | 
 
+### Brian por hacker
+
 ## Dev
 1. Clonar el ```git clone https://github.com/CMRicardo/restaurant```
 2. ```npm install```
