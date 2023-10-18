@@ -2,7 +2,7 @@
 
 ## Integrantes
 - Ricardo Corrales | 20202000211
-- Emilsson Soler | 
+- Emilsson Soler | 20171003751
 - Brian Ramos | 
 
 ## Dev
