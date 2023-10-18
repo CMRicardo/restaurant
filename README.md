@@ -5,7 +5,6 @@
 - Emilsson Soler | 20171003751
 - Brian Ramos | 20172002286
 
-### Brian por hacker
 
 ## Dev
 1. Clonar el ```git clone https://github.com/CMRicardo/restaurant```
