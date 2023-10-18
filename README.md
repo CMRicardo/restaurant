@@ -1,7 +1,12 @@
 # Litoral Restaurant
 
+## Integrantes
+- Ricardo Corrales | 20202000211
+- Emilsson Soler | 
+- Brian Ramos | 
+
 ## Dev
-1. Clonar el [repositorio](https://github.com/CMRicardo/restaurant)
+1. Clonar el ```git clone https://github.com/CMRicardo/restaurant```
 2. ```npm install```
 3. ```npm run dev``` o ```ng serve -o```
 
