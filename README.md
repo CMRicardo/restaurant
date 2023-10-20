@@ -1,25 +1,37 @@
-# Litoral Restaurant
+# 🍽️ Restaurante Brisas del Litoral
 
 Proyecto final de la clase de Programación e Implementación de Sistemas
 
-## Integrantes del grupo Puerto 80
+## 💻️ Tecnologías
+- Angular
+- Typescript
+- Tailwindcss
+
+## 👥 Integrantes del grupo Puerto 80
 - Ricardo Corrales | 20202000211
 - Emilsson Soler | 20171003751
 - Brian Ramos | 20172002286
 
-## Dev
+## 👩‍💻 Dev
 
-### 1. Clonar el repositorio:
+### 1. 📎 Clonar el repositorio:
 
-`git clone https://github.com/CMRicardo/restaurant`
+```sh
+git clone https://github.com/CMRicardo/restaurant
+cd restaurant
+```
 
-### 2. Instalar las dependencias
-`npm install`
+### 2. ⬇️ Instalar las dependencias
+```sh
+npm install
+```
 
-### 3. Levantar el servidor de desarrollo
-`npm run dev` o `ng serve -o`
+### 3. ⬆️ Levantar el servidor de desarrollo
+```sh
+npm start
+```
 
-## Recomendaciones
+## 💡 Recomendaciones
 Instalar las siguientes extensiones para **Visual Studio Code**:
 - Angular Language Service
 - Angular Schematics
