@@ -1,16 +1,24 @@
-<header class="flex gap-8 flex-row justify-evenly">
-  <nav>
-    <div>
-      <a href="#"><-</a>
-      <a href="#">-></a>
+<header class="flex gap-8 items-center justify-evenly py-5 border-b-black border-b">
+  <nav class="flex gap-8" >
+    <div class="flex gap-2" >
+      <a href="#">
+        <img class="h-8" src="/assets/icons/shared/arrow_left_circle.svg" alt="Back" >
+      </a>
+      <a href="#">
+        <img class="h-8" src="/assets/icons/shared/arrow_right_circle.svg" alt="Forward">
+      </a>
     </div>
-    <a href="#">House</a>
+    <a href="/inicio">
+      <img class="h-8" src="/assets/icons/shared/home_door.svg" alt="Home">
+    </a>
   </nav>
-  <h1>title</h1>
-  <div>
+  <h1 class="font-bold" >{{title}}</h1>
+  <div class="flex gap-4 items-center" >
     <div>
       User data
     </div>
-    <a href="#">Settings</a>
+    <a href="#">
+      <img class="h-10" src="/assets/icons/shared/settings.svg" alt="Settings">
+    </a>
   </div>
 </header>

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  public title:string = 'Se nos olvidó cambiarlo'
+  public UserData = {}
 }
