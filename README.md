@@ -1,3 +1,7 @@
+<p align='center'>
+  <img src='src/assets/Brisas-Logo.svg' />
+</p>
+
 # 🍽️ Restaurante Brisas del Litoral
 
 Proyecto final de la clase de Programación e Implementación de Sistemas
