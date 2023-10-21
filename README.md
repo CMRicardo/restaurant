@@ -11,6 +11,8 @@ Proyecto final de la clase de Programación e Implementación de Sistemas
 - Typescript
 - Tailwindcss
 
+## prueba git
+
 ## 👥 Integrantes del grupo Puerto 80
 - Ricardo Corrales | 20202000211
 - Emilsson Soler | 20171003751
