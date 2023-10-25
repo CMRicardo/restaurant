@@ -1,14 +1,21 @@
-<div class="p-8 text-center max-w-full" >
-  <h1 class="text-4xl font-bold" >¡Bienvenido!</h1>
-  <form class="grid gap-8" >
-    <label class="grid" >
+<div class="py-10 place-items-center grid gap-4 h-screen text-text-color">
+  <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
+  <form class="grid p-8 gap-8 min-w-[400px]">
+    <label class="grid gap-2 text-lg w-full">
       Correo Electrónico
-      <input type="text">
+      <input class="border-b-black border-b" type="text">
     </label>
-    <label>
+    <label class="grid gap-2 w-full text-lg" >
       Contraseña
-      <input type="password">
-      <img src="/assets/icons/shared/eye.svg" alt="View password">
+      <div class="flex justify-between" >
+        <input class="border-b-black border-b w-full" type="password">
+        <button><img src="/assets/icons/shared/eye.svg" alt="View password"></button>
+      </div>
     </label>
+    <a href="#" class="text-sm text-right">Olvidé mi contraseña</a>
+    <button type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded hover:scale-105 transition-transform text-lg" >
+      Iniciar sesión
+    </button>
   </form>
+  <span>¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="#">aquí</a></span>
 </div>
