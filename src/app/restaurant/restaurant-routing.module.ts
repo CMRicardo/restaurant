@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restaurant-layout.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: RestaurantLayoutComponent,
     children: [
       { path: 'home', component: HomePageComponent },
+      { path: 'new-order', component: NewOrderPageComponent },
       { path: '**', redirectTo: 'home' },
 
     ]
