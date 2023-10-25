@@ -14,5 +14,8 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
   imports: [
     CommonModule
   ],
+  exports: [
+    HeaderComponent
+  ]
 })
 export class SharedModule { }

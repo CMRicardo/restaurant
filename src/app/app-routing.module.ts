@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'app',
+    loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule)
+  },
+  {
     path: '**',
     redirectTo: 'auth'
   }
