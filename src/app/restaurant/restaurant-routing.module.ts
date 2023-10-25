@@ -6,6 +6,7 @@ import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.com
 import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
+import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'menu', component: MenuPageComponent },
       { path: 'orders', component: OrdersPageComponent },
       { path: 'complaints', component: ComplaintsPageComponent },
+      { path: 'promotions', component: PromotionsPageComponent },
       { path: '**', redirectTo: 'home' },
 
     ]
