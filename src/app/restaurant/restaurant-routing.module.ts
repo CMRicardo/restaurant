@@ -4,6 +4,7 @@ import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restauran
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
 import { MenuPageComponent } from './pages/menu-page/menu-page.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'home', component: HomePageComponent },
       { path: 'new-order', component: NewOrderPageComponent },
       { path: 'menu', component: MenuPageComponent },
+      { path: 'orders', component: OrdersPageComponent },
       { path: '**', redirectTo: 'home' },
 
     ]

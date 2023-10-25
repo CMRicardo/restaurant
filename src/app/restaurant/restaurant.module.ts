@@ -7,13 +7,15 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
 import { MenuPageComponent } from './pages/menu-page/menu-page.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 
 @NgModule({
   declarations: [
     RestaurantLayoutComponent,
     HomePageComponent,
     NewOrderPageComponent,
-    MenuPageComponent
+    MenuPageComponent,
+    OrdersPageComponent
   ],
   imports: [
     CommonModule,
