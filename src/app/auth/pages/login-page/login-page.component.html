@@ -13,9 +13,9 @@
       </div>
     </label>
     <a href="#" class="text-sm text-right">Olvidé mi contraseña</a>
-    <button type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded hover:scale-105 transition-transform text-lg" >
+    <button (click)="login($event)" type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded hover:scale-105 transition-transform text-lg" >
       Iniciar sesión
     </button>
   </form>
-  <span>¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="#">aquí</a></span>
+  <span>¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="auth/register">aquí</a></span>
 </div>
