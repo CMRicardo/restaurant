@@ -10,6 +10,7 @@ import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
+import { RecordsPageComponent } from './pages/records-page/records-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PromotionsPageComponent } from './pages/promotions-page/promotions-page
     MenuPageComponent,
     OrdersPageComponent,
     ComplaintsPageComponent,
-    PromotionsPageComponent
+    PromotionsPageComponent,
+    RecordsPageComponent
   ],
   imports: [
     CommonModule,

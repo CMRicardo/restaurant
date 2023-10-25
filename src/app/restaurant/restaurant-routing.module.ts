@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restaurant-layout.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
@@ -7,6 +8,7 @@ import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
+import { RecordsPageComponent } from './pages/records-page/records-page.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,7 @@ const routes: Routes = [
       { path: 'orders', component: OrdersPageComponent },
       { path: 'complaints', component: ComplaintsPageComponent },
       { path: 'promotions', component: PromotionsPageComponent },
+      { path: 'records', component: RecordsPageComponent },
       { path: '**', redirectTo: 'home' },
 
     ]
