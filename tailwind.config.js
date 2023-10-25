@@ -12,6 +12,9 @@ module.exports = {
         'good': '#158843',
         'bad': '#870303',
         'secondary-text':'#656565'
+      },
+      fontFamily: {
+        'sans': ['Montserrat', 'system-ui']
       }
     },
   },
