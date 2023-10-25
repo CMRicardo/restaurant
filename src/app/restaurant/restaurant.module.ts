@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
 import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
+import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
     HomePageComponent,
     NewOrderPageComponent,
     MenuPageComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    ComplaintsPageComponent
   ],
   imports: [
     CommonModule,
