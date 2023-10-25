@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContainerComponent } from './components/container/container.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
 
 
@@ -12,7 +13,8 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     LayoutComponent,
     HeaderComponent,
     ContainerComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    WelcomePageComponent
   ],
   imports: [
     CommonModule
