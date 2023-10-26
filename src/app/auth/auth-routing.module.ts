@@ -10,8 +10,8 @@ const routes: Routes = [
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: 'login', component: LoginPageComponent },
-      { path: 'register', component: RegisterPageComponent },
+      { path: 'login', component: LoginPageComponent, title: 'Login | Brisas del Litoral' },
+      { path: 'register', component: RegisterPageComponent, title: 'Registro | Brisas del Litoral' },
       { path: '**', redirectTo: 'login' }
     ]
   }

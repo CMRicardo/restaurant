@@ -15,13 +15,13 @@ const routes: Routes = [
     path: '',
     component: RestaurantLayoutComponent,
     children: [
-      { path: 'home', component: HomePageComponent },
-      { path: 'new-order', component: NewOrderPageComponent },
-      { path: 'menu', component: MenuPageComponent },
-      { path: 'orders', component: OrdersPageComponent },
-      { path: 'complaints', component: ComplaintsPageComponent },
-      { path: 'promotions', component: PromotionsPageComponent },
-      { path: 'records', component: RecordsPageComponent },
+      { path: 'home', component: HomePageComponent, title: 'Inicio | Brisas del Litoral' },
+      { path: 'new-order', component: NewOrderPageComponent, title: 'Nueva Orden | Brisas del Litoral' },
+      { path: 'menu', component: MenuPageComponent, title: 'Menu Dígital | Brisas del Litoral' },
+      { path: 'orders', component: OrdersPageComponent, title: 'Ordenes | Brisas del Litoral' },
+      { path: 'complaints', component: ComplaintsPageComponent, title: 'Quejas y Reclamos | Brisas del Litoral' },
+      { path: 'promotions', component: PromotionsPageComponent, title: 'Promociones | Brisas del Litoral' },
+      { path: 'records', component: RecordsPageComponent, title: 'Registros | Brisas del Litoral' },
       { path: '**', redirectTo: 'home' },
 
     ]

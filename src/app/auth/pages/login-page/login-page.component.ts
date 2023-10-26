@@ -9,7 +9,6 @@ export class LoginPageComponent {
 
   login(e: MouseEvent): void {
     e.preventDefault()
-    console.log('Hola mundo!');
     this.router.navigateByUrl('app/home')
   }
 }
