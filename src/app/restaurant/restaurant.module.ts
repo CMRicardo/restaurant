@@ -11,6 +11,7 @@ import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
 import { RecordsPageComponent } from './pages/records-page/records-page.component';
+import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecordsPageComponent } from './pages/records-page/records-page.componen
     OrdersPageComponent,
     ComplaintsPageComponent,
     PromotionsPageComponent,
-    RecordsPageComponent
+    RecordsPageComponent,
+    NavigationButtonComponent
   ],
   imports: [
     CommonModule,

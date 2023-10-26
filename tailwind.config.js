@@ -12,7 +12,10 @@ module.exports = {
         'good': '#158843',
         'bad': '#870303',
         'secondary-text':'#656565',
-        'text-color': '#58463A'
+        'text-color': '#58463A',
+        'purple': '#4E123F',
+        'blue': '#4C5C95',
+        'purple-secondary': '#740157'
       },
       fontFamily: {
         'sans': ['Montserrat', 'system-ui']
