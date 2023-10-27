@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-complaints-icon',
+  selector: 'icon-complaints',
   templateUrl: './complaints-icon.component.html',
   styles: [
   ]

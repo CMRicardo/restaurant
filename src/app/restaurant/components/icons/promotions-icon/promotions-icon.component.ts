@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-promotions-icon',
+  selector: 'icon-promotions',
   templateUrl: './promotions-icon.component.html',
   styles: [
   ]

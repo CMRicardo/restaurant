@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-new-order-icon',
+  selector: 'icon-new-order',
   templateUrl: './new-order-icon.component.html',
   styles: [
   ]

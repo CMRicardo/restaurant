@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-icon',
+  selector: 'icon-menu',
   templateUrl: './menu-icon.component.html',
   styles: [
   ]
