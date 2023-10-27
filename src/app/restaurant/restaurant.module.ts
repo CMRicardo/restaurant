@@ -13,6 +13,11 @@ import { PromotionsPageComponent } from './pages/promotions-page/promotions-page
 import { RecordsPageComponent } from './pages/records-page/records-page.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PromotionsIconComponent } from './components/icons/promotions-icon/promotions-icon.component';
+import { NewOrderIconComponent } from './components/icons/new-order-icon/new-order-icon.component';
+import { MenuIconComponent } from './components/icons/menu-icon/menu-icon.component';
+import { DueOrdersIconComponent } from './components/icons/due-orders-icon/due-orders-icon.component';
+import { ComplaintsIconComponent } from './components/icons/complaints-icon/complaints-icon.component';
+import { RecordsIconComponent } from './components/icons/records-icon/records-icon.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { PromotionsIconComponent } from './components/icons/promotions-icon/prom
     PromotionsPageComponent,
     RecordsPageComponent,
     NavigationButtonComponent,
-    PromotionsIconComponent
+    PromotionsIconComponent,
+    NewOrderIconComponent,
+    MenuIconComponent,
+    DueOrdersIconComponent,
+    ComplaintsIconComponent,
+    RecordsIconComponent,
   ],
   imports: [
     CommonModule,
