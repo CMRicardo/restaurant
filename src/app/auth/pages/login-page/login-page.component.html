@@ -3,21 +3,49 @@
   <form (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" [formGroup]="myForm" >
     <label class="grid gap-2 text-lg w-full">
       Correo Electrónico
-      <input formControlName="email" class="border-b-black border-b px-4 py-2" type="text" placeholder="hola@email.com" >
-      <span *ngIf="email?.errors && email?.touched" class="text-red-700 font-bold text-sm" >Email invalido</span>
+      <input
+        formControlName="email"
+        class="border-b-black border-b px-4 py-2"
+        type="text"
+        placeholder="hola@email.com"
+      />
+      <app-error-label
+        *ngIf="email?.errors && email?.touched"
+        message="Email invalido"
+      />
     </label>
     <label class="grid gap-2 w-full text-lg" >
       Contraseña
-      <div class="flex justify-between relative" >
-        <input #passwordInput formControlName="password" class="border-b-black border-b w-full px-4 py-2" type="password" placeholder="******" >
-        <button (click)="togglePasswordVisibility(passwordInput)" class="absolute top-3 right-0" ><img src="/assets/icons/shared/eye.svg" alt="View password"></button>
+      <div class="relative" >
+        <input
+          #passwordInput
+          formControlName="password"
+          class="border-b-black border-b w-full px-4 py-2"
+          type="password"
+          placeholder="******"
+        />
+        <button
+          (click)="togglePasswordVisibility(passwordInput)"
+          class="absolute top-3 right-0"
+        >
+          <img src="/assets/icons/shared/eye.svg" alt="Toggle password visibility">
+        </button>
       </div>
-      <span *ngIf="password?.errors && password?.touched" class="text-red-700 font-bold text-sm" >Contraseña invalida</span>
+      <app-error-label
+        *ngIf="password?.errors && password?.touched"
+        message="Contraseña invalida"
+      />
     </label>
     <a href="#" class="text-sm text-right">Olvidé mi contraseña</a>
-    <button [disabled]="myForm.invalid" type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded enabled:hover:scale-105 transition-transform text-lg" >
+    <button
+      [disabled]="myForm.invalid"
+      type="submit"
+      class="bg-primary text-white font-bold px-8 py-4 rounded enabled:hover:scale-105 transition-transform text-lg"
+    >
       Iniciar sesión
     </button>
   </form>
-  <span>¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="auth/register">aquí</a></span>
+  <span>
+    ¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="auth/register">aquí</a>
+  </span>
 </div>
