@@ -10,8 +10,8 @@ export class LoginPageComponent {
   private formBuilder = inject(FormBuilder)
 
   public myForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email] ],
-    password: [ '', [Validators.required, Validators.minLength(6)] ]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
   })
 
   get email() {
@@ -28,8 +28,11 @@ export class LoginPageComponent {
 
   public login(e: SubmitEvent): void {
     e.preventDefault()
-    if (this.myForm.invalid) return
-    
+
+    if (this.myForm.invalid) {
+      return
+    }
+
     this.router.navigateByUrl('app/home')
   }
 }

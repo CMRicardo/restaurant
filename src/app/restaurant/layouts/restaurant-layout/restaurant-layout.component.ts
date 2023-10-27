@@ -11,7 +11,8 @@ export class RestaurantLayoutComponent {
 
   ngOnInit(): void {
     const fullTitle = this.titleService.getTitle()
-    this.title = fullTitle.split(' ')[0]
+    const unwantedText = '| Brisas del Litoral'
+    this.title = fullTitle.replace(unwantedText, '').trim()
     
   }
 }
