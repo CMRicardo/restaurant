@@ -1,19 +1,21 @@
 <div class="py-10 place-items-center grid gap-4 h-screen text-text-color">
   <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
-  <form class="grid p-8 gap-8 min-w-[400px]">
+  <form (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" [formGroup]="myForm" >
     <label class="grid gap-2 text-lg w-full">
       Correo Electrónico
-      <input class="border-b-black border-b px-4 py-2" type="text">
+      <input formControlName="email" class="border-b-black border-b px-4 py-2" type="text" placeholder="hola@email.com" >
+      <span *ngIf="email?.errors && email?.touched" class="text-red-700 font-bold text-sm" >Email invalido</span>
     </label>
     <label class="grid gap-2 w-full text-lg" >
       Contraseña
-      <div class="flex justify-between" >
-        <input class="border-b-black border-b w-full px-4 py-2" type="password">
-        <button><img src="/assets/icons/shared/eye.svg" alt="View password"></button>
+      <div class="flex justify-between relative" >
+        <input #passwordInput formControlName="password" class="border-b-black border-b w-full px-4 py-2" type="password" placeholder="******" >
+        <button (click)="togglePasswordVisibility(passwordInput)" class="absolute top-3 right-0" ><img src="/assets/icons/shared/eye.svg" alt="View password"></button>
       </div>
+      <span *ngIf="password?.errors && password?.touched" class="text-red-700 font-bold text-sm" >Contraseña invalida</span>
     </label>
     <a href="#" class="text-sm text-right">Olvidé mi contraseña</a>
-    <button (click)="login($event)" type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded hover:scale-105 transition-transform text-lg" >
+    <button [disabled]="myForm.invalid" type="submit" class="bg-primary text-white font-bold px-8 py-4 rounded enabled:hover:scale-105 transition-transform text-lg" >
       Iniciar sesión
     </button>
   </form>
