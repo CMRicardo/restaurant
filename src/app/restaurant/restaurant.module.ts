@@ -12,6 +12,7 @@ import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
 import { RecordsPageComponent } from './pages/records-page/records-page.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
+import { PromotionsIconComponent } from './components/icons/promotions-icon/promotions-icon.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavigationButtonComponent } from './components/navigation-button/naviga
     ComplaintsPageComponent,
     PromotionsPageComponent,
     RecordsPageComponent,
-    NavigationButtonComponent
+    NavigationButtonComponent,
+    PromotionsIconComponent
   ],
   imports: [
     CommonModule,

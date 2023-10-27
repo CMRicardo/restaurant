@@ -1,6 +1,6 @@
-<div [class]="'px-24 py-4 text-white font-bold rounded text-center ' + color" >
+<div [class]="'px-24 py-4 text-white font-bold rounded text-center hover:scale-105 transition-transform ' + color" >
   <a [href]="url" class="grid place-items-center" >
-    <img class="h-[80%] w-[80%]" [src]="imageUrl" [alt]="title">
+    <app-promotions-icon class="w-full" />
     <h2>{{title}}</h2>
   </a>
 </div>
