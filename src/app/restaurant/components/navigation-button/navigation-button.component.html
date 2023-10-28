@@ -1,5 +1,5 @@
-<div [class]="'w-[350px] h-auto py-4 text-white font-bold rounded text-center hover:scale-105 transition-transform ' + color" >
-  <a [routerLink]="url" class="grid place-items-center" >
+<div [class]="'w-[350px] h-auto py-4 text-white font-bold rounded text-center hover:scale-105 transition-transform' + ' ' + color" >
+  <a [routerLink]="url" class="grid place-items-center focus-visible:scale-105 focus:outline-none" >
     <ng-content></ng-content>
     <h2>{{title}}</h2>
   </a>
