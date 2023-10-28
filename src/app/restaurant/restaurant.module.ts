@@ -18,6 +18,7 @@ import { MenuIconComponent } from './components/icons/menu-icon/menu-icon.compon
 import { DueOrdersIconComponent } from './components/icons/due-orders-icon/due-orders-icon.component';
 import { ComplaintsIconComponent } from './components/icons/complaints-icon/complaints-icon.component';
 import { RecordsIconComponent } from './components/icons/records-icon/records-icon.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RecordsIconComponent } from './components/icons/records-icon/records-ic
     DueOrdersIconComponent,
     ComplaintsIconComponent,
     RecordsIconComponent,
+    MenuItemComponent,
   ],
   imports: [
     CommonModule,
