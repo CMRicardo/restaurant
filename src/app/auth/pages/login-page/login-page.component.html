@@ -22,13 +22,13 @@
           formControlName="password"
           class="border-b-black border-b w-full px-4 py-2"
           type="password"
-          placeholder="******"
+          placeholder="······"
         />
         <button
-          (click)="togglePasswordVisibility(passwordInput)"
+          (click)="togglePasswordVisibility(passwordInput, toggleVisibilityIcon)"
           class="absolute top-3 right-0"
         >
-          <img src="/assets/icons/shared/eye.svg" alt="Toggle password visibility">
+          <img #toggleVisibilityIcon src="/assets/icons/shared/eye.svg" alt="Toggle password visibility">
         </button>
       </div>
       <app-error-label

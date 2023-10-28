@@ -22,8 +22,10 @@ export class LoginPageComponent {
     return this.myForm.get('password')
   }
 
-  public togglePasswordVisibility(passwordInput: HTMLInputElement) {
+  public togglePasswordVisibility(passwordInput: HTMLInputElement, buttonIcon: HTMLImageElement) {
+    buttonIcon.src = 'assets/icons/shared/eye.svg'
     passwordInput.type = passwordInput.type === 'text' ? 'password' : 'text'
+    if (passwordInput.type === 'text') buttonIcon.src = 'assets/icons/shared/eye_no.svg'
   }
 
   public login(e: SubmitEvent): void {
