@@ -1,6 +1,6 @@
 <div class="py-10 place-items-center grid gap-4 h-screen text-text-color">
   <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
-  <form (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" [formGroup]="myForm" >
+  <form (ngSubmit)="login()" class="grid p-8 gap-8 min-w-[400px]" [formGroup]="myForm" >
     <label class="grid gap-2 text-lg w-full">
       Correo Electrónico
       <input
@@ -46,6 +46,6 @@
     </button>
   </form>
   <span>
-    ¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" href="auth/register">aquí</a>
+    ¿No tienes una cuenta? Haz click <a class="font-bold hover:border-b hover:border-b-black  transition-colors" routerLink="/auth/register">aquí</a>
   </span>
 </div>

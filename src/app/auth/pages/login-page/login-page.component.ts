@@ -28,9 +28,7 @@ export class LoginPageComponent {
     if (passwordInput.type === 'text') buttonIcon.src = 'assets/icons/shared/eye_no.svg'
   }
 
-  public login(e: SubmitEvent): void {
-    e.preventDefault()
-
+  public login(): void {
     if (this.myForm.invalid) {
       return
     }
