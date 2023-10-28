@@ -12,7 +12,7 @@ import { NavLinkComponent } from './components/nav-link/nav-link.component';
     HeaderComponent,
     SearchbarComponent,
     WelcomePageComponent,
-    NavLinkComponent
+    NavLinkComponent,
   ],
   imports: [
     CommonModule,

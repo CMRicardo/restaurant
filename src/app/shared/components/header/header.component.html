@@ -1,7 +1,6 @@
 <header class="grid gap-4 py-5 md:gap-8 md:border-b md:grid-cols-3 place-items-center border-b-black">
-  <nav class="flex gap-8 ">
-    <app-nav-link url="/app/home" iconName="home_door" alt="Home" class="contents" />
-  </nav>
+  <app-nav-link url="/app/home" iconName="home_door" alt="Home" class="hidden md:contents" />
+  <a routerLink="/app/home" class="w-16 aspect-square md:hidden" ><img src="/assets/Brisas-Logo.svg" alt="Ir a inicio"></a>
   <h1 class="font-bold">{{title}}</h1>
   <div class="flex items-center gap-4">
     <div>
