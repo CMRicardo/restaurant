@@ -9,4 +9,5 @@ export class MenuItemComponent {
 
   @Input()
   urlImage : string = "https://unsplash.it/640/425"
+  @Input() name : string = "dish_name"
 }
