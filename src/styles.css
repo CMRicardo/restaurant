@@ -5,3 +5,7 @@
 svg {
   width: 40%;
 }
+
+.active {
+  @apply scale-105
+}

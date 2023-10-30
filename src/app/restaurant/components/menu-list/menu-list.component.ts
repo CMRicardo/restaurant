@@ -21,8 +21,5 @@ export class MenuListComponent {
     'Elemento 4',
     'Elemento 4',
     'Elemento 4',
-
-
   ];
-
 }
