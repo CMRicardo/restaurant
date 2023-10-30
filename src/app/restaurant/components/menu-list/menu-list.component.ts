@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
+import { Dish } from '../../interfaces/dish.interface';
 
 @Component({
   templateUrl: './menu-list.component.html',
@@ -7,19 +9,22 @@ import { Component } from '@angular/core';
   ]
 })
 export class MenuListComponent {
+  private ordersService = inject(OrdersService)
 
-  items = [
-    'Elemento 1',
-    'Elemento 2',
-    'Elemento 3',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-    'Elemento 4',
-  ];
+  public dishes: Dish[] = this.ordersService.dishes
+
+  public selectedDishes: Dish[] = []
+
+  onAdd(index: number) {
+    const selectedDish = this.dishes[index]
+    
+    if (this.selectedDishes.includes(this.dishes[index])) {
+      this.selectedDishes = this.selectedDishes.filter(dish => dish !== this.dishes[index])
+    } else {
+      this.selectedDishes.push(selectedDish)
+    }
+    
+    console.log(this.selectedDishes)
+    
+  }
 }

@@ -6,12 +6,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 })
 export class MenuItemComponent {
-
-  @Input()
-  urlImage: string = "https://unsplash.it/640/425"
-  @Input() name: string = "dish_name"
-
   public isSelected = false
+
+  @Input() urlImage: string = "https://unsplash.it/640/425"
+  @Input() name: string = "dish_name"
 
   changeActiveState(): void {
     this.isSelected = !this.isSelected
