@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { OrdersService } from '../../services/orders.service';
+import { Component, Input } from '@angular/core';
 import { Dish } from '../../interfaces/dish.interface';
 
 @Component({
@@ -9,9 +8,7 @@ import { Dish } from '../../interfaces/dish.interface';
   ]
 })
 export class MenuListComponent {
-  private ordersService = inject(OrdersService)
-
-  public dishes: Dish[] = this.ordersService.getDishes()
+  @Input() public dishes: Dish[] = []
 
   public selectedDishes: Dish[] = []
 
@@ -23,8 +20,5 @@ export class MenuListComponent {
     } else {
       this.selectedDishes.push(selectedDish)
     }
-
-    console.log(this.selectedDishes)
-
   }
 }
