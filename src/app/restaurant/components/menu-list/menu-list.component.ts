@@ -11,20 +11,20 @@ import { Dish } from '../../interfaces/dish.interface';
 export class MenuListComponent {
   private ordersService = inject(OrdersService)
 
-  public dishes: Dish[] = this.ordersService.dishes
+  public dishes: Dish[] = this.ordersService.getDishes()
 
   public selectedDishes: Dish[] = []
 
   onAdd(index: number) {
     const selectedDish = this.dishes[index]
-    
+
     if (this.selectedDishes.includes(this.dishes[index])) {
       this.selectedDishes = this.selectedDishes.filter(dish => dish !== this.dishes[index])
     } else {
       this.selectedDishes.push(selectedDish)
     }
-    
+
     console.log(this.selectedDishes)
-    
+
   }
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
+import { DishCategory } from '../../interfaces/dish.interface';
 
 @Component({
   selector: 'app-filter-options',
@@ -8,14 +10,18 @@ import { Component } from '@angular/core';
 })
 export class FilterOptionsComponent {
 
-
-  actualFilter : string = "Entradas";
+  private ordersService = inject(OrdersService)
+  actualFilter : string = this.ordersService.actualFilter;
 
 
   changeFilter(event:MouseEvent): void{
 
-    const filter = (event.target as HTMLInputElement).innerText; // obtiene el texto del elemento mouse
-    this.actualFilter = filter;
+    const filter : string = (event.target as HTMLInputElement).innerText; // obtiene el texto del elemento mouse
+    this.ordersService.actualFilter = filter;
+    this.actualFilter = this.ordersService.actualFilter;
+    this.ordersService.filterDishes()
+    console.log(this.ordersService.getDishes());
+
   }
 
 }
