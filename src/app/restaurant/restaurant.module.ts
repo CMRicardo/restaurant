@@ -20,6 +20,10 @@ import { ComplaintsIconComponent } from './components/icons/complaints-icon/comp
 import { RecordsIconComponent } from './components/icons/records-icon/records-icon.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
+import { EmployeesPageComponent } from './pages/employees-page/employees-page.component';
+import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
+import { SalesPageComponent } from './pages/sales-page/sales-page.component';
+import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { MenuListComponent } from './components/menu-list/menu-list.component';
     RecordsIconComponent,
     MenuItemComponent,
     MenuListComponent,
+    EmployeesPageComponent,
+    SupplierPageComponent,
+    SalesPageComponent,
+    ShoppingPageComponent,
   ],
   imports: [
     CommonModule,

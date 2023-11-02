@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restaurant-layout.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
-import { MenuPageComponent } from './pages/menu-page/menu-page.component';
-import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
+import { EmployeesPageComponent } from './pages/employees-page/employees-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MenuPageComponent } from './pages/menu-page/menu-page.component';
+import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
 import { RecordsPageComponent } from './pages/records-page/records-page.component';
+import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restaurant-layout.component';
+import { SalesPageComponent } from './pages/sales-page/sales-page.component';
+import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
+import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
 
 const routes: Routes = [
   {
@@ -22,8 +26,11 @@ const routes: Routes = [
       { path: 'complaints', component: ComplaintsPageComponent, title: 'Quejas y Reclamos | Brisas del Litoral' },
       { path: 'promotions', component: PromotionsPageComponent, title: 'Promociones | Brisas del Litoral' },
       { path: 'records', component: RecordsPageComponent, title: 'Registros | Brisas del Litoral' },
+      { path: 'records/employees', component: EmployeesPageComponent, title: 'Empleados | Brisas del Litoral' },
+      { path: 'records/supplier', component: SupplierPageComponent, title: 'Proveedores | Brisas del Litoral' },
+      { path: 'records/sales', component: SalesPageComponent, title: 'Ventas | Brisas del Litoral' },
+      { path: 'records/shopping', component: ShoppingPageComponent, title: 'Compras | Brisas del Litoral' },
       { path: '**', redirectTo: 'home' },
-
     ]
   }
 ];
