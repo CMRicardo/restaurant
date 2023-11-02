@@ -28,6 +28,7 @@ import { EmployeeIconComponent } from './components/icons/employee-icon/employee
 import { SalesIconComponent } from './components/icons/sales-icon/sales-icon.component';
 import { SupplierIconComponent } from './components/icons/supplier-icon/supplier-icon.component';
 import { ShoppingIconComponent } from './components/icons/shopping-icon/shopping-icon.component';
+import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ShoppingIconComponent } from './components/icons/shopping-icon/shopping
     SalesIconComponent,
     SupplierIconComponent,
     ShoppingIconComponent,
+    FilterOptionsComponent,
   ],
   imports: [
     CommonModule,
