@@ -24,6 +24,10 @@ import { EmployeesPageComponent } from './pages/employees-page/employees-page.co
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
 import { SalesPageComponent } from './pages/sales-page/sales-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
+import { EmployeeIconComponent } from './components/icons/employee-icon/employee-icon.component';
+import { SalesIconComponent } from './components/icons/sales-icon/sales-icon.component';
+import { SupplierIconComponent } from './components/icons/supplier-icon/supplier-icon.component';
+import { ShoppingIconComponent } from './components/icons/shopping-icon/shopping-icon.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.compo
     SupplierPageComponent,
     SalesPageComponent,
     ShoppingPageComponent,
+    EmployeeIconComponent,
+    SalesIconComponent,
+    SupplierIconComponent,
+    ShoppingIconComponent,
   ],
   imports: [
     CommonModule,

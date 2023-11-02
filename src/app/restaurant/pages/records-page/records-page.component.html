@@ -1,22 +1,14 @@
 <div class="grid gap-4 md:grid-cols-2 md:px-16 ">
-  <app-navigation-button
-    url="/app/records/employees"
-    color="bg-blue"
-    title="Empleados"
-  />
-  <app-navigation-button
-    url="/app/records/supplier"
-    color="bg-yellow-500"
-    title="Proveedores"
-  />
-  <app-navigation-button
-    url="/app/records/sales"
-    color="bg-green-700"
-    title="Ventas"
-  />
-  <app-navigation-button
-    url="/app/records/shopping"
-    color="bg-primary"
-    title="Compras"
-  />
+  <app-navigation-button url="/app/records/employees" color="bg-blue" title="Empleados">
+    <icon-employee class="contents" />
+  </app-navigation-button>
+  <app-navigation-button url="/app/records/supplier" color="bg-yellow-500" title="Proveedores">
+    <icon-supplier class="contents" />
+  </app-navigation-button>
+  <app-navigation-button url="/app/records/sales" color="bg-green-700" title="Ventas">
+    <icon-sales class="contents" />
+  </app-navigation-button>
+  <app-navigation-button url="/app/records/shopping" color="bg-primary" title="Compras" >
+    <icon-shopping class="contents" />
+  </app-navigation-button>
 </div>
