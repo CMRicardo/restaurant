@@ -3,10 +3,10 @@
     <app-searchbar />
     <app-searchbar />
   </div>
-  <div class="grid gap-4 md:grid-cols-3" >
-    <table class="px-4 text-center rounded-lg" >
-      <thead class="text-white bg-primary" >
-        <td>Id</td>
+  <div class="grid gap-4 md:grid-cols-[1fr_20%_1fr] place-items-center" >
+    <table *ngIf="selectedDishes.length !== 0; else noDishes"  class="min-w-full text-center rounded-lg" >
+      <thead class="text-white bg-primary h-[4rem]" >
+        <td class="px-2" >Id</td>
         <td>Nombre</td>
         <td>Cantidad</td>
         <td>Precio</td>
@@ -22,6 +22,9 @@
         </tr>
       </tbody>
     </table>
+    <ng-template #noDishes>
+      <div class="grid h-full p-8 text-white bg-gray-500 rounded-lg place-items-center" >Agrega platillos a la orden</div>
+    </ng-template>
     <app-filter-options />
     <app-menu-list (onSelect)="onSelect($event)" [dishes]="dishes()" />
   </div>
