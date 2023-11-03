@@ -3,6 +3,7 @@ export interface Dish {
   name: string
   imgUrl: string
   category: string
+  price: number
 }
 
 export const DishCategory = [
@@ -10,5 +11,4 @@ export const DishCategory = [
   "Plato Fuerte",
   "Bebidas",
   "Postres"
-
 ]
