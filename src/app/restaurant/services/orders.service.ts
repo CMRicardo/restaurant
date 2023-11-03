@@ -14,9 +14,6 @@ export class OrdersService {
     { id: '4', name: 'Vino Tinto', imgUrl: 'https://unsplash.it/640/428', category: 'Bebidas' }
   ])
 
-  public actualFilter = signal<string>(DishCategory[1]);
-
-  public getDishes = computed(() => this.dishes())
-  
+  public actualFilter = signal<string>(DishCategory[1]);  
   public filteredDishes = computed(() => this.dishes().filter(dish => dish.category === this.actualFilter()))
 }
