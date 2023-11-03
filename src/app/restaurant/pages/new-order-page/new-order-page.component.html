@@ -3,9 +3,26 @@
     <app-searchbar />
     <app-searchbar />
   </div>
-  <div class="grid md:grid-cols-3" >
-    <div>Hola</div>
+  <div class="grid gap-4 md:grid-cols-3" >
+    <table class="px-4 text-center rounded-lg" >
+      <thead class="text-white bg-primary" >
+        <td>Id</td>
+        <td>Nombre</td>
+        <td>Cantidad</td>
+        <td>Precio</td>
+        <td>Sub Total</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dish of selectedDishes" >
+          <td>{{dish.id}}</td>
+          <td>{{dish.name}}</td>
+          <td>3</td>
+          <td>$3.00</td>
+          <td>$9.00</td>
+        </tr>
+      </tbody>
+    </table>
     <app-filter-options />
-    <app-menu-list [dishes]="dishes()" />
+    <app-menu-list (onSelect)="onSelect($event)" [dishes]="dishes()" />
   </div>
 </div>

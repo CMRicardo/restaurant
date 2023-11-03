@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish } from '../../interfaces/dish.interface';
 
 @Component({
@@ -9,6 +9,7 @@ import { Dish } from '../../interfaces/dish.interface';
 })
 export class MenuListComponent {
   @Input() public dishes: Dish[] = []
+  @Output() public onSelect: EventEmitter<Dish[]> = new EventEmitter()
 
   public selectedDishes: Dish[] = []
 
@@ -20,5 +21,6 @@ export class MenuListComponent {
     } else {
       this.selectedDishes.push(selectedDish)
     }
+    this.onSelect.emit(this.selectedDishes)
   }
 }
