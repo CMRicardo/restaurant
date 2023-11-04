@@ -32,6 +32,7 @@ import { ShoppingIconComponent } from './components/icons/shopping-icon/shopping
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 import { SupplierIconComponent } from './components/icons/supplier-icon/supplier-icon.component';
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SupplierPageComponent } from './pages/supplier-page/supplier-page.compo
     ShoppingPageComponent,
     SupplierIconComponent,
     SupplierPageComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,

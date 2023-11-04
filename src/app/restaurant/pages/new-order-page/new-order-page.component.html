@@ -4,45 +4,7 @@
     <app-searchbar />
   </div>
   <div class="grid gap-4 md:grid-cols-[1fr_20%_1fr] place-items-center" >
-    <table *ngIf="selectedDishes.length !== 0; else noDishes" class="min-w-full text-center rounded-lg" >
-      <thead class="text-white bg-primary h-[4rem]" >
-        <td class="px-2" >Id</td>
-        <td class="px-2" >Nombre</td>
-        <td class="px-2" >Cantidad</td>
-        <td class="px-2" >Precio</td>
-        <td class="px-2" >Sub Total</td>
-      </thead>
-      <tbody class="bg-rose-100" >
-        <tr class="even:bg-rose-200" *ngFor="let dish of selectedDishes" >
-          <td class="p-2" >{{dish.id}}</td>
-          <td class="p-2" >{{dish.name}}</td>
-          <td class="p-2" >3</td>
-          <td class="p-2" >{{dish.price | currency }}</td>
-          <td class="p-2" >$9.00</td>
-        </tr>
-      </tbody>
-      <tfoot class="text-left" >
-        <tr>
-          <td class="p-2"  colspan="4">Subtotal</td>
-          <td class="p-2" >9.00</td>
-        </tr>
-        <tr>
-          <td class="p-2"  colspan="4">Descuento</td>
-          <td class="p-2" >0%</td>
-        </tr>
-        <tr>
-          <td class="p-2" colspan="4">ISV (15%)</td>
-          <td class="p-2" >1.35</td>
-        </tr>
-        <tr>
-          <td colspan="4" class="p-2 font-bold" >Total a pagar</td>
-          <td class="p-2 font-bold" >10.35</td>
-        </tr>
-      </tfoot>
-    </table>
-    <ng-template #noDishes>
-      <div class="grid h-full p-8 text-white bg-gray-500 rounded-lg place-items-center" >Agrega elementos a la orden</div>
-    </ng-template>
+    <app-table [rows]="selectedDishes" />
     <app-filter-options />
     <app-menu-list (onSelect)="onSelect($event)" [dishes]="dishes()" />
   </div>
