@@ -1,0 +1,38 @@
+<h2 class="text-2xl font-semibold max-w-md mx-auto p-3 text-center text-white  rounded-t-lg shadow-md bg-primary">Detalles</h2>
+<div class="max-w-md mx-auto p-6 bg-secondary rounded-b-lg shadow-md " >
+  <form (ngSubmit)="onSubmit($event)">
+    <div class="mb-4">
+      <!-- input de nombre -->
+      <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+      <div class="flex items-center">
+        <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+    </div>
+    <!-- input de precio -->
+    <div class="mb-4">
+      <label for="precio" class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
+      <div class="flex items-center">
+        <input type="number" id="precio" name="precio" class="no-spinner w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+    </div>
+    <!-- input de descuento -->
+    <div class="mb-4">
+      <label for="descuento" class="block text-gray-700 text-sm font-bold mb-2">Descuento:</label>
+      <div class="flex items-center">
+        <input type="number"   id="descuento" name="descuento" class="no-spinner w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+    </div>
+    <!-- input de imagen -->
+    <div class="mb-4">
+      <label for="imagen" class="block text-gray-700 text-sm font-bold mb-2">Imagen:</label>
+      <div class="flex items-center">
+        <input type="file" id="imagen" name="imagen" class="w-full border border-primary p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+    </div>
+    <!-- botones -->
+    <div class="mt-6 flex justify-between">
+      <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-blue-600">Agregar</button>
+      <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-gray-400">Cancelar</button>
+    </div>
+  </form>
+</div>

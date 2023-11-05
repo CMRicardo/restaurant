@@ -1,1 +1,5 @@
-<p>menu-page works!</p>
+<div class="flex flex-row items-center justify-between space-x-20">
+  <app-filter-options></app-filter-options>
+  <app-menu-list  (onSelect)="onSelect($event)" [dishes]="dishes()" />
+  <app-formulario-platillo></app-formulario-platillo>
+</div>
