@@ -16,8 +16,8 @@ export class MenuListComponent {
   onAdd(index: number) {
     const selectedDish = this.dishes[index]
 
-    if (this.selectedDishes.includes(this.dishes[index])) {
-      this.selectedDishes = this.selectedDishes.filter(dish => dish !== this.dishes[index])
+    if (this.selectedDishes.includes(selectedDish)) {
+      this.selectedDishes = this.selectedDishes.filter(dish => dish !== selectedDish)
     } else {
       this.selectedDishes.push(selectedDish)
     }
