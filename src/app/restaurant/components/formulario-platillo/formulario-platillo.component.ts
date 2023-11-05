@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class FormularioPlatilloComponent {
 
+onSubmit(event:Event) {
+event.preventDefault()
+throw new Error('Method not implemented.');
+}
+
 }
