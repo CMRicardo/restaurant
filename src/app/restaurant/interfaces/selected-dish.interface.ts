@@ -1,6 +1,5 @@
 import { Dish } from "./dish.interface"
 
-export interface SelectedDish {
-  quantity: number
-  dish: Dish
+export interface SelectedDish extends Dish {
+  quantity?: number
 }

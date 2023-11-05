@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -6,17 +7,18 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
+  private titleService = inject(Title)
   private router = inject(Router)
   private activeRoute = inject(ActivatedRoute)
 
-  public title: string = 'Inicio'
+  public title: string = this.titleService.getTitle().replace('| Brisas del Litoral', '')
   public UserData = {}
 
   ngOnInit(): void {
     console.log(this.activeRoute.snapshot.firstChild?.routeConfig?.title)
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd ) {
-        const fullTitle = this.activeRoute.snapshot.firstChild?.routeConfig?.title as string || 'Inicio'
+        const fullTitle = this.activeRoute.snapshot.firstChild?.routeConfig?.title as string || this.titleService.getTitle()
         const unwantedText = '| Brisas del Litoral'
         this.title = fullTitle.replace(unwantedText, '')
       }
