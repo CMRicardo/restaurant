@@ -1,46 +1,25 @@
 <div class="grid gap-4 md:grid-cols-3 md:px-16">
-  <app-navigation-button
-    color="bg-purple"
-    title="Nuevo Pedido"
-    url="/app/new-order"
-  >
-    <icon-new-order class="contents" />
+  <app-navigation-button url="/app/records/sales" color="bg-green-700" title="Ventas">
+    <icon-sales class="contents" />
   </app-navigation-button>
-  <app-navigation-button
-    color="bg-primary"
-    title="Pedidos pendientes"
-    url="/app/orders"
-  >
+
+  <app-navigation-button url="/app/records/shopping" color="bg-pink-700" title="Compras">
+    <icon-shopping class="contents" />
+  </app-navigation-button>
+
+  <app-navigation-button color="bg-purple" title="Pedidos pendientes" url="/app/orders">
     <icon-due-orders class="contents" />
   </app-navigation-button>
-  <app-navigation-button
-    color="bg-blue"
-    title="Menú Digital"
-    url="/app/menu"
-  >
+
+  <app-navigation-button url="/app/records/supplier" color="bg-yellow-500" title="Proveedores">
+    <icon-supplier class="contents" />
+  </app-navigation-button>
+
+  <app-navigation-button url="/app/records/employees" color="bg-blue" title="Empleados">
+    <icon-employee class="contents" />
+  </app-navigation-button>
+
+  <app-navigation-button color="bg-slate-600" title="Menú Digital" url="/app/menu">
     <icon-menu class="contents" />
   </app-navigation-button>
-  <app-navigation-button
-    color="bg-bad"
-    title="Quejas y Reclamos"
-    url="/app/complaints"
-  >
-    <icon-complaints class="contents" />
-  </app-navigation-button>
-  <app-navigation-button
-    color="bg-purple-secondary"
-    title="Registros"
-    url="/app/records"
-  >
-    <icon-records class="contents" />
-  </app-navigation-button>
-  <app-navigation-button
-    color="bg-good"
-    title="Gestión de Promociones"
-    url="/app/promotions"
-  >
-    <icon-promotions class="contents" />
-  </app-navigation-button>
 </div>
-
-
