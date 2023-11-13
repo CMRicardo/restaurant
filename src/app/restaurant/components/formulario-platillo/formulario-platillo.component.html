@@ -1,38 +1,39 @@
-<h2 class="text-2xl font-semibold max-w-md mx-auto p-3 text-center text-white  rounded-t-lg shadow-md bg-primary">Detalles</h2>
-<div class="max-w-md mx-auto p-6 bg-secondary rounded-b-lg shadow-md " >
-  <form (ngSubmit)="onSubmit($event)">
-    <div class="mb-4">
-      <!-- input de nombre -->
-      <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-      <div class="flex items-center">
-        <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
-      </div>
+<h2 class="text-2xl font-semibold max-w-md mx-auto p-3 text-center text-white  rounded-t-lg shadow-lg bg-primary">Nuevo Platillo</h2>
+<div class=" mx-auto p-6 bg-secondary rounded-b-lg shadow-lg max-w-xs" >
+  <form (ngSubmit)="onSubmit($event)" class="">
+    <!-- input de nombre -->
+    <div class="mb-6 flex items-center justify-between space-x-2 ">
+      <label for="nombre" class=" text-gray-700 text-sm font-bold  ">Nombre: </label>
+      <input type="text" id="nombre" name="nombre" class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0" />
     </div>
+
     <!-- input de precio -->
-    <div class="mb-4">
-      <label for="precio" class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
-      <div class="flex items-center">
-        <input type="number" id="precio" name="precio" class="no-spinner w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
-      </div>
+    <div class="mb-8 flex items-center justify-between space-x-5">
+      <label for="precio" class="block text-gray-700 text-sm font-bold ">Precio:</label>
+      <input type="number" id="precio" name="precio" class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0" />
     </div>
-    <!-- input de descuento -->
-    <div class="mb-4">
-      <label for="descuento" class="block text-gray-700 text-sm font-bold mb-2">Descuento:</label>
-      <div class="flex items-center">
-        <input type="number"   id="descuento" name="descuento" class="no-spinner w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
-      </div>
-    </div>
+
     <!-- input de imagen -->
-    <div class="mb-4">
-      <label for="imagen" class="block text-gray-700 text-sm font-bold mb-2">Imagen:</label>
-      <div class="flex items-center">
-        <input type="file" id="imagen" name="imagen" class="w-full border border-primary p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" />
-      </div>
+    <div>
+      <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
     </div>
+    <div class="flex items-center justify-center w-full  ">
+      <label for="dropzone-file" class=" bg-secondary flex flex-col items-center justify-center w-full h-25 border-2 border-primary border-dashed rounded-lg cursor-pointer  hover: ">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+              </svg>
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">Click para subir una <span class="font-semibold">imagen</span>  </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">PNG or JPG (MAX. 800x400px)</p>
+          </div>
+          <input id="dropzone-file" type="file" class="hidden" />
+      </label>
+  </div>
+
     <!-- botones -->
     <div class="mt-6 flex justify-between">
-      <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-blue-600">Agregar</button>
-      <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-gray-400">Cancelar</button>
+      <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800">Agregar</button>
+      <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-900">Cancelar</button>
     </div>
   </form>
 </div>
