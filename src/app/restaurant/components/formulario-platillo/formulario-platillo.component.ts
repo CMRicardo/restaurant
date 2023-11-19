@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-formulario-platillo',
   templateUrl: './formulario-platillo.component.html',
@@ -8,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class FormularioPlatilloComponent {
 
+  public dish={}
+
   imageUrl: string | ArrayBuffer | null = null;
+  nameDish : string = '';
+  price : number = 0;
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

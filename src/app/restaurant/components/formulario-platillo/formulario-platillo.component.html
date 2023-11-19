@@ -2,33 +2,43 @@
   Platillo</h2>
 <div class=" mx-auto p-6 bg-secondary rounded-b-lg shadow-lg max-w-lg">
   <form  class="">
-    <!-- input de nombre -->
-    <div class="mb-6 flex items-center justify-between space-x-2 ">
+    <!-- input de nombre  -->
+    <div class="mb-3 flex items-center justify-between space-x-2 ">
       <label for="nombre" class=" text-gray-700 text-sm font-bold  ">Nombre: </label>
-      <input type="text" id="nombre" name="nombre"
-        class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0" />
+      <input type="text" id="NameDish" name="NameDish"
+        class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
     </div>
 
     <!-- input de precio -->
-    <div class="mb-8 flex items-center justify-between space-x-5">
+    <div class="mb-3 flex items-center justify-between space-x-5">
       <label for="precio" class="block text-gray-700 text-sm font-bold ">Precio:</label>
       <input type="number" id="precio" name="precio"
-        class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0" />
+        class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
     </div>
 
+    <!-- input de tipo de platillo -->
+    <div class="form-group mb-4 flex items-center space-x-9 ">
+      <label for="tipo" class="text-gray-700 text-sm font-bold">Tipo:</label>
+      <select id="tipo" name="tipo" class="bg-red-50 rounded-md  "  required>
+        <option selected>Elige una categoria</option>
+        <option value="entrada">Entrada</option>
+        <option value="platoFuerte">Plato Fuerte</option>
+        <option value="postre">Postre</option>
+      </select>
+    </div>
     <!-- input de imagen -->
 
     <div class="flex-wrap justify-center align-middle -2">
       <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
       <input type="file" (change)="onFileSelected($event)"  />
       <div class="flex justify-center mt-3 ">
-        <img *ngIf="imageUrl" [src]="imageUrl" alt="Imagen seleccionada" class="max-h-44 align-middle" />
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="Imagen seleccionada" class="max-h-32" />
       </div>
     </div>
 
 
     <!-- botones -->
-    <div class="mt-6 flex justify-between">
+    <div class="mt-4 flex justify-between">
       <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800">Agregar</button>
       <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-900">Cancelar</button>
     </div>
