@@ -18,6 +18,11 @@ export class FormularioPlatilloComponent {
  }
 
 
+  public dish = {}
+
+  imageUrl: string | ArrayBuffer | null = null;
+  nameDish: string = '';
+  price: number = 0;
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -42,10 +47,12 @@ export class FormularioPlatilloComponent {
       console.log('hola mundo');
 
       //console.log(this.dish.imgUrl.toString().split(',')[1]);
+    if (this.imageUrl)
+      console.log(this.imageUrl.toString().split(',')[1]);
   }
-onSubmit() {
-console.log(this.dish);
-
-}
+  onSubmit(event: Event) {
+    event.preventDefault()
+    throw new Error('Method not implemented.');
+  }
 
 }
