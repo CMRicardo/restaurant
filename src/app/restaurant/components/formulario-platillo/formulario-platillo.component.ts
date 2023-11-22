@@ -17,9 +17,6 @@ export class FormularioPlatilloComponent {
     price: 0
  }
 
-
-  public dish = {}
-
   imageUrl: string | ArrayBuffer | null = null;
   nameDish: string = '';
   price: number = 0;
@@ -50,9 +47,8 @@ export class FormularioPlatilloComponent {
     if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
-  onSubmit(event: Event) {
-    event.preventDefault()
-    throw new Error('Method not implemented.');
+  onSubmit() {
+    console.log(this.dish);
   }
 
 }
