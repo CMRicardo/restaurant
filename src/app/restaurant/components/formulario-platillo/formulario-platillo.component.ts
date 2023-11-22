@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Dish1 } from '../../interfaces/dish1.constant';
 
 
 @Component({
@@ -9,11 +10,14 @@ import { Component } from '@angular/core';
 })
 export class FormularioPlatilloComponent {
 
-  public dish={}
+ dish: Dish1 ={
+    name: '',
+    imgUrl: null,
+    category: 'Elige una categoria',
+    price: 0
+ }
 
-  imageUrl: string | ArrayBuffer | null = null;
-  nameDish : string = '';
-  price : number = 0;
+
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -26,7 +30,7 @@ export class FormularioPlatilloComponent {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-      this.imageUrl = reader.result;
+      this.dish.imgUrl = reader.result;
       this.uploadImage()
     };
 
@@ -34,12 +38,14 @@ export class FormularioPlatilloComponent {
 
   uploadImage() {
     // Aquí puedes agregar lógica para subir la imagen al servidor si es necesario
-    if(this.imageUrl)
-      console.log(this.imageUrl.toString().split(',')[1]);
+    if(this.dish.imgUrl)
+      console.log('hola mundo');
+
+      //console.log(this.dish.imgUrl.toString().split(',')[1]);
   }
-onSubmit(event:Event) {
-event.preventDefault()
-throw new Error('Method not implemented.');
+onSubmit() {
+console.log(this.dish);
+
 }
 
 }

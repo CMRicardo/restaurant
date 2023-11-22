@@ -34,6 +34,7 @@ import { SupplierIconComponent } from './components/icons/supplier-icon/supplier
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
 import { TableComponent } from './components/table/table.component';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { FormularioPlatilloComponent } from './components/formulario-platillo/fo
   imports: [
     CommonModule,
     RestaurantRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class RestaurantModule { }
