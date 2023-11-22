@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-formulario-platillo',
   templateUrl: './formulario-platillo.component.html',
@@ -9,11 +8,11 @@ import { Component } from '@angular/core';
 })
 export class FormularioPlatilloComponent {
 
-  public dish={}
+  public dish = {}
 
   imageUrl: string | ArrayBuffer | null = null;
-  nameDish : string = '';
-  price : number = 0;
+  nameDish: string = '';
+  price: number = 0;
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -34,12 +33,12 @@ export class FormularioPlatilloComponent {
 
   uploadImage() {
     // Aquí puedes agregar lógica para subir la imagen al servidor si es necesario
-    if(this.imageUrl)
+    if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
-onSubmit(event:Event) {
-event.preventDefault()
-throw new Error('Method not implemented.');
-}
+  onSubmit(event: Event) {
+    event.preventDefault()
+    throw new Error('Method not implemented.');
+  }
 
 }
