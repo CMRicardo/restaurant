@@ -6,20 +6,10 @@
       <th class="p-2" >Vendedor</th>
     </thead>
     <tbody class="text-black bg-secondary" >
-      <tr >
-        <td class="p-2" >01/01/2023</td>
-        <td class="p-2" >{{10 | currency}}</td>
-        <td class="p-2" >Ricardo Corrales</td>
-      </tr>
-      <tr class="even:bg-terciary" >
-        <td>01/02/2023</td>
-        <td>{{15 | currency}}</td>
-        <td>Brian Ramos</td>
-      </tr>
-      <tr>
-        <td>01/03/2023</td>
-        <td>{{20 | currency}}</td>
-        <td>Emilsson Soler</td>
+      <tr *ngFor="let sale of sales" >
+        <td class="p-2" >{{sale.date | date}}</td>
+        <td class="p-2" >{{sale.total | currency}}</td>
+        <td class="p-2" >{{sale.seller}}</td>
       </tr>
     </tbody>
   </table>
