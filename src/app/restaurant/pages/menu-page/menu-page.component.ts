@@ -32,8 +32,8 @@ export class MenuPageComponent {
 
     if (this.selectedDishes.length > 0) {
       this.modifyElemet = this.selectedDishes[this.selectedDishes.length - 1]
-    }else{
-      this.modifyElemet.name= 'default';
+    } else {
+      this.modifyElemet.name = 'default';
     }
     console.log(this.selectedDishes);
   }
@@ -45,7 +45,7 @@ export class MenuPageComponent {
         duration: 4000,
       });
 
-    }else{
+    } else {
       this.addNewDish = true;
     }
   }
