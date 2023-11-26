@@ -7,12 +7,12 @@
       </label>
       <label>
         Fecha final:
-        <input class="p-1 text-white rounded-lg bg-purple" type="date" [value]="finalDate" formControlName="finalDate" >
+        <input class="p-1 text-white rounded-lg bg-purple" type="date" formControlName="finalDate" >
       </label>
       <button class="px-4 py-1 text-white rounded-lg bg-purple" >Filtrar</button>
     </div>
-    <span #ErrorDateRange [ngClass]="isValidDateRange ? 'hidden' : ''" class="text-sm font-bold text-red-700" >La fecha inicial no puede ser mayor a la fecha final</span>
-    <span #ErrorNoDates [ngClass]="showNoDatesError ? '' : 'hidden'" class="text-sm font-bold text-red-700" >Debe seleccionar una fecha inicial y final</span>
+    <error-label *ngIf="initialDate?.errors" message="Debe seleccionar una fecha inicial y final" />
+    <error-label *ngIf="isValidDateRange" message="La fecha inicial no puede ser mayor a la fecha final" />
   </form>
   <div class="col-span-2" #chart ></div>
   <div class="overflow-hidden rounded-lg" >

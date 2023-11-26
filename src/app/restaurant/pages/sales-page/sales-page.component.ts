@@ -7,7 +7,7 @@ import {
   inject,
   signal
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import {
   IChartApi,
@@ -42,15 +42,15 @@ export class SalesPageComponent implements AfterViewInit {
   public showNoDatesError: boolean = false
 
   public myForm = this.formBuilder.group({
-    initialDate: [],
-    finalDate: [new Date().toLocaleDateString()]
+    initialDate: [, [Validators.required]],
+    finalDate: [new Date().toLocaleDateString(), [Validators.required]]
   })
 
   get initialDate() {
-    return this.myForm.get('initialDate')!.value
+    return this.myForm.get('initialDate')
   }
   get finalDate() {
-    return this.myForm.get('finalDate')!.value
+    return this.myForm.get('finalDate')
   }
 
   async ngAfterViewInit(): Promise<void> {
