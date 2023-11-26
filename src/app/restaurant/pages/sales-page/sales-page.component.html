@@ -1,5 +1,5 @@
-<div class="grid gap-16 md:grid-cols-2">
-  <form class="col-span-2" [formGroup]="myForm" (ngSubmit)="filter()">
+<div class="grid gap-16 md:grid-cols-3">
+  <form class="col-span-3" [formGroup]="myForm" (ngSubmit)="filter()">
     <div class="flex gap-8" >
       <label>
         Fecha inicial:
@@ -11,21 +11,20 @@
       </label>
       <button class="px-4 py-1 text-white rounded-lg bg-purple" >Filtrar</button>
     </div>
-    <span #ErrorMessage [ngClass]="isValidDateRange ? 'hidden' : ''" class="text-sm font-bold text-red-700" >La fecha inicial no puede ser mayor a la fecha final</span>
+    <span #ErrorDateRange [ngClass]="isValidDateRange ? 'hidden' : ''" class="text-sm font-bold text-red-700" >La fecha inicial no puede ser mayor a la fecha final</span>
+    <span #ErrorNoDates [ngClass]="showNoDatesError ? '' : 'hidden'" class="text-sm font-bold text-red-700" >Debe seleccionar una fecha inicial y final</span>
   </form>
-  <div #chart ></div>
+  <div class="col-span-2" #chart ></div>
   <div class="overflow-hidden rounded-lg" >
     <table class="w-full text-center text-white bg-purple" >
       <thead>
         <th class="p-2" >Fecha</th>
         <th class="p-2" >Monto Vendido</th>
-        <th class="p-2" >Vendedor</th>
       </thead>
       <tbody class="text-black bg-secondary" >
         <tr *ngFor="let sale of sales()" >
           <td class="p-2" >{{sale.date | date}}</td>
           <td class="p-2" >{{sale.total | currency}}</td>
-          <td class="p-2" >{{sale.seller}}</td>
         </tr>
       </tbody>
     </table>

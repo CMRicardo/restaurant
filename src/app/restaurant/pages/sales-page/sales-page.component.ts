@@ -31,20 +31,26 @@ export class SalesPageComponent implements AfterViewInit {
 
   @ViewChild('chart')
   public chartContainer?: ElementRef<HTMLDivElement>;
-  @ViewChild('ErrorMessage')
-  public errorMessage?: ElementRef<HTMLSpanElement>
+  @ViewChild('ErrorDateRange')
+  public errorDateRange?: ElementRef<HTMLSpanElement>
+  @ViewChild('ErrorNoDates')
+  public errorNoDates?: ElementRef<HTMLSpanElement>
 
   public sales = signal<Sale[]>([])
   public data = computed(() => this.mapData())
   public isValidDateRange: boolean = true
+  public showNoDatesError: boolean = false
 
   public myForm = this.formBuilder.group({
     initialDate: [],
     finalDate: [new Date().toLocaleDateString()]
   })
 
+  get initialDate() {
+    return this.myForm.get('initialDate')!.value
+  }
   get finalDate() {
-    return this.myForm.get('finalDate')?.value
+    return this.myForm.get('finalDate')!.value
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -55,9 +61,7 @@ export class SalesPageComponent implements AfterViewInit {
       { width: 400, height: 300, autoSize: true }
     )
     // With this we change the chart's scale
-    this.chart.timeScale().applyOptions({
-      barSpacing: 48
-    })
+    this.chart.timeScale().applyOptions({ barSpacing: 48 })
 
     this.serie = this.chart.addLineSeries()
     this.serie.setData(this.data())
@@ -77,15 +81,15 @@ export class SalesPageComponent implements AfterViewInit {
     const initialDate = this.myForm.get('initialDate')?.value
     const finalDate = this.myForm.get('finalDate')?.value
     const datesExists = initialDate && finalDate
-    if (datesExists) {
-      const firstDate = new Date(initialDate)
-      const secondDate = new Date(finalDate)
-      this.isValidDateRange = firstDate.getTime() < secondDate.getTime()
-      if (!this.isValidDateRange) return
-      this.sales.set(await this.salesService.getSales({ initialDate, finalDate }))
-      this.serie?.setData(this.data())
-      return
-    }
-    return
+    this.showNoDatesError = Boolean(!datesExists)
+    if (!datesExists) return
+
+    const firstDate = new Date(initialDate)
+    const secondDate = new Date(finalDate)
+    this.isValidDateRange = firstDate.getTime() < secondDate.getTime()
+    if (!this.isValidDateRange) return
+
+    this.sales.set(await this.salesService.getSales({ initialDate, finalDate }))
+    this.serie?.setData(this.data())
   }
 }
