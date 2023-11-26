@@ -15,7 +15,7 @@ export class MenuPageComponent {
   public modifyElemet : Dish1 = {
     name: 'hosd',
     imgUrl: null,
-    category: 'Plato Fuerte',
+    category: 'elig',
     price :33
   };
 
@@ -23,8 +23,11 @@ export class MenuPageComponent {
 
   public onSelect(dishes: Dish[]) {
     this.selectedDishes = dishes
-    console.log('seleciionado' + this.modifyElemet.name);
+    if (this.selectedDishes.length>0) {
+      this.modifyElemet = this.selectedDishes[this.selectedDishes.length - 1]
+      console.log(this.modifyElemet);
 
+    }
     console.log(this.selectedDishes);
   }
 
