@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 
 
@@ -20,6 +20,7 @@ export class FormularioPlatilloComponent {
   imageUrl: string | ArrayBuffer | null = null;
   nameDish: string = '';
   price: number = 0;
+  @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -49,6 +50,11 @@ export class FormularioPlatilloComponent {
   }
   onSubmit() {
     console.log(this.dish);
+  }
+
+  // cuando  se de el boton cancelar
+  onCancelButton() : void {
+    this.cancelEvent.emit(false);
   }
 
 }

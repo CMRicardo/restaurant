@@ -5,9 +5,9 @@
   </div>
   <app-menu-list (onSelect)="onSelect($event)" [dishes]="dishes()" />
   <div *ngIf="this.addNewDish">
-    <app-formulario-platillo></app-formulario-platillo>
+    <app-formulario-platillo (cancelEvent)="cancelForm($event)"></app-formulario-platillo>
   </div>
-  <div *ngIf="this.selectedDishes.length !== 0">
+  <div *ngIf="this.modifyElemet.name !== 'default'">
     <app-modify-dish [dish]="modifyElemet"></app-modify-dish>
   </div>
 </div>

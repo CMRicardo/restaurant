@@ -24,30 +24,43 @@ export class MenuPageComponent {
     price: 33
   };
   addNewDish: boolean = false;
-
+  public messageForDuplicatedForms : string ="Por favor guardar o cancelar los cambios primero"
 
   public onSelect(dishes: Dish[]) {
-    this.selectedDishes = dishes
-    console.log(dishes);
-
-    if (this.selectedDishes.length > 0) {
-      this.modifyElemet = this.selectedDishes[this.selectedDishes.length - 1]
-    }else{
-      this.modifyElemet.name= 'default';
-    }
-    console.log(this.selectedDishes);
-  }
-
-  newDish() {
-
-    if (this.modifyElemet.name !== 'default') {
-      this._snackBar.open('Guardar o descartar la modificaion del platillo primero', '', {
+    //verifica que no este activo el otro formulario
+    if (!this.addNewDish) {
+      if (dishes.length > 0) {
+        this.modifyElemet = dishes[dishes.length - 1]
+      } else {
+        this.modifyElemet= {
+          name: 'default',
+          imgUrl: null,
+          category: 'elig',
+          price: 33
+        };
+      }
+    } else {
+      this._snackBar.open(this.messageForDuplicatedForms, '', {
         duration: 4000,
       });
+    }
 
-    }else{
+  }
+  newDish() {
+    if (this.modifyElemet.name !== 'default') {
+      this._snackBar.open(this.messageForDuplicatedForms, '', {
+        duration: 4000,
+
+        verticalPosition: 'bottom', // Puedes ajustar la posición vertical según tus necesidades
+
+      });
+    } else {
       this.addNewDish = true;
     }
+  }
+
+  cancelForm(confirm: boolean) : void {
+    this.addNewDish = confirm;
   }
 
 }
