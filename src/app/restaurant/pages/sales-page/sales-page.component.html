@@ -1,16 +1,20 @@
-<div class="overflow-hidden rounded-lg" >
-  <table class="text-center text-white bg-purple" >
-    <thead>
-      <th class="p-2" >Fecha</th>
-      <th class="p-2" >Monto Vendido</th>
-      <th class="p-2" >Vendedor</th>
-    </thead>
-    <tbody class="text-black bg-secondary" >
-      <tr *ngFor="let sale of sales" >
-        <td class="p-2" >{{sale.date | date}}</td>
-        <td class="p-2" >{{sale.total | currency}}</td>
-        <td class="p-2" >{{sale.seller}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="grid gap-8 md:grid-cols-2">
+  <div #chart ></div>
+  <div class="overflow-hidden rounded-lg" >
+    <table class="w-full text-center text-white bg-purple" >
+      <thead>
+        <th class="p-2" >Fecha</th>
+        <th class="p-2" >Monto Vendido</th>
+        <th class="p-2" >Vendedor</th>
+      </thead>
+      <tbody class="text-black bg-secondary" >
+        <tr *ngFor="let sale of sales" >
+          <td class="p-2" >{{sale.date | date}}</td>
+          <td class="p-2" >{{sale.total | currency}}</td>
+          <td class="p-2" >{{sale.seller}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
