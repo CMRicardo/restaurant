@@ -36,6 +36,8 @@ import { TableComponent } from './components/table/table.component';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ModifyDishComponent } from './components/modify-dish/modify-dish.compon
     RestaurantRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
   ]
 })
 export class RestaurantModule { }
