@@ -34,7 +34,7 @@ import { SupplierIconComponent } from './components/icons/supplier-icon/supplier
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
 import { TableComponent } from './components/table/table.component';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
 
 @NgModule({
@@ -74,7 +74,8 @@ import { ModifyDishComponent } from './components/modify-dish/modify-dish.compon
     CommonModule,
     RestaurantRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RestaurantModule { }
