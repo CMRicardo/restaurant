@@ -3,7 +3,6 @@
   <app-menu-list  (onSelect)="onSelect($event)" [dishes]="dishes()" />
   <app-formulario-platillo></app-formulario-platillo>
   <div *ngIf="this.selectedDishes.length !== 0">
-    <app-modify-dish ></app-modify-dish>
+    <app-modify-dish [dish]="modifyElemet"></app-modify-dish>
   </div>
-
 </div>

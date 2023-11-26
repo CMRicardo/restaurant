@@ -7,7 +7,8 @@ import { Dish1 } from '../../interfaces/dish1.constant';
   styleUrls: ['./modify-dish.component.css']
 })
 export class ModifyDishComponent {
-  dish: Dish1 ={
+
+  @Input() dish: Dish1 ={
     name: '',
     imgUrl: null,
     category: 'Elige una categoria',
