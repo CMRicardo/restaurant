@@ -35,6 +35,7 @@ import { SupplierPageComponent } from './pages/supplier-page/supplier-page.compo
 import { TableComponent } from './components/table/table.component';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
 import { FormsModule } from '@angular/forms';
+import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { FormsModule } from '@angular/forms';
     SupplierPageComponent,
     TableComponent,
     FormularioPlatilloComponent,
+    ModifyDishComponent,
   ],
   imports: [
     CommonModule,
