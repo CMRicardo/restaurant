@@ -11,9 +11,9 @@ export class SalesService {
     const res = await fetch(`${this.API_URL}/sales`)
     const sales: Sale[] = await res.json()
     const orderedSales = sales.sort((sale1, sale2) => {
-        const convertedDate1 = new Date(sale1.date);
-        const convertedDate2 = new Date(sale2.date);
-        return convertedDate1.getTime() - convertedDate2.getTime();
+      const convertedDate1 = new Date(sale1.date);
+      const convertedDate2 = new Date(sale2.date);
+      return convertedDate1.getTime() - convertedDate2.getTime();
     })
     return orderedSales
   }
