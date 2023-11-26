@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class UserInfoComponent {
   public user = {
-    profilePic: 'https://unsplash.it/640/425',
+    profilePic: 'https://randomuser.me/api/portraits/men/35.jpg',
     name: 'Jhon Doe',
     email: 'hello@email.com'
   }

@@ -1,10 +1,23 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  ViewChild,
+  computed,
+  inject,
+  signal
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-import { LineData, createChart } from 'lightweight-charts';
+import {
+  IChartApi,
+  LineData,
+  createChart
+} from 'lightweight-charts';
 
 import { SalesService } from '../../services/sales.service';
 import { Sale } from '../../interfaces/sales-response.interface';
+import { Serie } from '../../interfaces/serie.interface';
 
 @Component({
   templateUrl: './sales-page.component.html',
@@ -13,9 +26,18 @@ export class SalesPageComponent implements AfterViewInit {
   private salesService = inject(SalesService)
   private formBuilder = inject(FormBuilder)
 
+  private chart?: IChartApi
+  private serie?: Serie
+
   @ViewChild('chart')
   public chartContainer?: ElementRef<HTMLDivElement>;
-  public sales: Sale[] = []
+  @ViewChild('ErrorMessage')
+  public errorMessage?: ElementRef<HTMLSpanElement>
+
+  public sales = signal<Sale[]>([])
+  public data = computed(() => this.mapData())
+  public isValidDateRange: boolean = true
+
   public myForm = this.formBuilder.group({
     initialDate: [],
     finalDate: [new Date().toLocaleDateString()]
@@ -26,29 +48,42 @@ export class SalesPageComponent implements AfterViewInit {
   }
 
   async ngAfterViewInit(): Promise<void> {
-    this.sales = await this.salesService.getSales()
+    this.sales.set(await this.salesService.getSales())
     if (!this.chartContainer) return
-
-    const chart = createChart(
+    this.chart = createChart(
       this.chartContainer.nativeElement,
       { width: 400, height: 300, autoSize: true }
     )
-    const series = chart.addLineSeries()
-    const data = this.sales.map((sale): LineData =>  {
+    // With this we change the chart's scale
+    this.chart.timeScale().applyOptions({
+      barSpacing: 48
+    })
+
+    this.serie = this.chart.addLineSeries()
+    this.serie.setData(this.data())
+  }
+
+  private mapData() {
+    return this.sales().map((sale): LineData => {
       const [date] = sale.date.split('T')
       return {
         time: date,
         value: Number(sale.total)
       }
-    })    
-    series.setData(data)
+    })
   }
 
-  public async filter():Promise<void> {
+  public async filter(): Promise<void> {
     const initialDate = this.myForm.get('initialDate')?.value
     const finalDate = this.myForm.get('finalDate')?.value
-    if (initialDate && finalDate){
-      this.sales = await this.salesService.getSales({initialDate, finalDate})
+    const datesExists = initialDate && finalDate
+    if (datesExists) {
+      const firstDate = new Date(initialDate)
+      const secondDate = new Date(finalDate)
+      this.isValidDateRange = firstDate.getTime() < secondDate.getTime()
+      if (!this.isValidDateRange) return
+      this.sales.set(await this.salesService.getSales({ initialDate, finalDate }))
+      this.serie?.setData(this.data())
       return
     }
     return
