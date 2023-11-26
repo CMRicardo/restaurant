@@ -1,4 +1,15 @@
 <div class="grid gap-8 md:grid-cols-2">
+  <form class="flex col-span-2 gap-8" [formGroup]="myForm" (ngSubmit)="filter()">
+    <label>
+      Fecha inicial:
+      <input class="p-1 text-white rounded-lg bg-purple" type="date" formControlName="initialDate">
+    </label>
+    <label>
+      Fecha final:
+      <input class="p-1 text-white rounded-lg bg-purple" type="date" [value]="finalDate" formControlName="finalDate" >
+    </label>
+    <button class="px-4 py-1 text-white rounded-lg bg-purple" >Filtrar</button>
+  </form>
   <div #chart ></div>
   <div class="overflow-hidden rounded-lg" >
     <table class="w-full text-center text-white bg-purple" >
