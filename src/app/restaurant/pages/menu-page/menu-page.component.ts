@@ -3,12 +3,14 @@ import { Dish } from '../../interfaces/dish.interface';
 import { OrdersService } from '../../services/orders.service';
 import { Dish1 } from '../../interfaces/dish1.constant';
 
+
 @Component({
   templateUrl: './menu-page.component.html',
   styles: [
   ]
 })
 export class MenuPageComponent {
+
   private ordersService = inject(OrdersService)
   public dishes = computed(() => this.ordersService.filteredDishes())
   public selectedDishes: Dish[] = []
@@ -18,7 +20,7 @@ export class MenuPageComponent {
     category: 'elig',
     price :33
   };
-
+  addNewDish: boolean = false;
 
 
   public onSelect(dishes: Dish[]) {
@@ -31,5 +33,11 @@ export class MenuPageComponent {
     console.log(this.selectedDishes);
   }
 
+  newDish() {
+    if (this.selectedDishes.length>0) {
+
+    }
+    this.addNewDish = true;
+  }
 
 }
