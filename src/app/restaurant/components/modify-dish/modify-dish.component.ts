@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modify-dish',
@@ -7,6 +8,8 @@ import { Dish1 } from '../../interfaces/dish1.constant';
   styleUrls: ['./modify-dish.component.css']
 })
 export class ModifyDishComponent {
+  constructor(private _snackBar: MatSnackBar) { }
+
 
   @Input() dish: Dish1 ={
     name: '',
@@ -48,7 +51,15 @@ export class ModifyDishComponent {
   }
   onSubmit() {
     console.log(this.dish);
+    this.onCancelButton();
+    this._snackBar.open('El platillo '+ this.dish.name + ' se guardo exitosamente' ,'' , {
+      duration: 4000,
+
+    });
+
   }
+
+
 
   onCancelButton(): void{
     this.cancelEvent.emit(true);
