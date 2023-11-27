@@ -11,13 +11,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import {
   IChartApi,
-  LineData,
   createChart
 } from 'lightweight-charts';
 
 import { SalesService } from '../../services/sales.service';
 import { Sale } from '../../interfaces/sales-response.interface';
 import { Serie } from '../../interfaces/serie.interface';
+import { chartOptions, mapData, seriesOptions } from './sales-page.utils';
 
 @Component({
   templateUrl: './sales-page.component.html',
@@ -33,8 +33,9 @@ export class SalesPageComponent implements AfterViewInit {
   public chartContainer?: ElementRef<HTMLDivElement>;
 
   public sales = signal<Sale[]>([])
-  public data = computed(() => this.mapData())
+  public data = computed(() => mapData({sales: this.sales()}))
   public isValidDateRange = signal(true)
+  public datesExists = signal(true)
 
   public myForm = this.formBuilder.group({
     initialDate: [, [Validators.required]],
@@ -51,25 +52,11 @@ export class SalesPageComponent implements AfterViewInit {
   async ngAfterViewInit(): Promise<void> {
     this.sales.set(await this.salesService.getSales())
     if (!this.chartContainer) return
-    this.chart = createChart(
-      this.chartContainer.nativeElement,
-      { width: 400, height: 300, autoSize: true }
-    )
-    // With this we change the chart's scale
-    this.chart.timeScale().applyOptions({ barSpacing: 48 })
-
+    this.chart = createChart(this.chartContainer.nativeElement)
+    this.chart.applyOptions(chartOptions)
     this.serie = this.chart.addLineSeries()
+    this.serie.applyOptions(seriesOptions)
     this.serie.setData(this.data())
-  }
-
-  private mapData() {
-    return this.sales().map((sale): LineData => {
-      const [date] = sale.date.split('T')
-      return {
-        time: date,
-        value: Number(sale.total)
-      }
-    })
   }
 
   public async filter(): Promise<void> {
@@ -77,6 +64,9 @@ export class SalesPageComponent implements AfterViewInit {
     const initialDate = this.myForm.get('initialDate')?.value
     const finalDate = this.myForm.get('finalDate')?.value
     const datesExists = initialDate && finalDate
+    this.datesExists.set( this.myForm.untouched && Boolean(this.initialDate?.errors && this.finalDate?.errors))
+    console.log(this.datesExists());
+    
     if (!datesExists) return
 
     const firstDate = new Date(initialDate)

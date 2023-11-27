@@ -11,7 +11,7 @@
       </label>
       <button class="px-4 py-1 text-white rounded-lg bg-purple" >Filtrar</button>
     </div>
-    <error-label *ngIf="myForm?.errors && myForm.touched" message="Debe seleccionar una fecha inicial y final" />
+    <error-label *ngIf="!datesExists()" message="Debe seleccionar una fecha inicial y final" />
     <error-label *ngIf="!isValidDateRange()" message="La fecha inicial no puede ser mayor a la fecha final" />
   </form>
   <div class="col-span-2" #chart ></div>
