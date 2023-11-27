@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee, validatedCredentialsProps } from '../interfaces/customers-response.interface';
+import { Employee, validatedCredentialsProps } from '../interfaces/employees-response.interface';
 
 @Injectable({
   providedIn: 'root'

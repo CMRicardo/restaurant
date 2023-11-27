@@ -1,23 +1,26 @@
-<div class="overflow-hidden rounded-lg">
-  <table class="w-full text-center text-white bg-purple">
-    <thead>
-      <th class="p-2">Nombre</th>
-      <th class="p-2">Apellido</th>
-      <th class="p-2">Email</th>
-      <th class="p-2">Puesto</th>
-      <th class="p-2">Acciones</th>
-    </thead>
-    <tbody class="text-black bg-pink-100">
-      <tr class="even:bg-pink-200" *ngFor="let employee of employees">
-        <td class="p-2">{{employee.firstName}}</td>
-        <td class="p-2">{{employee.lastName}}</td>
-        <td class="p-2">{{employee.email}}</td>
-        <td class="p-2">{{employee.employeeType}}</td>
-        <td class="flex gap-2 p-2">
-          <button (click)="delete({id: employee.id})" class="px-4 py-2 my-2 text-white rounded bg-bad">Eliminar</button>
-          <button class="px-4 py-2 my-2 text-white bg-orange-800 rounded">Modificar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="grid gap-4 px-16 md:grid-cols-3 place-content-center">
+  <div class="col-span-2 overflow-hidden rounded-lg">
+    <table class="w-full text-center text-white bg-purple">
+      <thead>
+        <th class="p-2">Nombre</th>
+        <th class="p-2">Apellido</th>
+        <th class="p-2">Email</th>
+        <th class="p-2">Puesto</th>
+        <th class="p-2">Acciones</th>
+      </thead>
+      <tbody class="text-black bg-pink-100">
+        <tr class="even:bg-pink-200" *ngFor="let employee of employees()">
+          <td class="px-2">{{employee.firstName}}</td>
+          <td class="px-2">{{employee.lastName}}</td>
+          <td class="px-2">{{employee.email}}</td>
+          <td class="px-2">{{employee.employeeType}}</td>
+          <td class="flex gap-2 px-2">
+            <button (click)="delete({id: employee.id})" class="px-4 py-2 my-2 text-white rounded bg-bad">Eliminar</button>
+            <button class="px-4 py-2 my-2 text-white bg-orange-800 rounded">Modificar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <new-employee-form />
 </div>

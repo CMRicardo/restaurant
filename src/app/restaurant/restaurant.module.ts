@@ -37,6 +37,7 @@ import { FormularioPlatilloComponent } from './components/formulario-platillo/fo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NewEmployeeFormComponent } from './components/new-employee-form/new-employee-form.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TableComponent,
     FormularioPlatilloComponent,
     ModifyDishComponent,
+    NewEmployeeFormComponent,
   ],
   imports: [
     CommonModule,

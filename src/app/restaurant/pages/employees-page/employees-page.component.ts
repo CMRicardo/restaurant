@@ -1,6 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { EmployeesService } from '../../services/employees.service';
-import { Employee } from 'src/app/auth/interfaces/customers-response.interface';
 import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 
 @Component({
@@ -10,14 +9,24 @@ import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 })
 export class EmployeesPageComponent implements OnInit {
   private employeesService = inject(EmployeesService)
-  public employees: Employee[] = []
 
   async ngOnInit(): Promise<void> {
     await this.employeesService.getEmployees()
-    this.employees = this.employeesService.employees()
   }
+  public employees = computed(() => this.employeesService.employees())
 
-  delete({id}: DeleteEmployeeProps) {
-    
+  async delete({ id }: DeleteEmployeeProps) {
+    const employeeIndex = this.employeesService.employees().findIndex(employee => employee.id === id)
+    if (employeeIndex === -1) {
+      alert('El empleado no existe')
+      return
+    }
+    const employee = this.employeesService.employees()[employeeIndex]
+    const confirmation = prompt(`¿Está seguro de que quiere eliminar a ${employee.firstName} ${employee.lastName}?`)
+
+    const isOk = Boolean(confirmation)
+    if (!isOk) return
+    await this.employeesService.deleteEmployee({id})
+
   }
 }
