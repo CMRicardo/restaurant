@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 
 @Component({
@@ -14,6 +14,7 @@ export class ModifyDishComponent {
     category: 'Elige una categoria',
     price: 0
  }
+ @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
 
   imageUrl: string | ArrayBuffer | null = null;
   nameDish: string = '';
@@ -49,4 +50,8 @@ export class ModifyDishComponent {
     console.log(this.dish);
   }
 
+  onCancelButton(): void{
+    this.cancelEvent.emit(true);
+
+  }
 }

@@ -8,6 +8,6 @@
     <app-formulario-platillo (cancelEvent)="cancelForm($event)"></app-formulario-platillo>
   </div>
   <div *ngIf="this.modifyElemet.name !== 'default'">
-    <app-modify-dish [dish]="modifyElemet"></app-modify-dish>
+    <app-modify-dish [dish]="modifyElemet" (cancelEvent)="cancelModifyForm($event)" ></app-modify-dish>
   </div>
 </div>

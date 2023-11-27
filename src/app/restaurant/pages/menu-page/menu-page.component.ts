@@ -16,7 +16,6 @@ export class MenuPageComponent {
 
   private ordersService = inject(OrdersService)
   public dishes = computed(() => this.ordersService.filteredDishes())
-  public selectedDishes: Dish[] = []
   public modifyElemet: Dish1 = {
     name: 'default',
     imgUrl: null,
@@ -71,6 +70,18 @@ export class MenuPageComponent {
   cancelForm(confirm: boolean) : void {
     // poner en falso la visualizacion de dicho formulario
     this.addNewDish = confirm;
+  }
+
+  // click en el boton cancelar del formulario para modificar
+  cancelModifyForm(valor: boolean): void {
+    // reseteamos los valores, porque el formulario se renderiza si name !== default
+    this.modifyElemet= {
+      name: 'default',
+      imgUrl: null,
+      category: 'elig',
+      price: 33
+    };
+
   }
 
 }
