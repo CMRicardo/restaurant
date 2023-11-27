@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Employee, validatedCredentialsProps } from '../interfaces/customers-response.interface';
 
 @Injectable({
@@ -13,9 +13,8 @@ export class AuthService {
     const employeeIndex = this.employees.findIndex(employee => {
       return employee.password === password && employee.email === email
     })
-    console.log(this.employees[employeeIndex]);
     if (employeeIndex === -1) return
-    
+
     return this.employees[employeeIndex]
   }
 

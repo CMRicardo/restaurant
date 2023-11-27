@@ -36,7 +36,7 @@ import { TableComponent } from './components/table/table.component';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
