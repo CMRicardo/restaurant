@@ -19,6 +19,11 @@ export class EmployeesService {
     const result = await fetch(`${this.API_URL}/${id}`, {
       method: 'DELETE'
     })
+    if (!result.ok) {
+      alert('Algo salió mal')
+      return
+    }
+    this.getEmployees()
 
   }
 }
