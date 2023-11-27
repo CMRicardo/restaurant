@@ -31,15 +31,10 @@ export class SalesPageComponent implements AfterViewInit {
 
   @ViewChild('chart')
   public chartContainer?: ElementRef<HTMLDivElement>;
-  @ViewChild('ErrorDateRange')
-  public errorDateRange?: ElementRef<HTMLSpanElement>
-  @ViewChild('ErrorNoDates')
-  public errorNoDates?: ElementRef<HTMLSpanElement>
 
   public sales = signal<Sale[]>([])
   public data = computed(() => this.mapData())
-  public isValidDateRange: boolean = true
-  public showNoDatesError: boolean = false
+  public isValidDateRange = signal(true)
 
   public myForm = this.formBuilder.group({
     initialDate: [, [Validators.required]],
@@ -78,16 +73,16 @@ export class SalesPageComponent implements AfterViewInit {
   }
 
   public async filter(): Promise<void> {
+    // if (this.myForm.errors) return
     const initialDate = this.myForm.get('initialDate')?.value
     const finalDate = this.myForm.get('finalDate')?.value
     const datesExists = initialDate && finalDate
-    this.showNoDatesError = Boolean(!datesExists)
     if (!datesExists) return
 
     const firstDate = new Date(initialDate)
     const secondDate = new Date(finalDate)
-    this.isValidDateRange = firstDate.getTime() < secondDate.getTime()
-    if (!this.isValidDateRange) return
+    this.isValidDateRange.set(firstDate.getTime() < secondDate.getTime())
+    if (!this.isValidDateRange()) return
 
     this.sales.set(await this.salesService.getSales({ initialDate, finalDate }))
     this.serie?.setData(this.data())
