@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MenuItemService } from '../../services/menuItem.service';
 
 @Component({
   selector: 'app-modify-dish',
@@ -8,16 +9,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./modify-dish.component.css']
 })
 export class ModifyDishComponent {
+  private menuItemService = inject(MenuItemService)
+
   constructor(private _snackBar: MatSnackBar) { }
 
 
-  @Input() dish: Dish1 ={
+  @Input() dish: Dish1 = {
     name: '',
     imgUrl: null,
     category: 'Elige una categoria',
     price: 0
- }
- @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
+  }
+  @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
 
   imageUrl: string | ArrayBuffer | null = null;
   nameDish: string = '';
@@ -42,26 +45,35 @@ export class ModifyDishComponent {
 
   uploadImage() {
     // Aquí puedes agregar lógica para subir la imagen al servidor si es necesario
-    if(this.dish.imgUrl)
+    if (this.dish.imgUrl)
       console.log('hola mundo');
 
-      //console.log(this.dish.imgUrl.toString().split(',')[1]);
+    //console.log(this.dish.imgUrl.toString().split(',')[1]);
     if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
   onSubmit() {
     console.log(this.dish);
     this.onCancelButton();
-    this._snackBar.open('El platillo '+ this.dish.name + ' se guardo exitosamente' ,'' , {
+    this._snackBar.open('El platillo ' + this.dish.name + ' se guardo exitosamente', '', {
       duration: 4000,
-
     });
+    this.obtenerTodosLosItemsDeMenu();
+  }
 
+  async obtenerTodosLosItemsDeMenu(): Promise<void> {
+    try {
+      const menuItems = await this.menuItemService.getAllMenuItems();
+      console.log(menuItems);
+      // Hacer algo con los elementos de menú obtenidos
+    } catch (error) {
+      console.error(`Error al obtener elementos de menú:}`);
+    }
   }
 
 
 
-  onCancelButton(): void{
+  onCancelButton(): void {
     this.cancelEvent.emit(true);
 
   }
