@@ -1,5 +1,5 @@
+import { MenuItemService } from './../../services/menuItem.service';
 import { Component, computed, inject } from '@angular/core';
-import { Dish } from '../../interfaces/dish.interface';
 import { OrdersService } from '../../services/orders.service';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,7 +13,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MenuPageComponent {
 
   constructor(private _snackBar: MatSnackBar) { }
-
   private ordersService = inject(OrdersService)
   public dishes = computed(() => this.ordersService.filteredDishes())
   public modifyElemet: Dish1 = {
@@ -83,5 +82,8 @@ export class MenuPageComponent {
     };
 
   }
+
+
+
 
 }

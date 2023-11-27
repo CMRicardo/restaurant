@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { Dish1 } from '../../interfaces/dish1.constant';
   ]
 })
 export class FormularioPlatilloComponent {
+
+  constructor(private _snackBar: MatSnackBar) { }
 
  dish: Dish1 ={
     name: '',
@@ -49,8 +52,11 @@ export class FormularioPlatilloComponent {
       console.log(this.imageUrl.toString().split(',')[1]);
   }
   onSubmit() {
-    console.log(this.dish);
-  }
+    this.onCancelButton();
+    this._snackBar.open('El platillo '+ this.dish.name + ' se guardo exitosamente' ,'' , {
+      duration: 4000,
+
+    });  }
 
   // cuando  se de el boton cancelar
   onCancelButton() : void {
