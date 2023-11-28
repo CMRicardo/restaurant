@@ -17,7 +17,7 @@ export class MenuPageComponent {
   public dishes = computed(() => this.ordersService.filteredDishes())
   public modifyElemet: Dish1 = {
     name: 'default',
-    imgUrl: null,
+    imageUrl: null,
     category: 'elig',
     price: 33
   };
@@ -36,7 +36,7 @@ export class MenuPageComponent {
         // si la lista se vacia de nuevo resetar los valores
         this.modifyElemet = {
           name: 'default',
-          imgUrl: null,
+          imageUrl: null,
           category: 'elig',
           price: 33
         };
@@ -76,7 +76,7 @@ export class MenuPageComponent {
     // reseteamos los valores, porque el formulario se renderiza si name !== default
     this.modifyElemet = {
       name: 'default',
-      imgUrl: null,
+      imageUrl: null,
       category: 'elig',
       price: 33
     };

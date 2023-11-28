@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class MenuItemComponent {
   public isSelected = false
 
-  @Input() urlImage: string = "https://unsplash.it/640/425"
+  @Input() urlImage: string | ArrayBuffer | null  = "https://unsplash.it/640/425"
   @Input() name: string = "dish_name"
 
   changeActiveState(): void {

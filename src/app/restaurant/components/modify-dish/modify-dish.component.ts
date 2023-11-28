@@ -16,7 +16,7 @@ export class ModifyDishComponent {
 
   @Input() dish: Dish1 = {
     name: '',
-    imgUrl: null,
+    imageUrl: null,
     category: 'Elige una categoria',
     price: 0
   }
@@ -37,7 +37,7 @@ export class ModifyDishComponent {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-      this.dish.imgUrl = reader.result;
+      this.dish.imageUrl = reader.result;
       this.uploadImage()
     };
 
@@ -45,10 +45,10 @@ export class ModifyDishComponent {
 
   uploadImage() {
     // Aquí puedes agregar lógica para subir la imagen al servidor si es necesario
-    if (this.dish.imgUrl)
+    if (this.dish.imageUrl)
       console.log('hola mundo');
 
-    //console.log(this.dish.imgUrl.toString().split(',')[1]);
+    //console.log(this.dish.imageUrl.toString().split(',')[1]);
     if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
