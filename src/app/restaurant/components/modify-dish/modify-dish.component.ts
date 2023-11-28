@@ -52,8 +52,14 @@ export class ModifyDishComponent {
     if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
-  onSubmit() {
+  async onSubmit() {
     console.log(this.dish);
+    try {
+      await this.menuItemService.createNewMenuItem(this.dish);
+      console.log("Nuevo plato creado exitosamente");
+    } catch (error: any) {
+      console.error(error.message);
+    }
     this.onCancelButton();
     this._snackBar.open('El platillo ' + this.dish.name + ' se guardo exitosamente', '', {
       duration: 4000,
