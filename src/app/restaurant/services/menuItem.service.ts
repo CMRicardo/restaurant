@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class MenuItemService {
 
   private API_URL = 'https://litoral-restaurant-api.1.us-1.fl0.io/menu-items'
+
   async getAllMenuItems(): Promise<Dish1[]> {
     const url = this.API_URL;
     const response = await fetch(url);
