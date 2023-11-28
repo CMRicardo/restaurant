@@ -22,7 +22,7 @@ export class MenuPageComponent {
     price: 33
   };
   addNewDish: boolean = false;
-  public messageForDuplicatedForms : string ="Por favor guardar o cancelar los cambios primero"
+  public messageForDuplicatedForms: string = "Por favor guardar o cancelar los cambios primero"
 
 
   public onSelect(dishes: Dish1[]) {
@@ -34,7 +34,7 @@ export class MenuPageComponent {
         this.modifyElemet = dishes[dishes.length - 1]
       } else {
         // si la lista se vacia de nuevo resetar los valores
-        this.modifyElemet= {
+        this.modifyElemet = {
           name: 'default',
           imgUrl: null,
           category: 'elig',
@@ -66,7 +66,7 @@ export class MenuPageComponent {
   }
 
   // cuando se de click en el boton de cancelar del formulario de nuevo platillo
-  cancelForm(confirm: boolean) : void {
+  cancelForm(confirm: boolean): void {
     // poner en falso la visualizacion de dicho formulario
     this.addNewDish = confirm;
   }
@@ -74,7 +74,7 @@ export class MenuPageComponent {
   // click en el boton cancelar del formulario para modificar
   cancelModifyForm(valor: boolean): void {
     // reseteamos los valores, porque el formulario se renderiza si name !== default
-    this.modifyElemet= {
+    this.modifyElemet = {
       name: 'default',
       imgUrl: null,
       category: 'elig',
