@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeesService } from '../../services/employees.service';
-import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
 
 @Component({
   selector: 'new-employee-form',

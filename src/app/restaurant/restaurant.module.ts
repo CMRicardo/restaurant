@@ -38,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NewEmployeeFormComponent } from './components/new-employee-form/new-employee-form.component';
+import { OrderDetailsFormComponent } from './components/order-details-form/order-details-form.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { NewEmployeeFormComponent } from './components/new-employee-form/new-emp
     FormularioPlatilloComponent,
     ModifyDishComponent,
     NewEmployeeFormComponent,
+    OrderDetailsFormComponent,
   ],
   imports: [
     CommonModule,

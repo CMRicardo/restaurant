@@ -1,18 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Sale } from '../interfaces/sales-response.interface';
+
 interface getSalesProps {
   initialDate?: string
   finalDate?: string
+}
+
+interface updateSaleProps {
+  id: string
+  input: {}
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class SalesService {
-  private API_URL = 'https://litoral-restaurant-api.1.us-1.fl0.io'
-  
-  async getSales({initialDate, finalDate}: getSalesProps = {}): Promise<Sale[]> {
-    let url = `${this.API_URL}/sales`
+  private API_URL = 'https://litoral-restaurant-api.1.us-1.fl0.io/sales'
+  public sales = signal<Sale[]>([])
+
+  async getSales({ initialDate, finalDate }: getSalesProps = {}): Promise<Sale[]> {
+    let url = `${this.API_URL}`
     if (initialDate && finalDate) url = url + `?initialDate=${initialDate}&endDate=${finalDate}`
 
     const res = await fetch(url)
@@ -22,7 +29,23 @@ export class SalesService {
       const date2 = new Date(sale2.date);
       return date1.getTime() - date2.getTime();
     })
+    this.sales.set(sales)
     return orderedSales
   }
 
+  async updateSale({ id, input }: updateSaleProps) {
+    const body = {
+      id,
+      ...input
+    } 
+    const result = await fetch(`${this.API_URL}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    if (!result.ok) return
+    this.getSales()
+  }
 }

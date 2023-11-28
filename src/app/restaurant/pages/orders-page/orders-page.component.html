@@ -1,1 +1,27 @@
-<p>orders-page works!</p>
+<div [class.md:grid-cols-2]="showDetailsForm" class="grid gap-8">
+  <div class="overflow-hidden overflow-y-scroll rounded-lg max-h-[450px]">
+    <table class="w-full text-center text-white bg-purple">
+      <thead>
+        <th class="p-2">Estado</th>
+        <th class="p-2">Fecha</th>
+        <th class="p-2">Subtotal</th>
+        <th class="p-2">ISV</th>
+        <th class="p-2">Total</th>
+        <th class="p-2">Detalles</th>
+      </thead>
+      <tbody class="text-black bg-pink-100">
+        <tr class="even:bg-pink-200" *ngFor="let order of orders()">
+          <td class="px-2">{{order.status}}</td>
+          <td class="px-2">{{order.date | date}}</td>
+          <td class="px-2">{{order.subtotal | currency}}</td>
+          <td class="px-2">{{order.taxes | currency}}</td>
+          <td class="px-2">{{order.total | currency}}</td>
+          <td class="flex gap-2 px-2">
+            <button #openDetailsBtn (click)="openDetails(openDetailsBtn, order)" class="px-4 py-2 my-2 text-white rounded bg-blue disabled:opacity-70">Ver</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <order-details-form [order]="selectedOrder()" (onClose)="closeDetails()" *ngIf="showDetailsForm" />
+</div>

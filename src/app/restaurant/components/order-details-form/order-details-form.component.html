@@ -1,0 +1,38 @@
+<form class="pb-4 overflow-hidden overflow-y-scroll rounded-lg bg-secondary max-h-[500px]" >
+  <div class="p-4 bg-primary" >
+    <h2 class="text-xl font-bold text-center text-white" >ID: {{order.id}}</h2>
+  </div>
+  
+  <div class="grid gap-4 p-4" >
+    <label>
+      <strong>Fecha</strong>: {{order.date | date}}
+    </label>
+    <strong>Items:</strong>
+    <div class="grid overflow-hidden rounded-lg md:grid-cols-2">
+      <div class="p-2 even:bg-pink-200 odd:bg-pink-100" *ngFor="let item of order.items" >
+        <p><strong>Nombre: </strong>{{item.name}}</p>
+        <p><strong>Precio: </strong>{{item.price | currency}}</p>
+        <p><strong>Cantidad: </strong>{{item.quantity}}</p>
+      </div>
+    </div>
+    <label>
+      <strong>Subtotal</strong>: {{order.subtotal | currency}}
+    </label>
+    <label>
+      <strong>ISV</strong>: {{order.taxes | currency}}
+    </label>
+    <label>
+      <strong>Total</strong>: {{order.total | currency}}
+      <div class="flex justify-end gap-2 p-4">
+        <button (click)="closeForm()" class="p-2 text-white rounded bg-blue" >Cerrar</button>
+        <button (click)="cancelOrder({id: order.id})" class="p-2 text-white rounded bg-bad" >Cancelar Orden</button>
+        <button
+          (click)="concludeOrder({id: order.id, event: $event})"
+          class="p-2 text-white rounded bg-good"
+        >
+          Marcar como concluida
+        </button>
+      </div>
+    </label>
+  </div>
+</form>
