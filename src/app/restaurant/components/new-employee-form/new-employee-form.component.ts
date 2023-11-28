@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'new-employee-form',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   ]
 })
 export class NewEmployeeFormComponent {
+  @Output() public onClose: EventEmitter<boolean> = new EventEmitter()
 
+  public closeForm() {
+    this.onClose.emit(true)
+  }
+
+  public saveEmployee () {
+
+  }
 }

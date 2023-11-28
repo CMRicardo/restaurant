@@ -1,4 +1,4 @@
-<div class="grid gap-4 px-16 md:grid-cols-3 place-content-center">
+<div [class.md:grid-cols-3]="showNewEmployeeForm" class="grid gap-4 px-16 md:grid-cols-2 place-content-center">
   <div class="col-span-2 overflow-hidden rounded-lg">
     <table class="w-full text-center text-white bg-purple">
       <thead>
@@ -22,5 +22,6 @@
       </tbody>
     </table>
   </div>
-  <new-employee-form />
+  <new-employee-form (onClose)="closeNewEmployeeForm($event, newEmployee)" *ngIf="showNewEmployeeForm" />
+  <button #newEmployee (click)="openNewEmployeeForm(newEmployee)" class="p-2 text-white rounded bg-good disabled:opacity-70" >Nuevo empleado</button>
 </div>

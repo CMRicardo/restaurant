@@ -13,7 +13,9 @@ export class EmployeesPageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.employeesService.getEmployees()
   }
+
   public employees = computed(() => this.employeesService.employees())
+  public showNewEmployeeForm = false
 
   async delete({ id }: DeleteEmployeeProps) {
     const employeeIndex = this.employeesService.employees().findIndex(employee => employee.id === id)
@@ -26,7 +28,15 @@ export class EmployeesPageComponent implements OnInit {
 
     const isOk = Boolean(confirmation)
     if (!isOk) return
-    await this.employeesService.deleteEmployee({id})
+    await this.employeesService.deleteEmployee({ id })
+  }
 
+  public openNewEmployeeForm(newEmployee: HTMLButtonElement) {
+    this.showNewEmployeeForm = true
+    newEmployee.disabled = true
+  }
+  public closeNewEmployeeForm(event: boolean, newEmployee: HTMLButtonElement) {
+    this.showNewEmployeeForm = false
+    newEmployee.disabled = false
   }
 }

@@ -1,4 +1,4 @@
-<form class="overflow-hidden overflow-y-scroll rounded-lg bg-secondary max-h-96" >
+<form class="pb-4 overflow-hidden overflow-y-scroll rounded-lg bg-secondary max-h-96" >
   <div class="p-4 bg-primary" >
     <h2 class="text-xl font-bold text-center text-white" >Nuevo empleado</h2>
   </div>
@@ -55,5 +55,9 @@
       *Imágen de perfil:
       <input required class="p-2 rounded" type="url" placeholder="image.png" >
     </label>
+  </div>
+  <div class="flex justify-center gap-2">
+    <button class="p-2 text-white rounded bg-good" >Guardar</button>
+    <button (click)="closeForm()" class="p-2 text-white rounded bg-blue" >Cancelar</button>
   </div>
 </form>
