@@ -14,7 +14,7 @@ export class EmployeesService {
     this.employees.set(data)
   }
 
-  public async deleteEmployee({id = ''}) {
+  public async deleteEmployee({ id = '' }) {
     const result = await fetch(`${this.API_URL}/${id}`, {
       method: 'DELETE'
     })
@@ -23,6 +23,19 @@ export class EmployeesService {
       return
     }
     this.getEmployees()
+  }
 
+  public async createEmployee(employee: {}) {
+    const employeeAsJSON = JSON.stringify(employee)
+    console.log(employeeAsJSON);
+    const res = await fetch(`${this.API_URL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: employeeAsJSON
+    })
+    if (!res.ok) return
+    await this.getEmployees()
   }
 }

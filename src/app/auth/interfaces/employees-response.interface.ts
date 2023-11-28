@@ -4,8 +4,9 @@ export interface Employee {
   id: string;
   employeeType: string;
   firstName: string;
-  secondName: string;
+  secondName?: string;
   lastName: string;
+  secondSurName?: string;
   idNumber: string;
   phoneNumber: string;
   email: string;
