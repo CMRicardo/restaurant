@@ -33,7 +33,7 @@
       <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
       <input type="file" (change)="onFileSelected($event)"  />
       <div class="flex justify-center mt-3 ">
-        <img *ngIf="this.dish.imgUrl" [src]="dish.imgUrl" alt="Imagen seleccionada" class="max-h-32" />
+        <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
       </div>
     </div>
 

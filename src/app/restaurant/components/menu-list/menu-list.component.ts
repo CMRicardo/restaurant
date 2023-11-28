@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish } from '../../interfaces/dish.interface';
+import { Dish1 } from '../../interfaces/dish1.constant';
 
 @Component({
   templateUrl: './menu-list.component.html',
@@ -8,10 +9,10 @@ import { Dish } from '../../interfaces/dish.interface';
   ]
 })
 export class MenuListComponent {
-  @Input() public dishes: Dish[] = []
-  @Output() public onSelect: EventEmitter<Dish[]> = new EventEmitter()
+  @Input() public dishes: Dish1[] = []
+  @Output() public onSelect: EventEmitter<Dish1[]> = new EventEmitter()
 
-  public selectedDishes: Dish[] = []
+  public selectedDishes: Dish1[] = []
 
   onAdd(index: number) {
     const selectedDish = this.dishes[index]
