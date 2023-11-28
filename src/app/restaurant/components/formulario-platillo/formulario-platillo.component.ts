@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output,inject } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MenuItemService } from '../../services/menuItem.service';
+
 
 
 @Component({
@@ -12,6 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FormularioPlatilloComponent {
 
   constructor(private _snackBar: MatSnackBar) { }
+  private menuItemService = inject(MenuItemService)
+
 
  dish: Dish1 ={
     name: '',
@@ -51,12 +55,26 @@ export class FormularioPlatilloComponent {
     if (this.imageUrl)
       console.log(this.imageUrl.toString().split(',')[1]);
   }
-  onSubmit() {
-    this.onCancelButton();
-    this._snackBar.open('El platillo '+ this.dish.name + ' se guardo exitosamente' ,'' , {
-      duration: 4000,
+  async onSubmit() {
+    this.dish.description= '';
+    this.dish.imageUrl='https://th.bing.com/th/id/R.efa9cd576fe3870126a98f1ec771c3dd?rik=Q8QKkZUqqie3qA&pid=ImgRaw&r=0'
+    console.log(this.dish);
+    try {
+      await this.menuItemService.createNewMenuItem(this.dish);
+      console.log("Nuevo plato creado exitosamente");
+      this._snackBar.open("Nuevo plato creado exitosamente", '', {
+        duration: 4000,
+      });
+    } catch (error: any) {
 
-    });  }
+      this._snackBar.open(error.message, '', {
+        duration: 4000,
+      });
+      console.error(error.message);
+    }
+    this.onCancelButton();
+
+  }
 
   // cuando  se de el boton cancelar
   onCancelButton() : void {

@@ -60,6 +60,7 @@ export class ModifyDishComponent {
     } catch (error: any) {
       console.error(error.message);
     }
+    //cerrar formulario
     this.onCancelButton();
     this._snackBar.open('El platillo ' + this.dish.name + ' se guardo exitosamente', '', {
       duration: 4000,
