@@ -13,21 +13,21 @@ export class EmployeesPageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.employeesService.getEmployees()
   }
-
+  public showConfirmModal = false
   public employees = computed(() => this.employeesService.employees())
   public showNewEmployeeForm = false
+  public userConfirmation = false
+  public selectedEmployeeId = ''
 
   async delete({ id }: DeleteEmployeeProps) {
+    if (!this.userConfirmation) return
+    this.userConfirmation = false
     const employeeIndex = this.employeesService.employees().findIndex(employee => employee.id === id)
     if (employeeIndex === -1) {
       alert('El empleado no existe')
       return
     }
-    const employee = this.employeesService.employees()[employeeIndex]
-    const confirmation = prompt(`¿Está seguro de que quiere eliminar a ${employee.firstName} ${employee.lastName}?`)
 
-    const isOk = Boolean(confirmation)
-    if (!isOk) return
     await this.employeesService.deleteEmployee({ id })
   }
 
@@ -35,8 +35,22 @@ export class EmployeesPageComponent implements OnInit {
     this.showNewEmployeeForm = true
     newEmployee.disabled = true
   }
-  public closeNewEmployeeForm(event: boolean, newEmployee: HTMLButtonElement) {
+  public closeNewEmployeeForm(newEmployee: HTMLButtonElement) {
     this.showNewEmployeeForm = false
     newEmployee.disabled = false
+  }
+
+  public async openConfirmModal({id = ''}) {
+    this.showConfirmModal = true
+    this.selectedEmployeeId = id
+  }
+
+  public closeConfirmModal() {
+    this.showConfirmModal = false
+  }
+
+  public async getUserChoice(choice: Promise<boolean>) {
+    this.userConfirmation = await choice
+    this.delete({id: this.selectedEmployeeId})
   }
 }

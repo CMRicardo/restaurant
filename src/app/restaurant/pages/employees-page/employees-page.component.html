@@ -15,13 +15,15 @@
           <td class="px-2">{{employee.email}}</td>
           <td class="px-2">{{employee.employeeType}}</td>
           <td class="flex gap-2 px-2">
-            <button (click)="delete({id: employee.id})" class="px-4 py-2 my-2 text-white rounded bg-bad">Eliminar</button>
+            <button (click)="openConfirmModal({id: employee.id})" class="px-4 py-2 my-2 text-white rounded bg-bad">Eliminar</button>
             <button class="px-4 py-2 my-2 text-white rounded bg-blue">Modificar</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <new-employee-form (onClose)="closeNewEmployeeForm($event, newEmployee)" *ngIf="showNewEmployeeForm" />
+  <new-employee-form (onClose)="closeNewEmployeeForm(newEmployee)" *ngIf="showNewEmployeeForm" />
   <button #newEmployee (click)="openNewEmployeeForm(newEmployee)" class="p-2 text-white rounded bg-good disabled:opacity-70" >Nuevo empleado</button>
 </div>
+
+<confirm-modal (onChoice)="getUserChoice($event)" (onClose)="closeConfirmModal()" *ngIf="showConfirmModal" question="¿Seguro que quiere eliminar a este empleado?" />

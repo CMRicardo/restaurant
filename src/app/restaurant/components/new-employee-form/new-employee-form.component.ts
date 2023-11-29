@@ -26,10 +26,10 @@ export class NewEmployeeFormComponent {
     profilePic: ['https://randomuser.me/api/portraits/lego/1.jpg', [Validators.required]]
   })
 
-  @Output() public onClose: EventEmitter<boolean> = new EventEmitter()
+  @Output() public onClose: EventEmitter<void> = new EventEmitter()
 
   public closeForm() {
-    this.onClose.emit(true)
+    this.onClose.emit()
   }
 
   public saveEmployee() {
