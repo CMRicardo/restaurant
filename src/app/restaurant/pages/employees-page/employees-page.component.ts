@@ -1,6 +1,7 @@
 import { Component, OnInit, computed, inject } from '@angular/core';
 import { EmployeesService } from '../../services/employees.service';
 import { DeleteEmployeeProps } from '../../interfaces/props.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './employees-page.component.html',
@@ -9,6 +10,7 @@ import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 })
 export class EmployeesPageComponent implements OnInit {
   private employeesService = inject(EmployeesService)
+  private snackBarService = inject(MatSnackBar)
 
   async ngOnInit(): Promise<void> {
     await this.employeesService.getEmployees()
@@ -24,11 +26,12 @@ export class EmployeesPageComponent implements OnInit {
     this.userConfirmation = false
     const employeeIndex = this.employeesService.employees().findIndex(employee => employee.id === id)
     if (employeeIndex === -1) {
-      alert('El empleado no existe')
+      this.snackBarService.open('El empleado no existe', '', { duration: 4000 })
       return
     }
 
     await this.employeesService.deleteEmployee({ id })
+    this.snackBarService.open('Empleado borrado exitosamente', '', { duration: 4000 })
   }
 
   public openNewEmployeeForm(newEmployee: HTMLButtonElement) {
@@ -40,7 +43,7 @@ export class EmployeesPageComponent implements OnInit {
     newEmployee.disabled = false
   }
 
-  public async openConfirmModal({id = ''}) {
+  public async openConfirmModal({ id = '' }) {
     this.showConfirmModal = true
     this.selectedEmployeeId = id
   }
@@ -51,6 +54,6 @@ export class EmployeesPageComponent implements OnInit {
 
   public async getUserChoice(choice: Promise<boolean>) {
     this.userConfirmation = await choice
-    this.delete({id: this.selectedEmployeeId})
+    this.delete({ id: this.selectedEmployeeId })
   }
 }

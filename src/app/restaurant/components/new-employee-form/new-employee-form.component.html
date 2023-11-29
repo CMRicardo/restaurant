@@ -6,30 +6,30 @@
     <h3 class="font-bold">Datos personales</h3>
     <label class="grid gap-2 p-2" >
       *Número de identidad:
-      <input formControlName="idNumber" required class="p-2 rounded" type="number" placeholder="080112341234567" >
+      <input autofocus="true" [class.ring-4]="myForm.get('idNumber')?.invalid && myForm.get('idNumber')?.touched" formControlName="idNumber" required class="p-2 rounded ring-bad" type="number" placeholder="080112341234567" >
     </label>
     <label class="grid gap-2 p-2" >
       *Nombre:
-      <input formControlName="firstName" required class="p-2 rounded" type="text" placeholder="Daniel" >
+      <input [class.ring-4]="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched" formControlName="firstName" required class="p-2 rounded ring-bad" type="text" placeholder="Daniel" >
     </label>
     <label class="grid gap-2 p-2">
       Segundo Nombre:
-      <input formControlName="secondName" class="p-2 rounded" type="text" placeholder="Alejandro" >
+      <input [class.ring-4]="myForm.get('secondName')?.invalid && myForm.get('secondName')?.touched" formControlName="secondName" class="p-2 rounded ring-bad" type="text" placeholder="Alejandro" >
     </label>
     <label class="grid gap-2 p-2">
       *Apellido:
-      <input formControlName="firstSurName" required class="p-2 rounded" type="text" placeholder="Corrales" >
+      <input [class.ring-4]="myForm.get('firstSurName')?.invalid && myForm.get('firstSurName')?.touched" formControlName="firstSurName" required class="p-2 rounded ring-bad" type="text" placeholder="Corrales" >
     </label>
     <label class="grid gap-2 p-2">
-      Número de teléfono:
-      <input formControlName="phoneNumber" class="p-2 rounded" type="number" placeholder="12345678" >
+      *Número de teléfono:
+      <input [class.ring-4]="myForm.get('phoneNumber')?.invalid && myForm.get('phoneNumber')?.touched" formControlName="phoneNumber" class="p-2 rounded ring-bad no-spinner" type="number" placeholder="12345678" >
     </label>
   </div>
   <div class="grid gap-4 p-4" >
     <h3 class="font-bold">Información de empleado</h3>
     <label class="grid gap-2 p-2">
       *Puesto:
-      <select formControlName="employeeType" required class="p-2 bg-white rounded" >
+      <select [class.ring-4]="myForm.get('employeeType')?.invalid && myForm.get('employeeType')?.touched" formControlName="employeeType" required class="p-2 bg-white rounded ring-bad" >
         <option value=""></option>
         <option value="vendedor">Vendedor</option>
         <option value="Gerente">Gerente</option>
@@ -37,19 +37,23 @@
     </label>
     <label class="grid gap-2 p-2">
       *Email:
-      <input formControlName="email" required class="p-2 rounded" type="email" placeholder="hola@email.com" >
+      <input [class.ring-4]="myForm.get('email')?.invalid && myForm.get('email')?.touched" formControlName="email" required class="p-2 rounded ring-bad" type="email" placeholder="hola@email.com" >
     </label>
     <label class="grid gap-2 p-2">
-      *Password:
-      <input formControlName="password" required class="p-2 rounded" type="password">
+      *Contraseña:
+      <input [class.ring-4]="myForm.get('password')?.invalid && myForm.get('password')?.touched" formControlName="password" required class="p-2 rounded ring-bad" type="password">
+    </label>
+    <label class="grid gap-2 p-2">
+      *Confirmación de Contraseña:
+      <input [class.ring-4]="myForm.get('passwordConfirm')?.invalid && myForm.get('passwordConfirm')?.touched" formControlName="passwordConfirm" required class="p-2 rounded ring-bad" type="password">
     </label>
     <label class="grid gap-2 p-2">
       *Dirección:
-      <input formControlName="address" required class="p-2 rounded" type="text" placeholder="San Pedro Sula" >
+      <input [class.ring-4]="myForm.get('address')?.invalid && myForm.get('address')?.touched" formControlName="address" required class="p-2 rounded ring-bad" type="text" placeholder="San Pedro Sula" >
     </label>
     <label class="grid gap-2 p-2">
       *Imágen de perfil:
-      <input formControlName="profilePic" required class="p-2 rounded" type="url" placeholder="image.png" >
+      <input [class.ring-4]="myForm.get('profilePic')?.invalid && myForm.get('profilePic')?.touched" formControlName="profilePic" required class="p-2 rounded ring-bad" type="url" placeholder="image.png" >
     </label>
   </div>
   <div class="flex justify-center gap-2">
