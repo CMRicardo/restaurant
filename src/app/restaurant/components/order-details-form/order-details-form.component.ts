@@ -8,7 +8,6 @@ interface CancelOrderProps {
 
 interface ConcludeOrderProps {
   id: string
-  event: MouseEvent
 }
 
 @Component({
@@ -22,14 +21,16 @@ export class OrderDetailsFormComponent {
 
   @Input() public order!: Sale
   @Output() public onClose: EventEmitter<boolean> = new EventEmitter()
+  public showConfirmModal = false
+  public userConfirm = false
+  public action = ''
 
   public closeForm() {
     this.onClose.emit(true)
   }
 
   public async cancelOrder({ id }: CancelOrderProps) {
-    const confirmation = Boolean(prompt('¿Seguro que la quieres eliminar?'))
-    if (!confirmation) return
+    if (!this.userConfirm) return
     const body = {
       status: 'Reembolso'
     }
@@ -37,14 +38,37 @@ export class OrderDetailsFormComponent {
     this.closeForm()
   }
 
-  public async concludeOrder({ id, event }: ConcludeOrderProps) {
-    event.preventDefault()
-    const confirmation = Boolean(prompt('Seguro que la quieres concluir?'))
-    if (!confirmation) return
+  public async concludeOrder({ id }: ConcludeOrderProps) {
+    if (!this.userConfirm) return
     const body = {
       status: 'Concluida'
     }
     await this.salesService.updateSale({ id, input: body })
     this.closeForm()
+  }
+
+
+
+  public openConfirmModal({ action = 'Cancel' }) {
+    this.showConfirmModal = true
+    if (action === 'cancel' || action === 'conclude') {
+      this.action = action
+      return
+    }
+  }
+
+  public closeConfirmModal() {
+    this.showConfirmModal = false
+  }
+
+  public async getUserChoice(choicePromise: Promise<boolean>) {
+    this.userConfirm = await choicePromise
+    if (this.action === 'cancel') {
+      this.cancelOrder({ id: this.order.id })
+      return
+    }
+    if (this.action === 'conclude') {
+      this.concludeOrder({ id: this.order.id })
+    }
   }
 }

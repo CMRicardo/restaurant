@@ -29,7 +29,7 @@ export class OrdersPageComponent implements OnInit {
   }
 
   openDetails(btn: HTMLButtonElement, order: Sale) {
-    if(this.isDetailsFormOpen) return
+    if (this.isDetailsFormOpen) return
     this.isDetailsFormOpen = true
     this.selectedOrder.set(order)
     this.viewDetailsBtn = btn
