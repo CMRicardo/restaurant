@@ -51,6 +51,7 @@ export class SalesPageComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     this.sales.set(await this.salesService.getSales())
+
     if (!this.chartContainer) return
     this.chart = createChart(this.chartContainer.nativeElement)
     this.chart.applyOptions(chartOptions)

@@ -1,13 +1,13 @@
 <div class="grid gap-4 md:grid-cols-2 md:px-16">
-  <app-navigation-button url="/app/sales" color="bg-green-700" title="Ventas">
+  <app-navigation-button *ngIf="employeeType() === 'Gerente'" url="/app/sales" color="bg-green-700" title="Ventas">
     <icon-sales class="contents" />
   </app-navigation-button>
 
-  <app-navigation-button color="bg-purple" title="Pedidos pendientes" url="/app/due-orders">
+  <app-navigation-button *ngIf="employeeType() === 'Vendedor'" color="bg-purple" title="Pedidos pendientes" url="/app/due-orders">
     <icon-due-orders class="contents" />
   </app-navigation-button>
 
-  <app-navigation-button url="/app/employees" color="bg-blue" title="Empleados">
+  <app-navigation-button *ngIf="employeeType() === 'Gerente'" url="/app/employees" color="bg-blue" title="Empleados">
     <icon-employee class="contents" />
   </app-navigation-button>
 

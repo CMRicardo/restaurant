@@ -29,7 +29,7 @@ export class SalesService {
       const date2 = new Date(sale2.date);
       return date1.getTime() - date2.getTime();
     })
-    this.sales.set(sales)
+    this.sales.set(orderedSales)
     return orderedSales
   }
 
