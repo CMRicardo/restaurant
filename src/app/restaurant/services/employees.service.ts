@@ -46,7 +46,6 @@ export class EmployeesService {
 
   public async updateEmployee({ id = '', data = {} }) {
     const updatedEmployeeJSON = JSON.stringify(data)
-    console.log(updatedEmployeeJSON);
     const res = await fetch(`${this.API_URL}/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },

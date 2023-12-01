@@ -23,7 +23,7 @@
     </table>
   </div>
   <new-employee-form (onClose)="closeNewEmployeeForm(newEmployee)" *ngIf="showNewEmployeeForm" />
-  <edit-employee-form [employee]="selectedEmployee()" *ngIf="showEditEmployeeForm" />
+  <edit-employee-form (onClose)="closeEditEmployeeForm()" [employee]="selectedEmployee()" *ngIf="showEditEmployeeForm" />
   <button #newEmployee (click)="openNewEmployeeForm(newEmployee)" class="p-2 text-white rounded bg-good disabled:opacity-70" >Nuevo empleado</button>
 </div>
 

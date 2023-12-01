@@ -36,8 +36,8 @@
       </select>
     </label>
     <label class="grid gap-2 p-2">
-      *Email:
-      <input [class.ring-4]="myForm.get('email')?.invalid && myForm.get('email')?.touched" formControlName="email" required class="p-2 rounded ring-bad" type="email" placeholder="hola@email.com" >
+      Email:
+      <span class="p-2 rounded" >{{employee.email}}</span>
     </label>
     <label class="grid gap-2 p-2">
       *Contraseña:
@@ -58,6 +58,6 @@
   </div>
   <div class="flex justify-center gap-2">
     <button (click)="closeForm()" class="p-2 text-white rounded bg-blue" >Cancelar</button>
-    <button type="submit" class="p-2 text-white rounded bg-good" >Guardar</button>
+    <button type="submit" (click)="modifyEmployee()" class="p-2 text-white rounded bg-good" >Guardar</button>
   </div>
 </form>

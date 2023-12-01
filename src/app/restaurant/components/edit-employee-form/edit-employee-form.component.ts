@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,6 @@ import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
   styles: [
   ]
 })
-
 export class EditEmployeeFormComponent {
   private formBuilder = inject(FormBuilder)
   private employeesService = inject(EmployeesService)
@@ -41,18 +40,16 @@ export class EditEmployeeFormComponent {
     })
   }
 
-
   ngOnInit(): void {
     this.initializeForm()
   }
-
 
   @Output() public onClose: EventEmitter<void> = new EventEmitter()
 
 
   public closeForm() { this.onClose.emit() }
 
-  public modifyEmployee() {
+  public async modifyEmployee() {
     if (this.myForm?.get('password')?.value !== this.myForm?.get('passwordConfirm')?.value) {
       this.myForm?.get('passwordConfirm')?.setErrors({
         notEqualToPassword: true
@@ -60,8 +57,9 @@ export class EditEmployeeFormComponent {
       this.snackBarService.open('Las contraseñas no coinciden', 'Error', { duration: 4000 })
       return
     }
+
     if (this.myForm?.invalid) {
-      this.snackBarService.open('Algo hizo mal', '', { duration: 4000 })
+      this.snackBarService.open('Compruebe sus datos', '', { duration: 4000 })
       return
     }
 
@@ -78,8 +76,8 @@ export class EditEmployeeFormComponent {
       profilePictureUrl: this.myForm?.get('profilePic')?.value,
     }
 
-    this.employeesService.updateEmployee({ id: this.employeesService.selectedEmployeeId(), data })
+    await this.employeesService.updateEmployee({ id: this.employee.id, data })
     this.closeForm()
-    this.snackBarService.open('Empleado agregado con éxito', '', { duration: 4000 })
+    this.snackBarService.open('Empleado modificado con éxito', '', { duration: 4000 })
   }
 }

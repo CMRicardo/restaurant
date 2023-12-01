@@ -33,6 +33,10 @@ export class EmployeesPageComponent implements OnInit {
     this.showEditEmployeeForm = true
   }
 
+  public closeEditEmployeeForm() {
+    this.showEditEmployeeForm = false
+  }
+
   async delete({ id }: DeleteEmployeeProps) {
     if (!this.userConfirmation) return
     this.userConfirmation = false
