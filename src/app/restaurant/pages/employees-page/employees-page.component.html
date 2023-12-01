@@ -1,4 +1,4 @@
-<div [class.md:grid-cols-3]="showNewEmployeeForm" class="grid gap-4 px-16 md:grid-cols-2 place-content-center">
+<div [class.md:grid-cols-3]="showNewEmployeeForm || showEditEmployeeForm" class="grid gap-4 px-16 md:grid-cols-2 place-content-center">
   <div class="col-span-2 overflow-hidden rounded-lg">
     <table class="w-full text-center text-white bg-purple">
       <thead>
@@ -16,13 +16,14 @@
           <td class="px-2">{{employee.employeeType}}</td>
           <td class="flex gap-2 px-2">
             <button (click)="openConfirmModal({id: employee.id})" class="px-4 py-2 my-2 text-white rounded bg-bad">Eliminar</button>
-            <button class="px-4 py-2 my-2 text-white rounded bg-blue">Modificar</button>
+            <button (click)="openEditEmployeeForm(employee)" class="px-4 py-2 my-2 text-white rounded bg-blue">Modificar</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <new-employee-form (onClose)="closeNewEmployeeForm(newEmployee)" *ngIf="showNewEmployeeForm" />
+  <edit-employee-form [employee]="selectedEmployee()" *ngIf="showEditEmployeeForm" />
   <button #newEmployee (click)="openNewEmployeeForm(newEmployee)" class="p-2 text-white rounded bg-good disabled:opacity-70" >Nuevo empleado</button>
 </div>
 

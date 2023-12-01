@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   public UserData = {}
 
   ngOnInit(): void {
-    console.log(this.activeRoute.snapshot.firstChild?.routeConfig?.title)
     this.router.events.subscribe(ev => {
       if (ev instanceof NavigationEnd ) {
         const fullTitle = this.activeRoute.snapshot.firstChild?.routeConfig?.title as string || this.titleService.getTitle()

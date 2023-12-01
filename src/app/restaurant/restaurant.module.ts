@@ -8,18 +8,26 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ComplaintsIconComponent } from './components/icons/complaints-icon/complaints-icon.component';
 import { ComplaintsPageComponent } from './pages/complaints-page/complaints-page.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { DueOrdersIconComponent } from './components/icons/due-orders-icon/due-orders-icon.component';
+import { EditEmployeeFormComponent } from './components/edit-employee-form/edit-employee-form.component';
 import { EmployeeIconComponent } from './components/icons/employee-icon/employee-icon.component';
 import { EmployeesPageComponent } from './pages/employees-page/employees-page.component';
 import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MenuIconComponent } from './components/icons/menu-icon/menu-icon.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuPageComponent } from './pages/menu-page/menu-page.component';
+import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
+import { NewEmployeeFormComponent } from './components/new-employee-form/new-employee-form.component';
 import { NewOrderIconComponent } from './components/icons/new-order-icon/new-order-icon.component';
 import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
+import { OrderDetailsFormComponent } from './components/order-details-form/order-details-form.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PromotionsIconComponent } from './components/icons/promotions-icon/promotions-icon.component';
 import { PromotionsPageComponent } from './pages/promotions-page/promotions-page.component';
@@ -33,31 +41,30 @@ import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.compo
 import { SupplierIconComponent } from './components/icons/supplier-icon/supplier-icon.component';
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
 import { TableComponent } from './components/table/table.component';
-import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModifyDishComponent } from './components/modify-dish/modify-dish.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NewEmployeeFormComponent } from './components/new-employee-form/new-employee-form.component';
-import { OrderDetailsFormComponent } from './components/order-details-form/order-details-form.component';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
   declarations: [
     ComplaintsIconComponent,
     ComplaintsPageComponent,
+    ConfirmModalComponent,
     DueOrdersIconComponent,
+    EditEmployeeFormComponent,
     EmployeeIconComponent,
     EmployeesPageComponent,
     FilterOptionsComponent,
+    FormularioPlatilloComponent,
     HomePageComponent,
     MenuIconComponent,
     MenuItemComponent,
     MenuListComponent,
     MenuPageComponent,
+    ModifyDishComponent,
     NavigationButtonComponent,
+    NewEmployeeFormComponent,
     NewOrderIconComponent,
     NewOrderPageComponent,
+    OrderDetailsFormComponent,
     OrdersPageComponent,
     PromotionsIconComponent,
     PromotionsPageComponent,
@@ -72,19 +79,14 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     SupplierIconComponent,
     SupplierPageComponent,
     TableComponent,
-    FormularioPlatilloComponent,
-    ModifyDishComponent,
-    NewEmployeeFormComponent,
-    OrderDetailsFormComponent,
-    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
-    RestaurantRoutingModule,
-    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    SharedModule,
+    RestaurantRoutingModule,
   ]
 })
 export class RestaurantModule { }

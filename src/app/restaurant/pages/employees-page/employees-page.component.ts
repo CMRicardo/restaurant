@@ -1,7 +1,8 @@
-import { Component, OnInit, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { EmployeesService } from '../../services/employees.service';
 import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
 
 @Component({
   templateUrl: './employees-page.component.html',
@@ -13,13 +14,24 @@ export class EmployeesPageComponent implements OnInit {
   private snackBarService = inject(MatSnackBar)
 
   async ngOnInit(): Promise<void> {
+    if (this.employeesService.employees().length !== 0) return
     await this.employeesService.getEmployees()
   }
-  public showConfirmModal = false
+
   public employees = computed(() => this.employeesService.employees())
+  public showConfirmModal = false
   public showNewEmployeeForm = false
+  public showEditEmployeeForm = false
+
   public userConfirmation = false
-  public selectedEmployeeId = ''
+  public selectedEmployee = signal(this.employees()[0])
+  public selectedEmployeeId = computed(() => this.employeesService.selectedEmployeeId())
+
+  public openEditEmployeeForm(employee: Employee) {
+    this.selectedEmployee.set(employee)
+    this.showNewEmployeeForm = false
+    this.showEditEmployeeForm = true
+  }
 
   async delete({ id }: DeleteEmployeeProps) {
     if (!this.userConfirmation) return
@@ -35,6 +47,7 @@ export class EmployeesPageComponent implements OnInit {
   }
 
   public openNewEmployeeForm(newEmployee: HTMLButtonElement) {
+    this.showEditEmployeeForm = false
     this.showNewEmployeeForm = true
     newEmployee.disabled = true
   }
@@ -45,7 +58,7 @@ export class EmployeesPageComponent implements OnInit {
 
   public async openConfirmModal({ id = '' }) {
     this.showConfirmModal = true
-    this.selectedEmployeeId = id
+    this.employeesService.selectedEmployeeId.set(id)
   }
 
   public closeConfirmModal() {
@@ -54,6 +67,6 @@ export class EmployeesPageComponent implements OnInit {
 
   public async getUserChoice(choice: Promise<boolean>) {
     this.userConfirmation = await choice
-    this.delete({ id: this.selectedEmployeeId })
+    this.delete({ id: this.selectedEmployeeId() })
   }
 }

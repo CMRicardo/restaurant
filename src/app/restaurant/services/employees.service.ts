@@ -8,6 +8,14 @@ export class EmployeesService {
   private API_URL = 'https://litoral-restaurant-api.1.us-1.fl0.io/employees'
   public employees = signal<Employee[]>([])
 
+  public selectedEmployeeId = signal<string>('')
+
+  public async getSingleEmployee({ id = '' }): Promise<Employee> {
+    const res = await fetch(`${this.API_URL}/${id}`)
+    const employee = await res.json()
+    return employee
+  }
+
   public async getEmployees() {
     const res = await fetch(this.API_URL)
     const data = await res.json()
@@ -27,13 +35,22 @@ export class EmployeesService {
 
   public async createEmployee(employee: {}) {
     const employeeAsJSON = JSON.stringify(employee)
-    console.log(employeeAsJSON);
     const res = await fetch(`${this.API_URL}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: employeeAsJSON
+    })
+    if (!res.ok) return
+    await this.getEmployees()
+  }
+
+  public async updateEmployee({ id = '', data = {} }) {
+    const updatedEmployeeJSON = JSON.stringify(data)
+    console.log(updatedEmployeeJSON);
+    const res = await fetch(`${this.API_URL}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: updatedEmployeeJSON
     })
     if (!res.ok) return
     await this.getEmployees()
