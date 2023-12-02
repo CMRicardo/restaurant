@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { MenuItem } from '../../interfaces/menu-items.interface';
 import { MenuItemService } from '../../services/menu-item.service';
 import { SalesService } from 'src/app/restaurant/services/sales.service';
+import { TitleService } from '../../services/title.service';
 
 @Component({
   selector: 'app-new-order-page',
@@ -12,6 +13,7 @@ import { SalesService } from 'src/app/restaurant/services/sales.service';
 export class NewOrderPageComponent {
   private menuItemsService = inject(MenuItemService)
   private salesService = inject(SalesService)
+  private titleService = inject(TitleService)
 
   public showQuantityModal = false
   public menuItems = computed(() => this.menuItemsService.filteredMenuItems())
@@ -19,6 +21,7 @@ export class NewOrderPageComponent {
   public itemsInOrder = computed(() => this.menuItemsService.currentOrder().items)
 
   async ngOnInit() {
+    this.titleService.title.set('Nueva Orden')
     if (this.menuItemsService.filteredMenuItems().length !== 0) return
     await this.menuItemsService.getMenuItems()
   }

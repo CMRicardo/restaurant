@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { TitleService } from '../../services/title.service';
 
 @Component({
   selector: 'customer-header',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   ]
 })
 export class CustomerHeaderComponent {
-  title: string = 'Nueva Orden'
+  private titleService = inject(TitleService)
+  public title = computed(() => this.titleService.title())
 }
