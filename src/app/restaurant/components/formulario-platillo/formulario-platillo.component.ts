@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output,inject } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MenuItemService } from '../../services/menuItem.service';
+import { OrdersService } from '../../services/orders.service';
 
 
 
@@ -15,6 +16,7 @@ export class FormularioPlatilloComponent {
 
   constructor(private _snackBar: MatSnackBar) { }
   private menuItemService = inject(MenuItemService)
+  private ordersService = inject(OrdersService)
 
 
  dish: Dish1 ={
@@ -65,6 +67,7 @@ export class FormularioPlatilloComponent {
       this._snackBar.open("Nuevo plato creado exitosamente", '', {
         duration: 4000,
       });
+      this.ordersService.whenAddNewDish(this.dish)
     } catch (error: any) {
 
       this._snackBar.open(error.message, '', {

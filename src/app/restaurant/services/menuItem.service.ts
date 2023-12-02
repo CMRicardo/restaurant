@@ -21,7 +21,6 @@ export class MenuItemService {
   }
   async createNewMenuItem(newMenuItem: Dish1): Promise<void> {
 
-
     const url = `${this.API_URL}/menu-items`;
     const requestOptions: RequestInit = {
       method: 'POST',
@@ -38,6 +37,22 @@ export class MenuItemService {
     }
   }
 
+  async deleteMenuItem(menuItemId: string): Promise<void> {
+    const url = `${this.API_URL}/menu-items/${menuItemId}`;
+
+    const requestOptions: RequestInit = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    const response = await fetch(url, requestOptions);
+
+    if (!response.ok) {
+        throw new Error(`Error al eliminar el elemento del menú. Código de estado: ${response.status}`);
+    }
+}
 
 
 }

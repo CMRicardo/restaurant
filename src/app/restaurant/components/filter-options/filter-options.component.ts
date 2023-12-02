@@ -22,12 +22,14 @@ export class FilterOptionsComponent {
       this.ordersService.actualFilter.set('Plato fuerte');
     }
     if (filter === 'Bebidas') {
-      this.ordersService.actualFilter.set('Bebidas');
+      this.ordersService.actualFilter.set('Bebida');
     }
     if (filter === 'Postres') {
       this.ordersService.actualFilter.set('Postre');
     }
     console.log(this.ordersService.filteredDishes());
   }
+
+
 
 }
