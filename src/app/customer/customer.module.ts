@@ -12,6 +12,8 @@ import { QuantityModalComponent } from './components/quantity-modal/quantity-mod
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrentOrderComponent } from './components/current-order/current-order.component';
 import { CustomerHeaderComponent } from './components/customer-header/customer-header.component';
+import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -24,12 +26,14 @@ import { CustomerHeaderComponent } from './components/customer-header/customer-h
     NewOrderPageComponent,
     QuantityModalComponent,
     CustomerHeaderComponent,
+    CustomerInfoComponent,
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MatSnackBarModule
   ]
 })
 export class CustomerModule { }

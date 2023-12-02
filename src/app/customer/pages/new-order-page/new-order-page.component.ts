@@ -3,6 +3,7 @@ import { MenuItem } from '../../interfaces/menu-items.interface';
 import { MenuItemService } from '../../services/menu-item.service';
 import { SalesService } from 'src/app/restaurant/services/sales.service';
 import { TitleService } from '../../services/title.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-order-page',
@@ -14,6 +15,7 @@ export class NewOrderPageComponent {
   private menuItemsService = inject(MenuItemService)
   private salesService = inject(SalesService)
   private titleService = inject(TitleService)
+  private snackBar = inject(MatSnackBar)
 
   public showQuantityModal = false
   public menuItems = computed(() => this.menuItemsService.filteredMenuItems())
@@ -56,7 +58,8 @@ export class NewOrderPageComponent {
     if (this.menuItemsService.currentOrder().items.length === 0) return
     await this.salesService.createSale(this.menuItemsService.currentOrder())
     await this.salesService.getSales()
-    alert('Pagado con éxito')
+    this.snackBar.open('Pago exitoso', '', { duration: 4000 })
+    this.cancelOrder()
   }
 
   public cancelOrder() {
