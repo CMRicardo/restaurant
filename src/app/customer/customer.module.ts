@@ -11,6 +11,7 @@ import { FilterOptionsComponent } from './components/filter-options/filter-optio
 import { QuantityModalComponent } from './components/quantity-modal/quantity-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrentOrderComponent } from './components/current-order/current-order.component';
+import { CustomerHeaderComponent } from './components/customer-header/customer-header.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CurrentOrderComponent } from './components/current-order/current-order.
     MenuListComponent,
     NewOrderPageComponent,
     QuantityModalComponent,
+    CustomerHeaderComponent,
   ],
   imports: [
     CommonModule,
