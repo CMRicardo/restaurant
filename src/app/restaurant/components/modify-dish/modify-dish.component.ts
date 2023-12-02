@@ -30,6 +30,10 @@ export class ModifyDishComponent {
     const file: File = event.target.files[0];
     this.previewImage(file);
   }
+  // opciones del modal
+  public showConfirmModal = false
+  public userConfirmation = false
+
 
   previewImage(file: File) {
     const reader = new FileReader();
@@ -78,16 +82,57 @@ export class ModifyDishComponent {
     }
   }
 
-  onDeleteButton(): void{
+  openConfirmModal(): Promise<boolean> {
+    return new Promise((resolve) => {
+      // Lógica para mostrar el modal y configurar el valor de this.userConfirmation
+      this.showConfirmModal = true
+      // Una vez que el usuario ha respondido, llamamos a resolve con el valor de confirmación
+      resolve(this.userConfirmation);
+    });
+  }
 
-    if (this.dish.id) {
-      this.menuItemService.deleteMenuItem(this.dish.id)
-    }
+  onDeleteButton(): void {
+    //iniciamos el moda
+    this.openConfirmModal()
+    //la magia continua en getUserChoice
+
+
   }
 
 
   onCancelButton(): void {
     this.cancelEvent.emit(true);
+  }
 
+
+  public getUserChoice(choice: Promise<boolean>): void {
+    // this.userConfirmation = await choice
+    // console.log(this.userConfirmation);
+
+    //cuando se resuelva la promesa de obtener la seleccion del usuario
+    choice.then((userConfirmation) => {
+      //asignar el valor dado por el usuario
+      this.userConfirmation = userConfirmation;
+      //verificamos el resultado
+      if (this.userConfirmation) {
+        //reiniciamos el valor por defecto
+        this.userConfirmation = false
+        //eliminamos el item
+        this.menuItemService.deleteMenuItem(this.dish.id!)
+        //mensaje de confirmacion
+        this._snackBar.open('El platillo ' + this.dish.name + ' se elimino exitosamente', '', {
+          duration: 4000,
+        });
+      }
+
+    });
+
+
+
+
+
+  }
+  public closeConfirmModal() {
+    this.showConfirmModal = false
   }
 }
