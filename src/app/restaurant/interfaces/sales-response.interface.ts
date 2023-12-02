@@ -14,6 +14,6 @@ export interface Sale {
 
 export interface Item {
   name: string;
-  price: string;
+  price: number;
   quantity: number;
 }

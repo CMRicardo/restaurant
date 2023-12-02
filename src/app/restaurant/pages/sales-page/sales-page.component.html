@@ -13,7 +13,7 @@
     </div>
     <error-label *ngIf="!isValidDateRange()" message="La fecha inicial no puede ser mayor a la fecha final" />
   </form>
-  <div class="col-span-2" #chart ></div>
+  <div class="col-span-2 min-h-[300px]" #chart ></div>
   <div class="overflow-hidden rounded-lg" >
     <table class="w-full text-center text-white bg-purple" >
       <thead>
@@ -21,9 +21,9 @@
         <th class="p-2" >Monto Vendido</th>
       </thead>
       <tbody class="text-black bg-secondary" >
-        <tr *ngFor="let sale of sales()" >
-          <td class="p-2" >{{sale.date | date}}</td>
-          <td class="p-2" >{{sale.total | currency}}</td>
+        <tr *ngFor="let sale of data()" >
+          <td class="p-2" >{{sale.time| date}}</td>
+          <td class="p-2" >{{sale.value | currency}}</td>
         </tr>
       </tbody>
     </table>

@@ -7,12 +7,14 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { CustomerLoginComponent } from './pages/customer-login/customer-login.component';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
     RegisterPageComponent,
     AuthLayoutComponent,
+    CustomerLoginComponent,
   ],
   imports: [
     CommonModule,

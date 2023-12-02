@@ -1,0 +1,29 @@
+<div class="grid gap-4 p-16">
+  <div class="grid gap-4 md:grid-cols-[1fr_20%_1fr] place-items-start" >
+    <current-order />
+    <filter-options [autofocus]="true" />
+    <div class="grid grid-cols-2 rounded-lg gap-4 bg-secondary p-4 max-h-[400px] overflow-y-auto">
+      <menu-item
+        (click)="openQuantityModal(menuItem)"
+        [menuItem]="menuItem"
+        *ngFor="let menuItem of menuItems()"
+      />
+    </div>
+  </div>
+  <div class="flex gap-4" >
+    <button
+      (click)="payOrder()"
+      [disabled]="itemsInOrder().length === 0"
+      class="w-48 px-4 py-2 font-bold text-white rounded-lg bg-good disabled:opacity-70"
+    >
+      Pagar
+    </button>
+    <button (click)="cancelOrder()" class="w-48 px-4 py-2 font-bold text-white rounded-lg bg-bad" >Cancelar</button>
+  </div>
+</div>
+
+<quantity-modal
+  *ngIf="showQuantityModal"
+  (onClose)="closeQuantityModal()"
+  (onChoice)="getUserQuantity($event)"
+/>

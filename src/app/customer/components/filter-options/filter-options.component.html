@@ -1,0 +1,10 @@
+<div class="grid border-4 max-w-[200px] border-gray-200 rounded-lg overflow-hidden">
+  <button (click)="changeFilter('Entrada')" class="px-8 py-4"
+    [ngClass]="{'bg-primary text-white': actualFilter() === 'Entrada'}">Entradas</button>
+  <button (click)="changeFilter('Plato fuerte')" class="px-8 py-4"
+    [ngClass]="{'bg-primary text-white': actualFilter() === 'Plato fuerte'}">Platos Fuertes</button>
+  <button (click)="changeFilter('Bebida')" class="px-8 py-4"
+    [ngClass]="{'bg-primary text-white': actualFilter() === 'Bebida'}">Bebidas</button>
+  <button (click)="changeFilter('Postre')" class="px-8 py-4"
+    [ngClass]="{'bg-primary text-white': actualFilter() === 'Postre'}">Postres</button>
+</div>
