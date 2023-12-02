@@ -29,5 +29,6 @@ export class QuantityModalComponent {
     
     const promise = new Promise<number>(resolve => resolve(quantity))
     this.onChoice.emit(promise)
+    this.close()
   }
 }

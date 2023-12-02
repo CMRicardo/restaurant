@@ -1,0 +1,41 @@
+<div class="overflow-hidden rounded-lg">
+  <table
+    *ngIf="currentOrder().items.length !== 0; else noDishes"
+    class="min-w-full text-center rounded-lg"
+  >
+    <thead class="text-white bg-primary h-[4rem]" >
+      <tr>
+        <td class="px-2" >Nombre</td>
+        <td class="px-2" >Cantidad</td>
+        <td class="px-2" >Precio</td>
+        <td class="px-2" >Sub Total</td>
+      </tr>
+    </thead>
+    <tbody class="bg-rose-100" >
+      <tr class="even:bg-rose-200" *ngFor="let item of currentOrder().items" >
+        <td class="p-2" >{{item.name}}</td>
+        <td class="p-2" >{{item.quantity}}</td>
+        <td class="p-2" >{{item.price | currency }}</td>
+        <td class="p-2" >{{item.price * item.quantity | currency}}</td>
+      </tr>
+    </tbody>
+    <tfoot class="text-left bg-slate-100" >
+      <tr>
+        <td class="p-2"  colspan="3">Subtotal</td>
+        <td class="p-2 text-center" >{{currentOrder().subtotal | currency}}</td>
+      </tr>
+      <tr>
+        <td class="p-2" colspan="3">ISV (15%)</td>
+        <td class="p-2 text-center" >{{currentOrder().taxes | currency}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="p-2 font-bold" >Total a pagar</td>
+        <td class="p-2 font-bold text-center" >{{currentOrder().total | currency}}</td>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <ng-template #noDishes>
+    <div class="grid h-full p-8 text-white bg-gray-500 rounded-lg place-items-center" >Agrega elementos a la orden</div>
+  </ng-template>
+</div>

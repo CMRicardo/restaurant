@@ -10,16 +10,18 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
 import { QuantityModalComponent } from './components/quantity-modal/quantity-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CurrentOrderComponent } from './components/current-order/current-order.component';
 
 
 @NgModule({
   declarations: [
-    NewOrderPageComponent,
+    CurrentOrderComponent,
     CustomerLayoutComponent,
-    MenuListComponent,
-    MenuItemComponent,
     FilterOptionsComponent,
-    QuantityModalComponent
+    MenuItemComponent,
+    MenuListComponent,
+    NewOrderPageComponent,
+    QuantityModalComponent,
   ],
   imports: [
     CommonModule,

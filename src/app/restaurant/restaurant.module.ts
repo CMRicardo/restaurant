@@ -26,7 +26,6 @@ import { ModifyDishComponent } from './components/modify-dish/modify-dish.compon
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { NewEmployeeFormComponent } from './components/new-employee-form/new-employee-form.component';
 import { NewOrderIconComponent } from './components/icons/new-order-icon/new-order-icon.component';
-import { NewOrderPageComponent } from './pages/new-order-page/new-order-page.component';
 import { OrderDetailsFormComponent } from './components/order-details-form/order-details-form.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { PromotionsIconComponent } from './components/icons/promotions-icon/promotions-icon.component';
@@ -40,7 +39,6 @@ import { ShoppingIconComponent } from './components/icons/shopping-icon/shopping
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 import { SupplierIconComponent } from './components/icons/supplier-icon/supplier-icon.component';
 import { SupplierPageComponent } from './pages/supplier-page/supplier-page.component';
-import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -63,7 +61,6 @@ import { TableComponent } from './components/table/table.component';
     NavigationButtonComponent,
     NewEmployeeFormComponent,
     NewOrderIconComponent,
-    NewOrderPageComponent,
     OrderDetailsFormComponent,
     OrdersPageComponent,
     PromotionsIconComponent,
@@ -78,7 +75,6 @@ import { TableComponent } from './components/table/table.component';
     ShoppingPageComponent,
     SupplierIconComponent,
     SupplierPageComponent,
-    TableComponent,
   ],
   imports: [
     CommonModule,
