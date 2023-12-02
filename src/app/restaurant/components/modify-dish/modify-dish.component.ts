@@ -78,6 +78,12 @@ export class ModifyDishComponent {
     }
   }
 
+  onDeleteButton(): void{
+
+    if (this.dish.id) {
+      this.menuItemService.deleteMenuItem(this.dish.id)
+    }
+  }
 
 
   onCancelButton(): void {
