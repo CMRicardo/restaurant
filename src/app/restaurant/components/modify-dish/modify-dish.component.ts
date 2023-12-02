@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MenuItemService } from '../../services/menuItem.service';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-modify-dish',
@@ -10,6 +11,7 @@ import { MenuItemService } from '../../services/menuItem.service';
 })
 export class ModifyDishComponent {
   private menuItemService = inject(MenuItemService)
+  private ordersService = inject(OrdersService)
 
   constructor(private _snackBar: MatSnackBar) { }
 
@@ -123,6 +125,10 @@ export class ModifyDishComponent {
         this._snackBar.open('El platillo ' + this.dish.name + ' se elimino exitosamente', '', {
           duration: 4000,
         });
+
+        //acutualizamos el componente de menulist
+        this.ordersService.whenDeleteDish(this.dish)
+
       }
 
     });

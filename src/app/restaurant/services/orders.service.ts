@@ -24,31 +24,35 @@ export class OrdersService {
     //this.try()
     this.initializeDishes();
 
-   }
+  }
 
-   private try(): void {
-    console.log( this.dishes());
+  private try(): void {
+    console.log(this.dishes());
 
-   }
+  }
   private async initializeDishes() {
     try {
       const menuItems = await this.menuItemService.getAllMenuItems();
 
       this.dishes.set(menuItems);
-    } catch (error:any) {
+    } catch (error: any) {
       console.error('Error initializing dishes:', error.message);
     }
-    console.log( this.dishes());
+    console.log(this.dishes());
   }
 
-  changeFilterWithInput(dish:Dish1): void{
-   this.actualFilter.set(dish.category);
+  changeFilterWithInput(dish: Dish1): void {
+    this.actualFilter.set(dish.category);
   }
 
-  whenAddNewDish(dish:Dish1) :void{
+  whenAddNewDish(dish: Dish1): void {
     this.dishes.update((currentDishes) => [...currentDishes, dish]);
     this.changeFilterWithInput(dish);
+  }
 
+  whenDeleteDish(dish: Dish1): void {
+    this.dishes.update((currentDishes) => currentDishes.filter((item) => item.id !== dish.id));
+    this.changeFilterWithInput(dish);
   }
 }
 
