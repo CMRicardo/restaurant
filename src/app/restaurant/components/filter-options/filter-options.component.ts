@@ -30,4 +30,6 @@ export class FilterOptionsComponent {
     console.log(this.ordersService.filteredDishes());
   }
 
+
+
 }
