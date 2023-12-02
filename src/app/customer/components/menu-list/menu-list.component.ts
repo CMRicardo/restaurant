@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, Input, computed, inject } from '@angular/core';
 
 import { MenuItemService } from '../../services/menu-item.service';
 import { MenuItem } from '../../interfaces/menu-items.interface';
@@ -13,6 +13,8 @@ export class MenuListComponent {
   private menuItemService = inject(MenuItemService)
   public menuItems = computed(() => this.menuItemService.filteredMenuItems())
   public selectedItems = computed(() => this.menuItemService.selectedItems())
+  
+  @Input() openQuantityModal!: (menuItem: MenuItem) => void
 
   async ngOnInit() {
     if (this.menuItemService.filteredMenuItems().length !== 0 ) return

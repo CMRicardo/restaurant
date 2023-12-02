@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -15,16 +15,18 @@ export class QuantityModalComponent {
   @Output() onClose: EventEmitter<void> = new EventEmitter()
 
   public numberRegex: RegExp = /^[1-9]\d*$/;
-  public quantityControl = this.formBuilder.control(
-    { quantity: [ '0', [Validators.required, Validators.pattern(this.numberRegex)] ] }
+  public quantityForm = this.formBuilder.group({
+    quantity: [ '0', [Validators.required, Validators.pattern(this.numberRegex)] ]
+  }
   )
 
   public close() { this.onClose.emit() }
 
   public selectQuantity() {
-    if (!this.quantityControl) return
-    if (this.quantityControl.invalid) return
-    const quantity = Number(this.quantityControl.value)
+    if (!this.quantityForm.get('quantity')) return
+    if (this.quantityForm.get('quantity')?.invalid) return
+    const quantity = Number(this.quantityForm.get('quantity')?.value)
+    
     const promise = new Promise<number>(resolve => resolve(quantity))
     this.onChoice.emit(promise)
   }
