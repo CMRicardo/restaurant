@@ -125,9 +125,11 @@ export class ModifyDishComponent {
         this._snackBar.open('El platillo ' + this.dish.name + ' se elimino exitosamente', '', {
           duration: 4000,
         });
-
         //acutualizamos el componente de menulist
         this.ordersService.whenDeleteDish(this.dish)
+
+        //cerramos el formulario
+        this.onCancelButton()
 
       }
 
