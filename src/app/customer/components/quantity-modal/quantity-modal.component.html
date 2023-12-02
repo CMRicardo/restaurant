@@ -1,0 +1,10 @@
+<form class="absolute inset-0 grid bg-black bg-opacity-70 place-items-center" >
+  <div class="grid w-full max-w-xs gap-4 px-8 py-4 text-white rounded-lg opacity-100 bg-purple" >
+    <h2 class="text-lg font-bold" >{{question}}</h2>
+    <input [formControl]="quantityControl" type="number" placeholder="1" min="1" >
+    <div class="flex gap-2">
+      <button (click)="selectQuantity()" class="p-2 text-white rounded bg-good" >Aceptar</button>
+      <button (click)="close()" class="p-2 text-white rounded bg-bad" >Cancelar</button>
+    </div>
+  </div>
+</form>

@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
+import { QuantityModalComponent } from './components/quantity-modal/quantity-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,11 +18,13 @@ import { FilterOptionsComponent } from './components/filter-options/filter-optio
     CustomerLayoutComponent,
     MenuListComponent,
     MenuItemComponent,
-    FilterOptionsComponent
+    FilterOptionsComponent,
+    QuantityModalComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    ReactiveFormsModule,
     CustomerRoutingModule
   ]
 })
