@@ -9,7 +9,7 @@ const routes: Routes = [
     component: CustomerLayoutComponent,
     children: [
       { path: 'new-order', component: NewOrderPageComponent, title: 'Nueva Orden | Brisas del Litoral' },
-      { path: '**', redirectTo: 'customer/new-order' }
+      { path: '**', redirectTo: 'new-order' }
     ]
   }
 ];

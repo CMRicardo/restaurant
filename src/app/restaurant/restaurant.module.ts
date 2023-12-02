@@ -87,6 +87,9 @@ import { TableComponent } from './components/table/table.component';
     MatSnackBarModule,
     SharedModule,
     RestaurantRoutingModule,
+  ],
+  exports: [
+    FilterOptionsComponent
   ]
 })
 export class RestaurantModule { }
