@@ -10,8 +10,4 @@ import { MenuItemService } from '../../services/menu-item.service';
 export class CurrentOrderComponent {
   private menuItemService = inject(MenuItemService)
   public currentOrder = computed(() => this.menuItemService.currentOrder())
-
-  ngOnInit(): void {
-    console.log(this.menuItemService.currentOrder());
-  }
 }

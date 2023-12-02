@@ -14,9 +14,9 @@ const DEFAULT_ORDER: CurrentOrder = {
 })
 export class MenuItemService {
   private URL = 'https://litoral-restaurant-api.1.us-1.fl0.io/menu-items'
+  private menuItems = signal<MenuItem[]>([])
   
   public currentOrder = signal<CurrentOrder>(DEFAULT_ORDER)
-  private menuItems = signal<MenuItem[]>([])
   public actualFilter = signal<string>('Entrada')
   public filteredMenuItems = computed(() => {
     return this.menuItems().filter(menuItem => menuItem.category === this.actualFilter())
@@ -25,9 +25,13 @@ export class MenuItemService {
   public selectedItems = signal<MenuItem[]>([])
 
   public async getMenuItems() {
-    const res = await fetch(this.URL)
-    const data = await res.json()
-    this.menuItems.set(data)
+    try {
+      const res = await fetch(this.URL)
+      const data = await res.json()
+      this.menuItems.set(data)
+    } catch (error) {
+      alert('Parece que tu conexión a internet falló')
+    }
   }
 
 }

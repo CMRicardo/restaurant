@@ -16,7 +16,5 @@ export class MenuItemComponent {
   public isSelected = signal(false)
   ngOnInit() {
     this.isSelected.set(this.menuItemService.selectedItems().includes(this.menuItem))
-    console.log(this.isSelected());
-    
   }
 }

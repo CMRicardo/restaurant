@@ -1,5 +1,3 @@
-import { LineData } from 'lightweight-charts'
-
 import { Sale } from '../../interfaces/sales-response.interface'
 
 export const chartOptions = {
@@ -26,11 +24,26 @@ interface mapDataProps {
   sales: Sale[]
 }
 export const mapData = ({ sales }: mapDataProps) => {
-  return sales.map((sale): LineData => {
+
+  const salesByDate: { [date: string]: Sale[] }  = sales.reduce((accumulator, sale) => {
     const [date] = sale.date.split('T')
-    return {
-      time: date,
-      value: Number(sale.total)
+
+    if (accumulator[date]) {
+      accumulator[date].push(sale)
+    } else {
+      accumulator[date] = [sale]
     }
-  })
+    return accumulator
+  }, {} as { [date: string]: Sale[] })
+
+  const resultArray: { time: string; value: number }[] = Object.entries(salesByDate).map(
+    ([time, salesForDate]) => ({
+      time,
+      value: salesForDate.reduce((total, sale) => total + parseFloat(sale.total), 0),
+    })
+  );
+  console.log({resultArray});
+  
+  
+  return resultArray
 }

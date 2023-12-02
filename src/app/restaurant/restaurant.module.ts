@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { RestaurantLayoutComponent } from './layouts/restaurant-layout/restaurant-layout.component';
@@ -14,7 +15,6 @@ import { EditEmployeeFormComponent } from './components/edit-employee-form/edit-
 import { EmployeeIconComponent } from './components/icons/employee-icon/employee-icon.component';
 import { EmployeesPageComponent } from './pages/employees-page/employees-page.component';
 import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormularioPlatilloComponent } from './components/formulario-platillo/formulario-platillo.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';

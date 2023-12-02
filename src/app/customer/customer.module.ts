@@ -25,9 +25,9 @@ import { CurrentOrderComponent } from './components/current-order/current-order.
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    CustomerRoutingModule,
     ReactiveFormsModule,
-    CustomerRoutingModule
+    SharedModule,
   ]
 })
 export class CustomerModule { }

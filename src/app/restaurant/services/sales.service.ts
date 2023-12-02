@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { Sale } from '../interfaces/sales-response.interface';
+import { Item, Sale } from '../interfaces/sales-response.interface';
+import { CurrentOrder } from 'src/app/customer/interfaces/current-order.interface';
 
 interface getSalesProps {
   initialDate?: string
@@ -47,5 +48,32 @@ export class SalesService {
     })
     if (!result.ok) return
     this.getSales()
+  }
+
+  async createSale(input: CurrentOrder ) {
+    const items: Item[] = input.items.map(({name, price, quantity}) => ({ name, price, quantity }))
+
+    const sale = {
+      date: new Date().toString(),
+      status: 'Pendiente',
+      sellerId: '9cfeab80-834b-11ee-b53e-eaf15ba8dff1',
+      seller: 'Alice Smith',
+      items,
+      subtotal: input.subtotal,
+      taxes: input.taxes,
+      total: input.total
+    }
+
+    const saleJSON = JSON.stringify(sale)
+
+    const res = await fetch(this.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: saleJSON
+    })
+
+    if (!res.ok) return
+    const newSale: Sale = await res.json()
+    return newSale
   }
 }

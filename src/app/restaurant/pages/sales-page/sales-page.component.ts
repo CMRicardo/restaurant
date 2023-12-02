@@ -32,8 +32,8 @@ export class SalesPageComponent implements AfterViewInit {
   @ViewChild('chart')
   public chartContainer?: ElementRef<HTMLDivElement>;
 
-  public sales = signal<Sale[]>([])
-  public data = computed(() => mapData({sales: this.sales()}))
+  public sales = computed(() => this.salesService.sales().filter(sale => sale.status !== 'Reembolso'))
+  public data = computed(() => mapData({ sales: this.sales() }))
   public isValidDateRange = signal(true)
   public datesExists = signal(true)
 
@@ -50,7 +50,7 @@ export class SalesPageComponent implements AfterViewInit {
   }
 
   async ngAfterViewInit(): Promise<void> {
-    this.sales.set(await this.salesService.getSales())
+    await this.salesService.getSales()
 
     if (!this.chartContainer) return
     this.chart = createChart(this.chartContainer.nativeElement)
@@ -66,7 +66,6 @@ export class SalesPageComponent implements AfterViewInit {
     const finalDate = this.myForm.get('finalDate')?.value
     const datesExists = initialDate && finalDate
     this.datesExists.set( this.myForm.untouched && Boolean(this.initialDate?.errors && this.finalDate?.errors))
-    console.log(this.datesExists());
     
     if (!datesExists) return
 
@@ -75,7 +74,7 @@ export class SalesPageComponent implements AfterViewInit {
     this.isValidDateRange.set(firstDate.getTime() < secondDate.getTime())
     if (!this.isValidDateRange()) return
 
-    this.sales.set(await this.salesService.getSales({ initialDate, finalDate }))
+    await this.salesService.getSales({ initialDate, finalDate })
     this.serie?.setData(this.data())
   }
 }
