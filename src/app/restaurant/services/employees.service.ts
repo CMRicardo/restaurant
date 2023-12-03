@@ -5,7 +5,7 @@ import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
   providedIn: 'root'
 })
 export class EmployeesService {
-  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
+  private API_URL = 'https://litoral-api.up.railway.app/employees'
   public employees = signal<Employee[]>([])
 
   public selectedEmployeeId = signal<string>('')

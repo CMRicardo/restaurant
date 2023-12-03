@@ -42,8 +42,6 @@ export const mapData = ({ sales }: mapDataProps) => {
       value: salesForDate.reduce((total, sale) => total + parseFloat(sale.total), 0),
     })
   );
-  console.log({resultArray});
-  
-  
+
   return resultArray
 }

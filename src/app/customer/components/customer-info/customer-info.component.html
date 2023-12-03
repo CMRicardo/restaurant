@@ -1,6 +1,11 @@
-<div class="flex items-center justify-center gap-4" >
-  <div>
-    <p>Hola Mundo</p>
-    <p>hola@email.com</p>
+<div class="flex items-center gap-4">
+  <button type="button" (click)="toggleLogOutButtonVisibility()" class="flex items-center justify-center gap-4" >
+    <div>
+      <p>{{currentCustomer()?.firstName}} {{currentCustomer()?.lastName}}</p>
+      <p>{{currentCustomer()?.email}}</p>
+    </div>
+  </button>
+  <div *ngIf="isLogOutButtonVisible()" >
+    <button type="button" (click)="logOut()" >Cerrar sesión</button>
   </div>
 </div>

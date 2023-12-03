@@ -41,7 +41,7 @@ export class NewEmployeeFormComponent {
       this.snackBarService.open('Algo hizo mal', '', { duration: 4000 })
       return
     }
-    if(this.myForm.get('password')?.value !== this.myForm.get('passwordConfirm')?.value) {
+    if (this.myForm.get('password')?.value !== this.myForm.get('passwordConfirm')?.value) {
       this.snackBarService.open('Las contraseñas no coinciden', 'Error', {duration: 4000})
       return
     }

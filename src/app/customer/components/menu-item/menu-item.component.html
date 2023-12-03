@@ -1,4 +1,5 @@
-<div
+<button
+  type="button"
   [ngClass]="isSelected() ? 'active' : '' "
   class="w-[150px] items-center justify-center flex flex-col rounded-lg bg-primary"
 >
@@ -8,6 +9,6 @@
     class=" max-h-[125px] object-fill rounded-t-lg opacity-80 transition duration-300 hover:opacity-100 sm:h-56"
   />
   <div class="px-2 mb-1 text-center">
-    <h4 class="w-full text-white "> {{menuItem.name}}</h4>
+    <h4 class="w-full text-white "> {{menuItem.name | titlecase }}</h4>
   </div>
-</div>
+</button>
