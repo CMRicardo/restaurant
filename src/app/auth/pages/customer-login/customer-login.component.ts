@@ -18,12 +18,15 @@ export class CustomerLoginComponent {
   private snackBar = inject(MatSnackBar)
   private customersService = inject(CustomerService)
 
-  private onlyTextRegex = /^[a-zA-Z ]{6,}$/
+  private minLengthRegex = /^.{6,}$/;
 
   public myForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern(this.onlyTextRegex)]],
+    password: ['', [Validators.required, Validators.pattern(this.minLengthRegex)]],
   })
+
+  get email() { return this.myForm.get('email') }
+  get password() { return this.myForm.get('password') }
 
   async ngOnInit() {
     if (this.customersService.customers().length !== 0) return

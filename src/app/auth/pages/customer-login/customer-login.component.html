@@ -11,6 +11,7 @@
         placeholder="hola@email.com"
       />
       <error-label
+        *ngIf="email?.touched && email?.invalid"
         message="Email invalido"
       />
     </label>
@@ -33,6 +34,7 @@
         </button>
       </div>
       <error-label
+        *ngIf="password?.touched && password?.invalid"
         message="Contraseña invalida"
       />
     </label>
