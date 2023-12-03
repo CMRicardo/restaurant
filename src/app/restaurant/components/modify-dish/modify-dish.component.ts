@@ -23,10 +23,13 @@ export class ModifyDishComponent {
     price: 0
   }
 
-
   @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
 
-
+  //control de formulario
+  errorLabelName = false;
+  errorLabelPrice = false;
+  errorLabelCategory = false;
+  errorLabelURLImage = false;
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -58,18 +61,50 @@ export class ModifyDishComponent {
     if (this.dish.imageUrl)
       console.log(this.dish.imageUrl.toString().split(',')[1]);
   }
-  async onSubmit() {
-    console.log(this.dish);
-    try {
-      await this.menuItemService.updateMenuItem(this.dish);
-      this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
-        duration: 4000,
-      });
-    } catch (error: any) {
-      console.error(error.message);
+
+  isNotEmptyForm(): boolean {
+
+    if (this.dish.name === '') {
+      this.errorLabelName = true;
+    } else {
+      this.errorLabelName = false;
     }
-    //cerrar formulario
-    this.onCancelButton();
+
+    if (this.dish.price === 0) {
+      this.errorLabelPrice = true;
+    } else {
+      this.errorLabelPrice = false;
+    }
+
+    if (this.dish.category === 'Elige una categoria') {
+      this.errorLabelCategory = true;
+    } else {
+      this.errorLabelCategory = false;
+    }
+
+    if (this.dish.imageUrl === null || this.dish.imageUrl === '') {
+      this.errorLabelURLImage = true;
+    } else {
+      this.errorLabelURLImage = false;
+    }
+
+    return (this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
+  }
+
+  async onSubmit() {
+    if (this.isNotEmptyForm()) {
+      try {
+        console.log("entre");
+        await this.menuItemService.updateMenuItem(this.dish);
+        this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
+          duration: 4000,
+        });
+      } catch (error: any) {
+        console.error(error.message);
+      }
+      //cerrar formulario
+      this.onCancelButton();
+    }
 
   }
 
@@ -139,7 +174,7 @@ export class ModifyDishComponent {
     this.showConfirmModal = false
   }
 
-  public onModifyDish():void{
+  public onModifyDish(): void {
     this.menuItemService.updateMenuItem(this.dish)
     // this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
     //   duration: 4000,

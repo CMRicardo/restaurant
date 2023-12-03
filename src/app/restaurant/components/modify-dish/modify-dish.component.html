@@ -8,15 +8,25 @@
         class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
     </div>
 
+    <!-- nombre vacio -->
+    <div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelName">
+      <error-label message="Nombre no puede esta vacio"/>
+    </div>
+
     <!-- input de precio -->
-    <div class="mb-3 flex items-center justify-between space-x-5">
+    <div class="mt-3 flex items-center justify-between space-x-5">
       <label for="precio" class="block text-gray-700 text-sm font-bold " >Precio:</label>
       <input type="number" id="precio" name="precio" [(ngModel)]="dish.price"
         class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
     </div>
 
+    <!-- precio vacio -->
+    <div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelPrice">
+      <error-label message="Precio no puede ser 0"/>
+    </div>
+
     <!-- input de tipo de platillo -->
-    <div class="form-group mb-4 flex items-center space-x-9 ">
+    <div class="form-group mt-3 flex items-center space-x-9 ">
       <label for="tipo" class="text-gray-700 text-sm font-bold">Tipo:</label>
       <select id="tipo" name="tipo" class="bg-red-50 rounded-md  " [(ngModel)]="dish.category" required>
         <option selected>Elige una categoria</option>
@@ -24,12 +34,15 @@
         <option value="Plato fuerte">Plato Fuerte</option>
         <option value="Postre">Postre</option>
         <option value="Bebida">Bebida</option>
-
       </select>
     </div>
- <!-- input de imagen -->
+    <!-- categoria vacia -->
+    <div class="mb-4 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelCategory">
+      <error-label message="La categoria no puede esta vacia"/>
+    </div>
 
- <div class="mb-3 flex items-center justify-between space-x-2 ">
+ <!-- input de imagen -->
+ <div class="mt-3 flex items-center justify-between space-x-2 ">
   <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
   <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="dish.imageUrl"
   class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
@@ -38,6 +51,12 @@
   <!-- <input type="file" (change)="onFileSelected($event)"  /> -->
 </div>
 
+<!-- Url  vacio -->
+<div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelURLImage">
+  <error-label message="La URL no puede esta vacia"/>
+</div>
+
+<!-- previsualizador -->
 <div class="flex justify-center mt-3 mb-3 ">
   <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
 </div>
