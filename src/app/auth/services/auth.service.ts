@@ -7,7 +7,7 @@ import { CustomerLoginProps } from '../interfaces/customer-login.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = 'https://litoral-restaurant-api.2.us-1.fl0.io/employees'
+  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
   private customerService = inject(CustomerService)
   public employees: Employee[] = []
   public currentUser?: Employee

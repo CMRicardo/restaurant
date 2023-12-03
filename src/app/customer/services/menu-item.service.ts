@@ -13,7 +13,7 @@ const DEFAULT_ORDER: CurrentOrder = {
   providedIn: 'root'
 })
 export class MenuItemService {
-  private URL = 'https://litoral-restaurant-api.2.us-1.fl0.io/menu-items'
+  private URL = 'https://restaurant-api.2.us-1.fl0.io/menu-items'
   private menuItems = signal<MenuItem[]>([])
   
   public currentOrder = signal<CurrentOrder>(DEFAULT_ORDER)
