@@ -54,6 +54,30 @@ export class MenuItemService {
     }
 }
 
+async updateMenuItem( updatedData: Dish1): Promise<void> {
+    const url = `${this.API_URL}/menu-items/${updatedData.id}`;
+
+    const requestOptions: RequestInit = {
+        method: 'PATCH',  // Cambiado a método PATCH para una solicitud de actualización parcial
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+    };
+
+    try {
+        const response = await fetch(url, requestOptions);
+
+        if (!response.ok) {
+            throw new Error(`Error al actualizar el elemento del menú. Código de estado: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Error al realizar la solicitud de actualización:', error);
+        throw error;
+    }
+}
+
+
 
 }
 

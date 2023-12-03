@@ -22,11 +22,11 @@ export class ModifyDishComponent {
     category: 'Elige una categoria',
     price: 0
   }
+
+
   @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter();
 
-  imageUrl: string | ArrayBuffer | null = null;
-  nameDish: string = '';
-  price: number = 0;
+
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -55,23 +55,22 @@ export class ModifyDishComponent {
       console.log('hola mundo');
 
     //console.log(this.dish.imageUrl.toString().split(',')[1]);
-    if (this.imageUrl)
-      console.log(this.imageUrl.toString().split(',')[1]);
+    if (this.dish.imageUrl)
+      console.log(this.dish.imageUrl.toString().split(',')[1]);
   }
   async onSubmit() {
     console.log(this.dish);
     try {
-      await this.menuItemService.createNewMenuItem(this.dish);
-      console.log("Nuevo plato creado exitosamente");
+      await this.menuItemService.updateMenuItem(this.dish);
+      this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
+        duration: 4000,
+      });
     } catch (error: any) {
       console.error(error.message);
     }
     //cerrar formulario
     this.onCancelButton();
-    this._snackBar.open('El platillo ' + this.dish.name + ' se guardo exitosamente', '', {
-      duration: 4000,
-    });
-    this.obtenerTodosLosItemsDeMenu();
+
   }
 
   async obtenerTodosLosItemsDeMenu(): Promise<void> {
@@ -135,12 +134,15 @@ export class ModifyDishComponent {
 
     });
 
-
-
-
-
   }
   public closeConfirmModal() {
     this.showConfirmModal = false
+  }
+
+  public onModifyDish():void{
+    this.menuItemService.updateMenuItem(this.dish)
+    // this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
+    //   duration: 4000,
+    // });
   }
 }
