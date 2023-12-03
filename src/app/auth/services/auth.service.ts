@@ -3,13 +3,16 @@ import { Employee, validatedCredentialsProps } from '../interfaces/employees-res
 import { CustomerService } from 'src/app/customer/services/customer.service';
 import { CustomerLoginProps } from '../interfaces/customer-login.interface';
 import { Customer } from 'src/app/customer/interfaces/customer-response.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
   private customerService = inject(CustomerService)
+  private router = inject(Router)
+
+  private readonly API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
   public employees: Employee[] = []
   public currentUser?: Employee
   public currentCustomer = signal<Customer | undefined>(undefined)
@@ -36,6 +39,20 @@ export class AuthService {
     })
     
     if (customerIndex === -1) return
+    localStorage.setItem('currentCustomer', JSON.stringify(this.customers()[customerIndex]))
     return this.customers()[customerIndex]
+  }
+
+  public customerLogout() {
+    this.currentCustomer.set(undefined)
+    localStorage.removeItem('currentCustomer')
+    this.router.navigateByUrl('auth')
+  }
+
+  checkCustomerAuthStatus() {
+    const currentCustomerJSON = localStorage.getItem('currentCustomer')
+    if (!currentCustomerJSON) return false
+    const currentCustomer: Customer = JSON.parse(currentCustomerJSON)
+    return Boolean(currentCustomer)
   }
 }

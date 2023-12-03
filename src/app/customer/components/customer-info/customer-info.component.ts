@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -10,4 +10,13 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class CustomerInfoComponent {
   private authService = inject(AuthService)
   public currentCustomer = computed(() => this.authService.currentCustomer())
+  public isLogOutButtonVisible = signal(false)
+
+  public toggleLogOutButtonVisibility() {
+    this.isLogOutButtonVisible.update(value => !value)
+  }
+
+  public logOut() {
+    this.authService.customerLogout()
+  }
 }
