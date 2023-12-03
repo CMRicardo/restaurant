@@ -27,19 +27,23 @@
 
       </select>
     </div>
-    <!-- input de imagen -->
+ <!-- input de imagen -->
 
-    <div class="flex-wrap justify-center align-middle -2">
-      <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
-      <input type="file" (change)="onFileSelected($event)"  />
-      <div class="flex justify-center mt-3 ">
-        <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
-      </div>
-    </div>
+ <div class="mb-3 flex items-center justify-between space-x-2 ">
+  <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
+  <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="dish.imageUrl"
+  class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
+  placeholder="Ingrese una URL">
 
+  <!-- <input type="file" (change)="onFileSelected($event)"  /> -->
+</div>
+
+<div class="flex justify-center mt-3 mb-3 ">
+  <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
+</div>
 
     <!-- botones -->
-    <div class="mt-4 flex justify-between">
+    <div class="mt-4 flex space-x-2 justify-between">
       <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800">Modificar</button>
       <button type="button" class="bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800" (click)="onDeleteButton()">Borrar</button>
      <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-900" (click)="onCancelButton()">Cancelar</button>
