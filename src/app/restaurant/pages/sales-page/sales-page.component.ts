@@ -37,6 +37,7 @@ export class SalesPageComponent implements AfterViewInit {
   public data = computed(() => mapData({ sales: this.sales() }))
   public isValidDateRange = signal(true)
   public datesExists = signal(true)
+  public areSalesFiltered = signal(false)
 
   public myForm = this.formBuilder.group({
     initialDate: [, [Validators.required]],
@@ -66,7 +67,6 @@ export class SalesPageComponent implements AfterViewInit {
   }
 
   public async filter(): Promise<void> {
-    // if (this.myForm.errors) return
     const initialDate = this.myForm.get('initialDate')?.value
     const finalDate = this.myForm.get('finalDate')?.value
     const datesExists = initialDate && finalDate
@@ -78,8 +78,14 @@ export class SalesPageComponent implements AfterViewInit {
     const secondDate = new Date(finalDate)
     this.isValidDateRange.set(firstDate.getTime() < secondDate.getTime())
     if (!this.isValidDateRange()) return
-
     await this.salesService.getSales({ initialDate, finalDate })
+    this.areSalesFiltered.set(true)
     this.serie?.setData(this.data())
+  }
+
+  public async removeFilter() {
+    await this.salesService.getSales()
+    this.serie?.setData(this.data())
+    this.areSalesFiltered.set(false)
   }
 }

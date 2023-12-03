@@ -7,15 +7,16 @@
       </label>
       <label>
         Fecha final:
-        <input class="p-1 text-white rounded-lg bg-purple" type="date" formControlName="finalDate" [value]="finalDate?.value" >
+        <input class="p-1 text-white rounded-lg bg-purple" type="date" formControlName="finalDate" >
       </label>
       <button class="px-4 py-1 text-white rounded-lg bg-purple" >Filtrar</button>
+      <button type="button" (click)="removeFilter()" *ngIf="areSalesFiltered()" class="px-4 py-1 text-white rounded-lg bg-purple" >Eliminar filtro</button>
     </div>
     <error-label *ngIf="!isValidDateRange()" message="La fecha inicial no puede ser mayor a la fecha final" />
   </form>
   <div class="col-span-2 min-h-[300px]" #chart ></div>
   <div class="overflow-hidden rounded-lg" >
-    <table class="w-full text-center text-white bg-purple" >
+    <table class="w-full h-full text-center text-white bg-purple" >
       <thead>
         <th class="p-2" >Fecha</th>
         <th class="p-2" >Monto Vendido</th>
