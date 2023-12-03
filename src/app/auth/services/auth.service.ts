@@ -12,7 +12,7 @@ export class AuthService {
   private customerService = inject(CustomerService)
   private router = inject(Router)
 
-  private readonly API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
+  private readonly API_URL = 'https://litoral-api.up.railway.app/employees'
   public employees: Employee[] = []
   public currentUser?: Employee
   public currentCustomer = signal<Customer | undefined>(undefined)

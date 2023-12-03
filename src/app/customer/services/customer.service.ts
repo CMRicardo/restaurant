@@ -5,7 +5,7 @@ import { Customer } from '../interfaces/customer-response.interface';
   providedIn: 'root'
 })
 export class CustomerService {
-  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/customers'
+  private API_URL = 'https://litoral-api.up.railway.app/customers'
   public customers = signal<Customer[]>([])
 
   public async getCustomers(){
