@@ -1,8 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { AuthService } from '../../services/auth.service';
+import { EmployeesService } from 'src/app/restaurant/services/employees.service';
 
 @Component({
   templateUrl: './login-page.component.html',
@@ -10,11 +12,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginPageComponent implements OnInit {
   private router = inject(Router)
   private authService = inject(AuthService)
+  private employeesService = inject(EmployeesService)
   private formBuilder = inject(FormBuilder)
   private snackBar = inject(MatSnackBar)
   
   async ngOnInit(): Promise<void> {
-    await this.authService.getUsers()
+    if (this.employeesService.employees().length !== 0) return
+    await this.employeesService.getEmployees()
   }
   
   public myForm = this.formBuilder.group({
@@ -42,12 +46,13 @@ export class LoginPageComponent implements OnInit {
     const password = String(this.password?.value)
     if (!email && !password) return
 
-    this.authService.currentUser = this.authService.validatedCredentials({ email, password })
-    if (this.authService.currentUser){
+    this.authService.currentEmployee.set(this.authService.validatedCredentials({ email, password }))
+    if (this.authService.currentEmployee()){
+      localStorage.setItem('currentEmployee', JSON.stringify(this.authService.currentEmployee()))
       this.router.navigateByUrl('app/home')
       return
     }
-    // Cambiar por un error
+
     this.snackBar.open('Credenciales incorrectas', 'Error', { duration: 4000 })
   }
 }

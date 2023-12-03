@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomePageComponent } from './shared/pages/welcome-page/welcome-page.component';
 import { CustomerAuthGuard } from './auth/guards/customer-auth.guard';
+import { EmployeeAuthGuard } from './auth/guards/employee-auth.guard';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
+    canActivate: [EmployeeAuthGuard],
     loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule)
   },
   {

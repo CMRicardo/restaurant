@@ -13,7 +13,7 @@ export class CustomerAuthGuard implements CanActivate {
   private checkAuthStatus(): boolean | Observable<boolean> {
     const isAuthenticated = this.authService.checkCustomerAuthStatus()
     if(!isAuthenticated) { this.router.navigateByUrl('auth/customer-login') }
-    return this.authService.checkCustomerAuthStatus()
+    return isAuthenticated
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {

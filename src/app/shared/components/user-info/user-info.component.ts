@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
@@ -10,15 +10,7 @@ const DEFAULT_USER = { "id": "72101198-81c3-11ee-b53e-eaf15ba8dff1", "employeeTy
   styles: [
   ]
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent {
   private authService = inject(AuthService)
-  public user?: Employee
-
-  ngOnInit(): void {
-    this.user = this.authService!.currentUser
-    if (!this.user) {
-      this.user = DEFAULT_USER
-    }
-  }
-
+  public user = computed( () => this.authService.currentEmployee())
 }
