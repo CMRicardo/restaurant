@@ -1,5 +1,8 @@
 <div class="grid h-screen gap-4 py-10 place-items-center text-text-color">
-  <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
+  <div class="grid gap-2 text-center" >
+    <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
+    <h2 class="text-xl font-bold" >Clientes</h2>
+  </div>
   <form [formGroup]="myForm" (ngSubmit)="login()" class="grid p-8 gap-8 min-w-[400px]" >
     <label class="grid w-full gap-2 text-lg">
       Correo Electrónico
