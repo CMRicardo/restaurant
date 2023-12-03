@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomerService } from 'src/app/customer/services/customer.service';
 
 @Component({
   selector: 'app-customer-login',
@@ -15,6 +16,7 @@ export class CustomerLoginComponent {
   private authService = inject(AuthService)
   private formBuilder = inject(FormBuilder)
   private snackBar = inject(MatSnackBar)
+  private customersService = inject(CustomerService)
 
   private onlyTextRegex = /^[a-zA-Z ]{6,}$/
 
@@ -22,6 +24,11 @@ export class CustomerLoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern(this.onlyTextRegex)]],
   })
+
+  async ngOnInit() {
+    if (this.customersService.customers().length !== 0) return
+    await this.customersService.getCustomers()    
+  }
 
   public togglePasswordVisibility(passwordInput: HTMLInputElement, buttonIcon: HTMLImageElement) {
     buttonIcon.src = 'assets/icons/shared/eye.svg'
@@ -34,8 +41,8 @@ export class CustomerLoginComponent {
     const password = String(this.myForm.get('password')?.value)
     if (!email && !password) return
 
-    const currentUser = await this.authService.customerLogin({ email, password })
-    if (!currentUser) {
+    this.authService.currentCustomer.set( await this.authService.customerLogin({ email, password }) )
+    if (!this.authService.currentCustomer()) {
       this.snackBar.open('Credenciales incorrectas', 'Error', { duration: 4000 })
       return
     }

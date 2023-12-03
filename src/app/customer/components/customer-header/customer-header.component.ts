@@ -9,5 +9,6 @@ import { TitleService } from '../../services/title.service';
 })
 export class CustomerHeaderComponent {
   private titleService = inject(TitleService)
+  
   public title = computed(() => this.titleService.title())
 }

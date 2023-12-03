@@ -38,9 +38,8 @@
     </label>
     <button
       type="submit"
-      (click)="login()"
       class="px-8 py-4 text-lg font-bold text-white transition-transform rounded bg-primary enabled:hover:scale-105 disabled:opacity-70"
-      [disabled]="myForm.errors"
+      [disabled]="myForm.errors && myForm.touched"
     >
       Iniciar sesión
     </button>

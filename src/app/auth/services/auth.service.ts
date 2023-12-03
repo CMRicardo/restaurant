@@ -1,7 +1,8 @@
-import { Injectable, computed, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Employee, validatedCredentialsProps } from '../interfaces/employees-response.interface';
 import { CustomerService } from 'src/app/customer/services/customer.service';
 import { CustomerLoginProps } from '../interfaces/customer-login.interface';
+import { Customer } from 'src/app/customer/interfaces/customer-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,8 @@ export class AuthService {
   private customerService = inject(CustomerService)
   public employees: Employee[] = []
   public currentUser?: Employee
+  public currentCustomer = signal<Customer | undefined>(undefined)
   public customers = computed(() => this.customerService.customers())
-
-  constructor() {
-    if (this.customerService.customers().length !== 0) {
-      this.customerService.getCustomers()
-        .then(console.log)
-    }
-  }
 
   public validatedCredentials({ email, password }: validatedCredentialsProps) {
     const employeeIndex = this.employees.findIndex(employee => {
@@ -39,6 +34,7 @@ export class AuthService {
     const customerIndex = this.customers().findIndex( customer => {
       return customer.password === password && customer.email === email
     })
+    
     if (customerIndex === -1) return
     return this.customers()[customerIndex]
   }
