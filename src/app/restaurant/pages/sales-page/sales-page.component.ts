@@ -15,15 +15,16 @@ import {
 } from 'lightweight-charts';
 
 import { SalesService } from '../../services/sales.service';
-import { Sale } from '../../interfaces/sales-response.interface';
 import { Serie } from '../../interfaces/serie.interface';
 import { chartOptions, mapData, seriesOptions } from './sales-page.utils';
+import { TitleService } from 'src/app/shared/services/title.service';
 
 @Component({
   templateUrl: './sales-page.component.html',
 })
 export class SalesPageComponent implements AfterViewInit {
   private salesService = inject(SalesService)
+  private titleService = inject(TitleService)
   private formBuilder = inject(FormBuilder)
 
   private chart?: IChartApi
@@ -41,6 +42,10 @@ export class SalesPageComponent implements AfterViewInit {
     initialDate: [, [Validators.required]],
     finalDate: [new Date().toLocaleDateString(), [Validators.required]]
   })
+
+  ngOnInit(): void {
+    this.titleService.title.set('Ventas')
+  }
 
   get initialDate() {
     return this.myForm.get('initialDate')

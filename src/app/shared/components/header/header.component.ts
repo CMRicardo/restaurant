@@ -1,26 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TitleService } from '../../services/title.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
-  private titleService = inject(Title)
-  private router = inject(Router)
-  private activeRoute = inject(ActivatedRoute)
+export class HeaderComponent {
+  private titleService = inject(TitleService)
 
-  public title: string = this.titleService.getTitle().replace('| Brisas del Litoral', '')
+  public title = computed(() => this.titleService.title())
   public UserData = {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe(ev => {
-      if (ev instanceof NavigationEnd ) {
-        const fullTitle = this.activeRoute.snapshot.firstChild?.routeConfig?.title as string || this.titleService.getTitle()
-        const unwantedText = '| Brisas del Litoral'
-        this.title = fullTitle.replace(unwantedText, '')
-      }
-    })
-  }
 }

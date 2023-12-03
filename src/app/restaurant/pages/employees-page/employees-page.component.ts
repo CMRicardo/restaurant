@@ -3,6 +3,7 @@ import { EmployeesService } from '../../services/employees.service';
 import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
+import { TitleService } from 'src/app/shared/services/title.service';
 
 @Component({
   templateUrl: './employees-page.component.html',
@@ -11,9 +12,11 @@ import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
 })
 export class EmployeesPageComponent implements OnInit {
   private employeesService = inject(EmployeesService)
+  private titleService = inject(TitleService)
   private snackBarService = inject(MatSnackBar)
 
   async ngOnInit(): Promise<void> {
+    this.titleService.title.set('Empleados')
     if (this.employeesService.employees().length !== 0) return
     await this.employeesService.getEmployees()
   }
