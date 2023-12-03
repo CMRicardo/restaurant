@@ -14,4 +14,15 @@ export class CustomerService {
     const data = await res.json()
     this.customers.set(data)
   }
+  public async createCustomer(data = {}) {
+    const res = await fetch(this.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (!res.ok) return
+    const newCustomer: Customer = await res.json()
+    await this.getCustomers()
+    return newCustomer
+  }
 }

@@ -1,6 +1,6 @@
 <div class="grid h-screen gap-4 py-10 place-items-center text-text-color">
   <h1 class="text-4xl font-bold">¡Crea tu usuario!</h1>
-  <form class="grid p-8 gap-8 min-w-[400px]" >
+  <form (ngSubmit)="register()" [formGroup]="myForm" class="grid gap-8 p-8" >
     <div class="grid gap-8 max-h-[350px] overflow-hidden overflow-y-scroll" >
       <label class="grid w-full gap-2 text-lg">
         * Primer nombre
@@ -12,7 +12,8 @@
           placeholder="Tu primer nombre"
         />
         <error-label
-          message="Email invalido"
+          *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched"
+          message="Asegurate de ingresar un valor, no ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
@@ -24,7 +25,8 @@
           placeholder="Tu segundo nombre"
         />
         <error-label
-          message="No agregues números"
+          *ngIf="myForm.get('secondName')?.invalid && myForm.get('secondName')?.touched"
+          message="No ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
@@ -36,11 +38,12 @@
           placeholder="Tu apellido"
         />
         <error-label
-          message="No agregues números"
+          *ngIf="myForm.get('lastName')?.invalid && myForm.get('lastName')?.touched"
+          message="Asegurate de ingresar un valor, no ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
-        Correo Electrónico
+        * Correo Electrónico
         <input
           formControlName="email"
           class="px-4 py-2 border-b border-b-black"
@@ -48,11 +51,12 @@
           placeholder="hola@email.com"
         />
         <error-label
-          message="Email invalido"
+          *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched"
+          message="Asegurate de ingresar un email"
         />
       </label>
       <label class="grid w-full gap-2 text-lg" >
-        Contraseña
+        * Contraseña
         <div class="relative" >
           <input
             #passwordInput
@@ -69,7 +73,8 @@
           </button>
         </div>
         <error-label
-          message="Contraseña invalida"
+          *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched"
+          message="Permitido: Letras, números, carácteres especiales, mayor a 6 carácteres"
         />
       </label>
       <label class="grid w-full gap-2 text-lg" >
@@ -90,7 +95,8 @@
           </button>
         </div>
         <error-label
-          message="Contraseña invalida"
+          *ngIf="myForm.get('passwordConfirm')?.invalid && myForm.get('passwordConfirm')?.touched"
+          message="Debe ser igual a tu contraseña"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
@@ -102,19 +108,22 @@
           placeholder="Tu número de teléfono"
         />
         <error-label
-          message="Número de teléfono invalido"
+          *ngIf="myForm.get('phoneNumber')?.invalid && myForm.get('phoneNumber')?.touched"
+          message="Asegurate de que sea un número valido, no permitimos espacios, ni códigos de país"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
         * Dirección
         <textarea formControlName="address" placeholder="Tu dirección" class="p-2 border rounded resize-none border-text-color" cols="30" rows="4"></textarea>
         <error-label
-          message="Número de teléfono invalido"
+          *ngIf="myForm.get('address')?.invalid && myForm.get('address')?.touched"
+          message="Debes ingresar tu dirección"
         />
       </label>
     </div>
     <button
       type="submit"
+      [disabled]="!myForm.valid"
       class="px-8 py-4 text-lg font-bold text-white transition-transform rounded bg-primary enabled:hover:scale-105 disabled:opacity-70"
     >
       Registrate

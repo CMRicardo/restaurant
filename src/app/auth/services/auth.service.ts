@@ -55,4 +55,9 @@ export class AuthService {
     const currentCustomer: Customer = JSON.parse(currentCustomerJSON)
     return Boolean(currentCustomer)
   }
+
+  public async registerCustomer(data = {}) {
+    const newCustomer = await this.customerService.createCustomer(data)
+    return newCustomer
+  }
 }
