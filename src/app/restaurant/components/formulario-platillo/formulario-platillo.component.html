@@ -13,7 +13,8 @@
     <div class="mb-3 flex items-center justify-between space-x-5">
       <label for="precio" class="block text-gray-700 text-sm font-bold " >Precio:</label>
       <input type="number" id="precio" name="precio" [(ngModel)]="dish.price"
-        class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
+        class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
+        placeholder="ingrese el precio"/>
     </div>
 
     <!-- input de tipo de platillo -->
@@ -29,14 +30,17 @@
     </div>
     <!-- input de imagen -->
 
-    <div class="flex-wrap justify-center align-middle -2">
+    <div class="mb-3 flex items-center justify-between space-x-2 ">
       <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
-      <input type="file" (change)="onFileSelected($event)"  />
-      <div class="flex justify-center mt-3 ">
-        <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
-      </div>
-    </div>
+      <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="dish.imageUrl"
+      class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
+      placeholder="Ingrese una URL">
 
+      <!-- <input type="file" (change)="onFileSelected($event)"  /> -->
+    </div>
+    <div class="flex justify-center mt-3 ">
+      <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
+    </div>
 
     <!-- botones -->
     <div class="mt-4 flex justify-between">

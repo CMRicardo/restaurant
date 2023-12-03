@@ -59,7 +59,7 @@ export class FormularioPlatilloComponent {
   }
   async onSubmit() {
     this.dish.description= '';
-    this.dish.imageUrl='https://th.bing.com/th/id/R.efa9cd576fe3870126a98f1ec771c3dd?rik=Q8QKkZUqqie3qA&pid=ImgRaw&r=0'
+   // this.dish.imageUrl='https://th.bing.com/th/id/R.efa9cd576fe3870126a98f1ec771c3dd?rik=Q8QKkZUqqie3qA&pid=ImgRaw&r=0'
     console.log(this.dish);
     try {
       await this.menuItemService.createNewMenuItem(this.dish);
