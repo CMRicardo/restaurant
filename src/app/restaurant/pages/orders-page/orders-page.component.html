@@ -17,7 +17,7 @@
           <td class="px-2">{{order.taxes | currency}}</td>
           <td class="px-2">{{order.total | currency}}</td>
           <td class="flex gap-2 px-2">
-            <button #openDetailsBtn (click)="openDetails(openDetailsBtn, order)" class="px-4 py-2 my-2 text-white rounded bg-blue disabled:opacity-70">Ver</button>
+            <button type="button" #openDetailsBtn (click)="openDetails(openDetailsBtn, order)" class="px-4 py-2 my-2 text-white rounded bg-blue disabled:opacity-70">Ver</button>
           </td>
         </tr>
       </tbody>

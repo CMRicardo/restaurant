@@ -25,17 +25,19 @@
       <strong>Total</strong>: {{order.total | currency}}
       <div class="flex justify-end gap-2 p-4">
         <button
+          type="button"
           (click)="closeForm()"
           class="p-2 text-white rounded bg-blue"
         >
           Cerrar
         </button>
         <button
+          type="button"
           (click)="openConfirmModal({ action: 'cancel' })"
           class="p-2 text-white rounded bg-bad">
           Cancelar Orden
         </button>
-        <button (click)="openConfirmModal({action: 'conclude'})" class="p-2 text-white rounded bg-good">
+        <button type="button" (click)="openConfirmModal({action: 'conclude'})" class="p-2 text-white rounded bg-good">
           Marcar como concluida
         </button>
       </div>

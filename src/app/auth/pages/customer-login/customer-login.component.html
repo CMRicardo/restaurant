@@ -1,6 +1,6 @@
 <div class="grid h-screen gap-4 py-10 place-items-center text-text-color">
   <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
-  <form [formGroup]="myForm" (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" >
+  <form [formGroup]="myForm" (ngSubmit)="login()" class="grid p-8 gap-8 min-w-[400px]" >
     <label class="grid w-full gap-2 text-lg">
       Correo Electrónico
       <input
@@ -27,6 +27,7 @@
         <button
           (click)="togglePasswordVisibility(passwordInput, toggleVisibilityIcon)"
           class="absolute right-0 top-3"
+          type="button"
         >
           <img #toggleVisibilityIcon src="/assets/icons/shared/eye.svg" alt="Toggle password visibility">
         </button>
@@ -37,7 +38,9 @@
     </label>
     <button
       type="submit"
-      class="px-8 py-4 text-lg font-bold text-white transition-transform rounded bg-primary enabled:hover:scale-105"
+      (click)="login()"
+      class="px-8 py-4 text-lg font-bold text-white transition-transform rounded bg-primary enabled:hover:scale-105 disabled:opacity-70"
+      [disabled]="myForm.errors"
     >
       Iniciar sesión
     </button>

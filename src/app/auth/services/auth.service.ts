@@ -40,6 +40,6 @@ export class AuthService {
       return customer.password === password && customer.email === email
     })
     if (customerIndex === -1) return
-    
+    return this.customers()[customerIndex]
   }
 }
