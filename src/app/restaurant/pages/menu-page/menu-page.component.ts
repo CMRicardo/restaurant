@@ -3,6 +3,7 @@ import { Component, computed, inject } from '@angular/core';
 import { OrdersService } from '../../services/orders.service';
 import { Dish1 } from '../../interfaces/dish1.constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TitleService } from 'src/app/shared/services/title.service';
 
 
 @Component({
@@ -11,6 +12,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   ]
 })
 export class MenuPageComponent {
+  private titleService = inject(TitleService)
+
+  ngOnInit(): void {
+    this.titleService.title.set('Menú Digital')
+  }
 
   constructor(private _snackBar: MatSnackBar) { }
   private ordersService = inject(OrdersService)

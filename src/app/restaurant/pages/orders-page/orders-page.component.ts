@@ -1,6 +1,7 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { SalesService } from '../../services/sales.service';
 import { Sale } from '../../interfaces/sales-response.interface';
+import { TitleService } from 'src/app/shared/services/title.service';
 
 @Component({
   templateUrl: './orders-page.component.html',
@@ -9,6 +10,7 @@ import { Sale } from '../../interfaces/sales-response.interface';
 })
 export class OrdersPageComponent implements OnInit {
   private salesService = inject(SalesService)
+  private titleService = inject(TitleService)
 
   public isDetailsFormOpen = false
   public showDetailsForm = false
@@ -18,6 +20,7 @@ export class OrdersPageComponent implements OnInit {
   public selectedOrder = signal<Sale>(this.orders()[0])
 
   async ngOnInit(): Promise<void> {
+    this.titleService.title.set('Pedidos pendientes')
     if (this.salesService.sales().length !== 0) return
     this.salesService.getSales()
   }
