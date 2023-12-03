@@ -46,13 +46,14 @@ export class AuthService {
   public customerLogout() {
     this.currentCustomer.set(undefined)
     localStorage.removeItem('currentCustomer')
-    this.router.navigateByUrl('auth')
+    this.router.navigateByUrl('auth/customer-login')
   }
 
   checkCustomerAuthStatus() {
     const currentCustomerJSON = localStorage.getItem('currentCustomer')
     if (!currentCustomerJSON) return false
     const currentCustomer: Customer = JSON.parse(currentCustomerJSON)
+    this.currentCustomer.set(currentCustomer)
     return Boolean(currentCustomer)
   }
 
