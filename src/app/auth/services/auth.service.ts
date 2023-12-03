@@ -1,13 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { Employee, validatedCredentialsProps } from '../interfaces/employees-response.interface';
+import { CustomerService } from 'src/app/customer/services/customer.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private API_URL = 'https://litoral-restaurant-api.1.us-1.fl0.io/employees'
+  private customerService = inject(CustomerService)
+
   public employees: Employee[] = []
   public currentUser?: Employee
+  public customers = computed(() => this.customerService.customers())
+
+  constructor() {
+    if (this.customerService.customers().length !== 0) {
+      this.customerService.getCustomers()
+        .then(console.log)
+    }
+  }
 
   public validatedCredentials({ email, password }: validatedCredentialsProps) {
     const employeeIndex = this.employees.findIndex(employee => {
@@ -22,5 +33,9 @@ export class AuthService {
     const res = await fetch(this.API_URL)
     const data = await res.json()
     this.employees = data
+  }
+
+  public async customerLogin() {
+
   }
 }

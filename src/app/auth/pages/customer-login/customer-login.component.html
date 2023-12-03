@@ -1,6 +1,6 @@
 <div class="grid h-screen gap-4 py-10 place-items-center text-text-color">
   <h1 class="text-4xl font-bold">¡Bienvenido!</h1>
-  <form (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" >
+  <form [formGroup]="myForm" (submit)="login($event)" class="grid p-8 gap-8 min-w-[400px]" >
     <label class="grid w-full gap-2 text-lg">
       Correo Electrónico
       <input
