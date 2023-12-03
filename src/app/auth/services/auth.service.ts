@@ -1,12 +1,14 @@
 import { Injectable, computed, inject } from '@angular/core';
 import { Employee, validatedCredentialsProps } from '../interfaces/employees-response.interface';
 import { CustomerService } from 'src/app/customer/services/customer.service';
+import { CustomerLoginProps } from '../interfaces/customer-login.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private API_URL = 'https://litoral-restaurant-api.2.us-1.fl0.io/employees'
+  private customerService = inject(CustomerService)
   public employees: Employee[] = []
   public currentUser?: Employee
   public customers = computed(() => this.customerService.customers())
@@ -33,7 +35,11 @@ export class AuthService {
     this.employees = data
   }
 
-  public async customerLogin() {
-
+  public async customerLogin({ email, password }: CustomerLoginProps) {
+    const customerIndex = this.customers().findIndex( customer => {
+      return customer.password === password && customer.email === email
+    })
+    if (customerIndex === -1) return
+    
   }
 }
