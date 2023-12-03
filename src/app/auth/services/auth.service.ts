@@ -5,7 +5,7 @@ import { Employee, validatedCredentialsProps } from '../interfaces/employees-res
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = 'https://litoral-restaurant-api.2.us-1.fl0.io/employees'
+  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/employees'
   public employees: Employee[] = []
   public currentUser?: Employee
 

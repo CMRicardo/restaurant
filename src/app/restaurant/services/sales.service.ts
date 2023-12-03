@@ -16,7 +16,7 @@ interface updateSaleProps {
   providedIn: 'root'
 })
 export class SalesService {
-  private API_URL = 'https://litoral-restaurant-api.2.us-1.fl0.io/sales'
+  private API_URL = 'https://restaurant-api.2.us-1.fl0.io/sales'
   public sales = signal<Sale[]>([])
 
   async getSales({ initialDate, finalDate }: getSalesProps = {}): Promise<Sale[]> {
