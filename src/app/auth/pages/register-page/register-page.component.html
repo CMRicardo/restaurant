@@ -13,7 +13,7 @@
         />
         <error-label
           *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched"
-          message="Asegurate de ingresar un valor, no ingresar números"
+          message="Asegurate de ingresar tu nombre, no ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
@@ -26,7 +26,7 @@
         />
         <error-label
           *ngIf="myForm.get('secondName')?.invalid && myForm.get('secondName')?.touched"
-          message="No ingresar números"
+          message="No debes ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
@@ -39,7 +39,7 @@
         />
         <error-label
           *ngIf="myForm.get('lastName')?.invalid && myForm.get('lastName')?.touched"
-          message="Asegurate de ingresar un valor, no ingresar números"
+          message="Asegurate de ingresar tu apellido, no ingresar números"
         />
       </label>
       <label class="grid w-full gap-2 text-lg">
