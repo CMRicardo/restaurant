@@ -13,7 +13,7 @@
   <div class="flex gap-4" >
     <button
       (click)="payOrder()"
-      [disabled]="itemsInOrder().length === 0"
+      [disabled]="!isPayEnabled()"
       class="w-48 px-4 py-2 font-bold text-white rounded-lg bg-good disabled:opacity-70"
     >
       Pagar

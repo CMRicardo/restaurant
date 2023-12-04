@@ -4,6 +4,7 @@ import { DeleteEmployeeProps } from '../../interfaces/props.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/auth/interfaces/employees-response.interface';
 import { TitleService } from 'src/app/shared/services/title.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   templateUrl: './employees-page.component.html',
@@ -13,6 +14,7 @@ import { TitleService } from 'src/app/shared/services/title.service';
 export class EmployeesPageComponent implements OnInit {
   private employeesService = inject(EmployeesService)
   private titleService = inject(TitleService)
+  private authService = inject(AuthService)
   private snackBarService = inject(MatSnackBar)
 
   async ngOnInit(): Promise<void> {
@@ -64,6 +66,10 @@ export class EmployeesPageComponent implements OnInit {
   }
 
   public async openConfirmModal({ id = '' }) {
+    if(this.authService.currentEmployee()?.id === id) {
+      this.snackBarService.open('No se puede borrar a si mismo', 'Error', { duration: 4000 })
+      return
+    }
     this.showConfirmModal = true
     this.employeesService.selectedEmployeeId.set(id)
   }
