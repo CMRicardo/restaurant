@@ -56,7 +56,6 @@ export class MenuItemService {
 
 async updateMenuItem( updatedData: Dish1): Promise<void> {
     const url = `${this.API_URL}/menu-items/${updatedData.id}`;
-
     const requestOptions: RequestInit = {
         method: 'PATCH',  // Cambiado a método PATCH para una solicitud de actualización parcial
         headers: {
