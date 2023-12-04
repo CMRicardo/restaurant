@@ -42,7 +42,7 @@ export class AuthService {
   public customerLogout() {
     this.currentCustomer.set(undefined)
     localStorage.removeItem('currentCustomer')
-    this.router.navigateByUrl('auth/customer-login')
+    this.router.navigateByUrl('/')
   }
 
   public checkCustomerAuthStatus() {
@@ -61,7 +61,7 @@ export class AuthService {
   public employeeLogOut() {
     this.currentEmployee.set(undefined)
     localStorage.removeItem('currentEmployee')
-    this.router.navigateByUrl('auth/login')
+    this.router.navigateByUrl('/')
   }
 
   public checkEmployeeAuthStatus() {
