@@ -29,6 +29,12 @@ export class RegisterPageComponent {
     address: ['', [Validators.required, Validators.minLength(6)]]
   })
 
+  public togglePasswordVisibility(passwordInput: HTMLInputElement, buttonIcon: HTMLImageElement) {
+    buttonIcon.src = 'assets/icons/shared/eye.svg'
+    passwordInput.type = passwordInput.type === 'text' ? 'password' : 'text'
+    if (passwordInput.type === 'text') buttonIcon.src = 'assets/icons/shared/eye_no.svg'
+  }
+
   public async register() {
     if (!this.myForm.valid) return
     const passwordsAreEqual = this.myForm.get('password')?.value === this.myForm.get('passwordConfirm')?.value
