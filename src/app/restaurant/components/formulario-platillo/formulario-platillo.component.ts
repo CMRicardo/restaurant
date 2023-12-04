@@ -94,7 +94,7 @@ export class FormularioPlatilloComponent {
     return (this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
   }
   async onSubmit() {
-    if (this.isNotEmptyForm()) {
+   // if (this.isNotEmptyForm()) {
       this.dish.description = '';
       // this.dish.imageUrl='https://th.bing.com/th/id/R.efa9cd576fe3870126a98f1ec771c3dd?rik=Q8QKkZUqqie3qA&pid=ImgRaw&r=0'
       try {
@@ -113,7 +113,7 @@ export class FormularioPlatilloComponent {
         });
         console.error(error.message);
       }
-    }
+   // }
   }
 
   // cuando  se de el boton cancelar

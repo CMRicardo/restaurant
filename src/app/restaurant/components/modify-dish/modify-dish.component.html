@@ -1,6 +1,7 @@
-<h2 class="text-2xl font-semibold max-w-md mx-auto p-3 text-center text-white  rounded-t-lg shadow-lg bg-primary">{{this.dish.name}}</h2>
+<h2 class="text-2xl font-semibold max-w-md mx-auto p-3 text-center text-white  rounded-t-lg shadow-lg bg-primary">
+  {{this.dish.name}}</h2>
 <div class=" mx-auto p-6 bg-secondary rounded-b-lg shadow-lg max-w-lg">
-  <form  class=""  (ngSubmit)="onSubmit()">
+  <form class="" (ngSubmit)="onSubmit()">
     <!-- input de nombre  -->
     <div class="mb-3 flex items-center justify-between space-x-2 ">
       <label for="nombre" class=" text-gray-700 text-sm font-bold  ">Nombre: </label>
@@ -10,19 +11,19 @@
 
     <!-- nombre vacio -->
     <div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelName">
-      <error-label message="Nombre no puede esta vacio"/>
+      <error-label message="Nombre no puede esta vacio" />
     </div>
 
     <!-- input de precio -->
     <div class="mt-3 flex items-center justify-between space-x-5">
-      <label for="precio" class="block text-gray-700 text-sm font-bold " >Precio:</label>
+      <label for="precio" class="block text-gray-700 text-sm font-bold ">Precio:</label>
       <input type="number" id="precio" name="precio" [(ngModel)]="dish.price"
         class="no-spinner w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2" />
     </div>
 
     <!-- precio vacio -->
     <div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelPrice">
-      <error-label message="Precio no puede ser 0"/>
+      <error-label message="Precio no puede ser 0" />
     </div>
 
     <!-- input de tipo de platillo -->
@@ -38,35 +39,38 @@
     </div>
     <!-- categoria vacia -->
     <div class="mb-4 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelCategory">
-      <error-label message="La categoria no puede esta vacia"/>
+      <error-label message="La categoria no puede esta vacia" />
     </div>
 
- <!-- input de imagen -->
- <div class="mt-3 flex items-center justify-between space-x-2 ">
-  <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
-  <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="dish.imageUrl"
-  class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
-  placeholder="Ingrese una URL">
+    <!-- input de imagen -->
+    <div class="mt-3 flex items-center justify-between space-x-2 ">
+      <label for="Imagen" class="block text-gray-700 text-sm font-bold  mb-3">Imagen:</label>
+      <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="dish.imageUrl"
+        class="w-full border-b border-primary bg-transparent focus:outline-none focus:ring-0 mb-2"
+        placeholder="Ingrese una URL">
 
-  <!-- <input type="file" (change)="onFileSelected($event)"  /> -->
-</div>
+      <!-- <input type="file" (change)="onFileSelected($event)"  /> -->
+    </div>
 
-<!-- Url  vacio -->
-<div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelURLImage">
-  <error-label message="La URL no puede esta vacia"/>
-</div>
+    <!-- Url  vacio -->
+    <div class="mb-3 ml-16 justify-end items-end align-bottom" *ngIf="this.errorLabelURLImage">
+      <error-label message="La URL no puede esta vacia" />
+    </div>
 
-<!-- previsualizador -->
-<div class="flex justify-center mt-3 mb-3 ">
-  <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
-</div>
+    <!-- previsualizador -->
+    <div class="flex justify-center mt-3 mb-3 ">
+      <img *ngIf="this.dish.imageUrl" [src]="dish.imageUrl" alt="Imagen seleccionada" class="max-h-32" />
+    </div>
 
     <!-- botones -->
     <div class="mt-4 flex space-x-2 justify-between">
       <button type="submit" class="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800">Modificar</button>
-      <button type="button" class="bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800" (click)="onDeleteButton()">Borrar</button>
-     <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-900" (click)="onCancelButton()">Cancelar</button>
-  </div>
-  <confirm-modal (onChoice)="getUserChoice($event)" (onClose)="closeConfirmModal()" *ngIf="showConfirmModal" question="¿Seguro que quiere eliminar a este platillo?" />
+      <button type="button" class="bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800"
+        (click)="onDeleteButton()">Borrar</button>
+      <button type="button" class="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-900"
+        (click)="onCancelButton()">Cancelar</button>
+    </div>
+    <confirm-modal (onChoice)="getUserChoice($event)" (onClose)="closeConfirmModal()" *ngIf="showConfirmModal"
+      question="¿Seguro que quiere eliminar a este platillo?" />
 
   </form>

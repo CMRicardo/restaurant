@@ -92,20 +92,18 @@ export class ModifyDishComponent {
   }
 
   async onSubmit() {
-    if (this.isNotEmptyForm()) {
+   // if (this.isNotEmptyForm()) {
+      console.log("entro");
       try {
-        console.log("entre");
         await this.menuItemService.updateMenuItem(this.dish);
         this._snackBar.open('El platillo ' + this.dish.name + ' se modifico exitosamente', '', {
           duration: 4000,
         });
+        this.onCancelButton();
+
       } catch (error: any) {
         console.error(error.message);
       }
-      //cerrar formulario
-      this.onCancelButton();
-    }
-
   }
 
   async obtenerTodosLosItemsDeMenu(): Promise<void> {
