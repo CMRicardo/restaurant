@@ -88,11 +88,11 @@ export class ModifyDishComponent {
       this.errorLabelURLImage = false;
     }
 
-    return (this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
+    return (!this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
   }
 
   async onSubmit() {
-    if (!this.isNotEmptyForm()) {
+    if (this.isNotEmptyForm()) {
       console.log("entro");
       try {
         await this.menuItemService.updateMenuItem(this.dish);

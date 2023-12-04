@@ -66,6 +66,7 @@ export class FormularioPlatilloComponent {
 
   //verificacion de datos
   isNotEmptyForm(): boolean {
+    let empty = false ;
 
     if (this.dish.name === '') {
       this.errorLabelName = true;
@@ -91,10 +92,10 @@ export class FormularioPlatilloComponent {
       this.errorLabelURLImage = false;
     }
 
-    return (this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
+    return (!this.errorLabelName && !this.errorLabelPrice && !this.errorLabelCategory && !this.errorLabelURLImage);
   }
   async onSubmit() {
-    if (!this.isNotEmptyForm()) {
+    if (this.isNotEmptyForm()) {
       this.dish.description = '';
       console.log("entreo");
 
