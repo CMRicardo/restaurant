@@ -7,7 +7,7 @@ export const EmployeeAuthGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
 
   const isAuthenticated = authService.checkEmployeeAuthStatus()
-  if (!isAuthenticated) { router.navigateByUrl('auth/login') }
+  if (!isAuthenticated) { router.navigateByUrl('/') }
   
   return isAuthenticated
 };

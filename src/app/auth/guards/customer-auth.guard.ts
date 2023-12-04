@@ -12,7 +12,7 @@ export class CustomerAuthGuard implements CanActivate {
 
   private checkAuthStatus(): boolean | Observable<boolean> {
     const isAuthenticated = this.authService.checkCustomerAuthStatus()
-    if(!isAuthenticated) { this.router.navigateByUrl('auth/customer-login') }
+    if(!isAuthenticated) { this.router.navigateByUrl('/') }
     return isAuthenticated
   }
 

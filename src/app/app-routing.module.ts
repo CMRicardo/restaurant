@@ -5,7 +5,7 @@ import { CustomerAuthGuard } from './auth/guards/customer-auth.guard';
 import { EmployeeAuthGuard } from './auth/guards/employee-auth.guard';
 
 const routes: Routes = [
-  { path: '', component: WelcomePageComponent },
+  { path: '', component: WelcomePageComponent, title: 'Brisas del Litoral' },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
